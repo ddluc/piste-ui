@@ -1,0 +1,37 @@
+import styled, {Theme} from 'styled-components'; 
+import { BaseCSSProperties } from '../../types';
+
+export interface Props extends BaseCSSProperties {}; 
+
+export interface ThemedProps extends Props {
+  theme: Theme;
+}
+
+const Block = styled.div<Props>`
+  display: ${({display = 'block'}: ThemedProps) => display};  
+  height: ${({height = 'auto'}: ThemedProps) => height}; 
+  width: ${({width = 'auto'}: ThemedProps) => width}; 
+  ${({float}: ThemedProps) => float && `float: ${float}` }; 
+  ${({border}: ThemedProps) => border && `border: ${border}` }; 
+  ${({position = 'relative'}: ThemedProps) => position && `position: ${position}`}; 
+  ${({left}: ThemedProps) => left && `left: ${left}`}; 
+  ${({right}: ThemedProps) => right && `right: ${right}`}; 
+  ${({top}: ThemedProps) => top && `left: ${top}`}; 
+  ${({bottom}: ThemedProps) => bottom && `bottom: ${bottom}`}; 
+  ${({margin}: ThemedProps) => margin && `margin: ${margin[0]} ${margin[1]} ${margin[2]} ${margin[3]}`}; 
+  ${({padding}: ThemedProps) => padding && `padding: ${padding[0]} ${padding[1]} ${padding[2]} ${padding[3]}`}; 
+  ${({opacity}: ThemedProps) => opacity && `opacity: ${opacity}`}; 
+  ${({background}: ThemedProps) => (background && background.color) && (`background-color: ${background.color}`)}; 
+  ${({background}: ThemedProps) => (background && background.position) && (`background-position: ${background.position}`)}; 
+  ${({background}: ThemedProps) => (background && background.image) && (`background-image: ${background.image}`)}; 
+  ${({background}: ThemedProps) => (background && background.repeat) && (`background-repeat: ${background.repeat}`)}; 
+  ${({background}: ThemedProps) => (background && background.attachment) && (`background-attachment: ${background.attachment}`)}; 
+  ${({background}: ThemedProps) => (background && background.size) && (`background-size: ${background.size}`)}; 
+  ${({background}: ThemedProps) => (background && background.origin) && (`background-origin: ${background.origin}`)}; 
+  ${({background}: ThemedProps) => (background && background.clip) && (`background-clip: ${background.clip}`)}; 
+  ${({outline}: ThemedProps) => outline  && `outline: ${outline}`}; 
+  ${({textAlign}: ThemedProps) => textAlign && `text-align: ${textAlign}`}; 
+  ${({overflow}: ThemedProps) => overflow && `overflow: ${overflow}`}; 
+`; 
+
+export default Block; 

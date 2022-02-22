@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Palette } from '../index'; 
 
 export default {
-  title: 'Palette',
+  title: 'CSS Utilities/Palette',
   component: Palette,
 } as ComponentMeta<typeof Palette>;
 
