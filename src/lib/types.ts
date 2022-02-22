@@ -42,7 +42,7 @@ export type TextAlignCSSProperty = 'right' | 'center' | 'left';
 export type CSSFLoatProperty = 'left' | 'right' | 'none';
 
 export type BaseCSSProperties = { 
-  display?: 'block' | 'inline-block'; 
+  display?: 'block' | 'inline-block' | 'flex' | 'grid';
   height?: string; 
   width?: string; 
   float?: CSSFLoatProperty; 
@@ -53,13 +53,13 @@ export type BaseCSSProperties = {
   background?: BackgroundCSSProperty; 
   outline?: string; 
   position?: PositionCSSProperty; 
-  zIndex: number; 
+  zIndex?: number; 
   left?: string; 
   right?: string; 
   top?: string; 
   bottom?: string; 
-  overflow: OverflowCSSProperty; 
-  textAlign: TextAlignCSSProperty; 
+  overflow?: OverflowCSSProperty; 
+  textAlign?: TextAlignCSSProperty; 
 }; 
 
 
