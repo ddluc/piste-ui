@@ -8,10 +8,10 @@ export interface Props {
 }
 
 // Declare the component
-const __Componenent = (props: Props): JSX.Element => { 
+const Test = (props: Props): JSX.Element => { 
   const { text } = props; 
   return (<div><p>{text}</p></div>); 
 };
 
 // Export the component as the default export 
-export default __Componenent; 
+export default Test; 

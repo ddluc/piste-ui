@@ -10,7 +10,7 @@ module.exports = {
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, '../dist'),
-    library: 'react-timeline', 
+    library: 'piste-ui', 
     libraryTarget: 'umd',
     globalObject: 'this'
   },

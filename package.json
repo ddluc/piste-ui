@@ -7,7 +7,8 @@
     "dev": "webpack-dev-server --config webpack/webpack.dev.js",
     "build": "webpack --config webpack/webpack.prod.js; ./scripts/postbuild.sh",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o ./docs"
+    "build-storybook": "build-storybook -o ./docs", 
+    "scaffold:component": "./scripts/scaffold/component.sh"
   },
   "repository": {
     "type": "git",

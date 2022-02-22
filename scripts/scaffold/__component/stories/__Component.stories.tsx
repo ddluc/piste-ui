@@ -6,7 +6,7 @@ export default {
   title: '__Component',
   component: __Component,
   args: { 
-    text: 'This is a scaffolding component which is used to create consistently structured react components'
+    text: 'A scaffolded component'
   } as __ComponentProps
 } as ComponentMeta<typeof __Component>;
 
