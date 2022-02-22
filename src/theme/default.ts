@@ -19,7 +19,7 @@ export const DEFAULT_THEME: Theme = {
   }, 
   palette: { 
     primary: { 
-      main: '#46D45F', 
+      main: '#42AD09', 
       contrastText: '#FFFFF', 
       shades: ['#052E10', '#185C2A', '#4FAD6A', '#85DA9A', '#C3F9CD']
     }, 
@@ -28,13 +28,14 @@ export const DEFAULT_THEME: Theme = {
       contrastText: '#FFFFF', 
       shades: ['#052E29', '#275C58', '#3FD4C0', '#80D9D7', '#B7EFFA']
     }, 
-    success: 'green',
-    warning: 'yellow',
-    danger: 'red',
+    success: '#84DB6B',
+    warning: '#F0DA72',
+    danger: '#DB7B71',
     white: '#FFFFFF', 
     black: '#000000', 
     grey: '#C4C4C4',
     lightgrey: '#EDEDED', 
+    neutral: ['#3E4242', '#69706F', '#A5B0AE', '#E1EFED', '#EDFCFA', '#C9D6D4'],
     visualization: ['#F7804A', '#D4CC3F', '#52EBAB', '#473FD4', '#75DA85', '#C0FBC8']
   }, 
   border: {

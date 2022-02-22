@@ -1,28 +1,28 @@
 import React from 'react'; 
-import { ColorBox } from './bin/ColorBox';
-import { PaletteRow, GradientPaletteRow } from './bin/PaletteRow';
+import { ColorBox, BrandColorBox } from './bin/ColorBox';
+import { PaletteRow } from './bin/PaletteRow';
 
 const Palette = () => { 
   return (
     <div >
       <p>Primary</p>
-      <GradientPaletteRow>
-        <ColorBox color="primary" />
+      <PaletteRow>
+        <BrandColorBox color="primary" />
         <ColorBox color="primary" shade={0}/>
         <ColorBox color="primary" shade={1}/>
         <ColorBox color="primary" shade={2}/>
         <ColorBox color="primary" shade={3}/>
         <ColorBox color="primary" shade={4}/>
-      </GradientPaletteRow>
+      </PaletteRow>
       <p>Accent</p>
-      <GradientPaletteRow>
-        <ColorBox color="accent" />
+      <PaletteRow>
+        <BrandColorBox color="accent" />
         <ColorBox color="accent" shade={0}/>
         <ColorBox color="accent" shade={1}/>
         <ColorBox color="accent" shade={2}/>
         <ColorBox color="accent" shade={3}/>
         <ColorBox color="accent" shade={4}/>
-      </GradientPaletteRow>
+      </PaletteRow>
       <p>Success | Warning | Danger</p>
       <PaletteRow>
         <ColorBox color="success" />
@@ -31,10 +31,18 @@ const Palette = () => {
       </PaletteRow>
       <p>Common</p>
       <PaletteRow>
-        <ColorBox color="white" />
+        <ColorBox color="white" border={"#EDEDED"} />
         <ColorBox color="black" />
         <ColorBox color="grey" />
         <ColorBox color="lightgrey" />
+      </PaletteRow>
+      <p>Neutral</p>
+      <PaletteRow>
+        <ColorBox color="neutral" shade={0} />
+        <ColorBox color="neutral" shade={1} />
+        <ColorBox color="neutral" shade={2} />
+        <ColorBox color="neutral" shade={3} />
+        <ColorBox color="neutral" shade={4} />
       </PaletteRow>
       <p>Visualizations</p>
       <PaletteRow>

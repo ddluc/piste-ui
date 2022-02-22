@@ -31,7 +31,8 @@ export type ThemePalette = {
   black: Color; 
   grey: Color; 
   lightgrey: Color; 
-  visualization?: [Color, Color, Color, Color, Color, Color]
+  neutral?: [Color, Color, Color, Color, Color, Color]; 
+  visualization?: [Color, Color, Color, Color, Color, Color];
 }; 
 
 export type ThemeBreakpoints = { 

@@ -27,6 +27,7 @@ export declare type ThemePalette = {
     black: Color;
     grey: Color;
     lightgrey: Color;
+    neutral?: [Color, Color, Color, Color, Color, Color];
     visualization?: [Color, Color, Color, Color, Color, Color];
 };
 export declare type ThemeBreakpoints = {
