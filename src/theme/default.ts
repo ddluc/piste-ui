@@ -3,6 +3,7 @@ import { Theme } from 'styled-components'
 import { generateThemeSpacing, generateZIndices } from './utils';
 
 export const DEFAULT_THEME: Theme = {
+  name: 'Default',
   fonts: { 
     family: { 
       display: 'IBM Plex Mono', 

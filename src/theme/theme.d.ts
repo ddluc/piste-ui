@@ -12,6 +12,7 @@ import {
 declare module 'styled-components' {
 
   interface Theme {
+    name: string,
     id?: '__default' | undefined, 
     fonts: ThemeFont,
     palette: ThemePalette,
