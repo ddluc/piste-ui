@@ -56,7 +56,7 @@ export type ThemeSpacing = [
 export type ThemeLevels = [number, number, number, number, number, number, number, number, number, number ]; 
 
 export interface Theme {
-  id?: '__default' | undefined, 
+  id?: string,
   fonts: ThemeFont,
   palette: ThemePalette,
   border: ThemeBorder; 
