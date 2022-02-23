@@ -30,8 +30,7 @@ const defaultFlexItemProps = {
   width: '40px',
   border: 'dashed 1px #4a4a4a', 
   background: { color: '#A5B0AE'},
-  alignItems: 'center',
-  justifyContent: 'center'
+  center: true
 } as FlexProps; 
 
 const Template: ComponentStory<typeof Flex> = (args: FlexProps) => {
