@@ -5,6 +5,7 @@ export interface Props extends BaseCSSProperties {
     contain?: boolean;
     cover?: boolean;
     scale?: boolean;
+    align: string;
 }
 export interface ThemedProps extends Props {
     theme: Theme;

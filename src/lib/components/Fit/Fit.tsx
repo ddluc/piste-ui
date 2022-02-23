@@ -7,6 +7,7 @@ export interface Props extends BaseCSSProperties {
   contain?: boolean; 
   cover?: boolean; 
   scale?: boolean;
+  align: string; 
 }
 
 // Extend the Component props with the injected theme
@@ -26,8 +27,11 @@ const Fit = styled(Block)<Props>`
     }};
     height: 100%; 
     width:  100%; 
-  }
+    object-position: ${({ align }) => (align ? align : '50% 50%')};
+  }; 
 `; 
 
+
+
 // Export the component as the default export 
-export default Fit; 
+export default Fit;
