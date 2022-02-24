@@ -8,6 +8,8 @@ export default {
   title: 'Core/Skeleton',
   component: Skeleton,
   args: { 
+    skeleton: true,
+    type: 'box',
     width: 300, 
     height: 200,
     size: 200,

@@ -6,43 +6,20 @@ import ShimmerSkeleton from './bin/ShimmerSkeleton';
 import DefaultSkeleton from './bin/DefaultSkeleton'; 
 import PulseSkeleton from './bin/PulseSkeleton';
 
-export interface BoxProps { 
-  type: 'box'; 
-  animation?: 'wave' | 'pulse' | 'shimmer' | 'none'; 
-  width?: number; 
-  height?: number; 
-  fluid?: boolean; 
-  margin?: [number, number, number, number];
-  primaryColor?: string; 
-  secondaryColor?: string; 
-  
-}; 
+import { 
+  isCircleProps, 
+  isBoxProps,
+  SkeletonProps as Props 
+} from './types';
 
-export interface CircleProps { 
-  type: 'circle'; 
-  animation?: 'wave' | 'pulse' | 'shimmer' | 'none'; 
-  size?: number;   
-  margin?: [number, number, number, number];
-  primaryColor?: string; 
-  secondaryColor?: string;  
-}
-
-export const isBoxProps = (props: any): props is BoxProps => {
-  return props.type === 'box'; 
-};
-
-export const isCircleProps = (props: any): props is CircleProps => {
-  return props.type === 'circle'; 
-};
-
-const Skeleton  = (props: BoxProps | CircleProps): JSX.Element => { 
+const Skeleton  = (props: Props): JSX.Element => { 
 
   let height: number; 
   let width: number; 
   let size: number; 
   let fluid: boolean; 
 
-  const { margin, type, primaryColor, secondaryColor }  = props; 
+  const { type = 'box', margin, primaryColor, secondaryColor }  = props; 
 
   if (isCircleProps(props)) {
     size = props.size;

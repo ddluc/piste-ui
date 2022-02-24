@@ -1,5 +1,6 @@
 import { ComponentMeta } from '@storybook/react';
-declare const _default: ComponentMeta<(props: import("../Skeleton").BoxProps | import("../Skeleton").CircleProps) => JSX.Element>;
+import { SkeletonProps } from '../index';
+declare const _default: ComponentMeta<(props: SkeletonProps) => JSX.Element>;
 export default _default;
 export declare const asBox: any;
 export declare const asCircle: any;

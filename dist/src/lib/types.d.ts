@@ -4,18 +4,6 @@
  * ==================================================================
  */
 /**
- * Defines the prop shape for skeleton components
- */
-export declare type SkeletonProps = {
-    skeleton: boolean;
-    width?: string;
-    height?: string;
-};
-/**
- * Typeguard to determine if props are skeleton props
- */
-export declare const isSkeleton: (props: any) => props is SkeletonProps;
-/**
  * Define base CSS property types
  */
 declare type BackgroundCSSProperty = {

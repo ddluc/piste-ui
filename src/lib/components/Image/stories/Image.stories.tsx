@@ -29,6 +29,7 @@ const Template: ComponentStory<typeof Image> = (args: ImageProps) => {
 };
 export const Main = Template.bind({});
 
+
 const TemplateWithOffsetBlock: ComponentStory<typeof Image> = (args: ImageProps) => {
   return (
     <>
@@ -37,7 +38,14 @@ const TemplateWithOffsetBlock: ComponentStory<typeof Image> = (args: ImageProps)
       </Block>
       <Image {...args} />
     </>
-  ); 
-    
+  );   
 };
 export const Offscreen = TemplateWithOffsetBlock.bind({});
+
+
+export const asSkeleton = Template.bind({});
+asSkeleton.args = { 
+  skeleton: true,
+  height: 400, 
+  width: 400,
+}; 

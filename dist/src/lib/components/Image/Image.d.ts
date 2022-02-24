@@ -1,4 +1,5 @@
 import React from 'react';
+import { SkeletonProps } from '../Skeleton';
 export interface Props extends React.HTMLAttributes<HTMLImageElement> {
     src: {
         main: string;
@@ -12,5 +13,5 @@ export interface Props extends React.HTMLAttributes<HTMLImageElement> {
     ypos: number;
     backgroundColor?: string;
 }
-declare const Image: (props: Props) => JSX.Element;
+declare const Image: (props: Props | SkeletonProps) => JSX.Element;
 export default Image;

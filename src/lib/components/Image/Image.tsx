@@ -1,4 +1,5 @@
 import React from 'react'; 
+import { Skeleton, SkeletonProps, isSkeleton } from '../Skeleton';
 import { Fit } from '../Fit';
 import { useOnScreen } from '../../hooks/useOnScreen';
 
@@ -19,7 +20,11 @@ export interface Props extends React.HTMLAttributes<HTMLImageElement>  {
   backgroundColor?: string; 
 } 
 
-const Image = (props: Props): JSX.Element => { 
+const Image = (props: Props | SkeletonProps): JSX.Element => { 
+
+  if (isSkeleton(props)) { 
+    return <Skeleton {...props} type='box' />
+  }
 
   const { 
     height, 
@@ -63,14 +68,16 @@ const Image = (props: Props): JSX.Element => {
           onLoad={onImageLoad}
         />
       )}
-      <PreviewImage 
-        {...imageProps} 
-        height="100%"
-        width="100%"
-        opacity={ isLoaded ? 0 : 1 }  
-        blur={blur} 
-        src={src.preview} 
-      />
+      { blur ? (
+        <PreviewImage 
+          {...imageProps} 
+          height="100%"
+          width="100%"
+          opacity={ isLoaded ? 0 : 1 }  
+          blur={blur} 
+          src={src.preview} 
+        />
+      ) : ''}
     </Fit>
   );
 };
