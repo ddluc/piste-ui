@@ -2,8 +2,11 @@
  * Typeguard to determine if props are skeleton props
  */
 
-export interface BoxProps { 
-  skeleton: true,
+export interface BaseSkeletonProps { 
+  skeleton: true
+}; 
+
+export interface BoxProps extends BaseSkeletonProps { 
   type?: 'box'; 
   animation?: 'wave' | 'pulse' | 'shimmer' | 'none'; 
   width?: number; 
@@ -15,8 +18,7 @@ export interface BoxProps {
   
 }; 
 
-export interface CircleProps { 
-  skeleton: true,
+export interface CircleProps extends BaseSkeletonProps { 
   type?: 'circle'; 
   animation?: 'wave' | 'pulse' | 'shimmer' | 'none'; 
   size?: number;   
@@ -25,10 +27,8 @@ export interface CircleProps {
   secondaryColor?: string;  
 }
 
-export type SkeletonProps = BoxProps | CircleProps; 
 
-
-export const isSkeleton = (props: any): props is SkeletonProps => {
+export const isSkeleton = (props: any): props is BaseSkeletonProps => {
   return 'skeleton' in props;
 };
 

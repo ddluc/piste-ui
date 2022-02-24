@@ -1,30 +1,37 @@
 import React from 'react'; 
-import { Skeleton, SkeletonProps, isSkeleton } from '../Skeleton';
+import { Skeleton, isSkeleton, BaseSkeletonProps } from '../Skeleton';
 import { Fit } from '../Fit';
 import { useOnScreen } from '../../hooks/useOnScreen';
 
 import { PreviewImage } from './bin/PreviewImage';
 import { MainImage } from './bin/MainImage';
 
-export interface Props extends React.HTMLAttributes<HTMLImageElement>  {
+interface BaseProps extends React.HTMLAttributes<HTMLImageElement>  {
   src: {
     main: string; 
-    preview: string
+    preview?: string
   };  
-  blur?: number; 
-  height?: number;
-  width?: number; 
+  height: number;
+  width: number; 
+  blur?: number;
   fit?: 'fill' | 'cover' | 'contain' | 'scale'; 
   xpos: number; 
   ypos: number
   backgroundColor?: string; 
 } 
 
-const Image = (props: Props | SkeletonProps): JSX.Element => { 
+interface SkeletonProps extends BaseSkeletonProps { 
+  height: number, 
+  width: number, 
+}; 
+
+export type Props = BaseProps | SkeletonProps;
+
+const Image = (props: Props): JSX.Element => { 
 
   if (isSkeleton(props)) { 
-    return <Skeleton {...props} type='box' />
-  }
+    return (<Skeleton {...props} type='box' />); 
+  } 
 
   const { 
     height, 
@@ -56,7 +63,7 @@ const Image = (props: Props | SkeletonProps): JSX.Element => {
       cover={fit === 'cover'}
       scale={fit === 'scale'}
       align={`${xpos}% ${ypos}%`}
-      background={{ color: backgroundColor ? backgroundColor : '#EDEDED' }}
+      background={{ color: backgroundColor ? backgroundColor : 'none' }}
     >
       { (isVisible || isLoaded) && (
         <MainImage 
@@ -68,7 +75,7 @@ const Image = (props: Props | SkeletonProps): JSX.Element => {
           onLoad={onImageLoad}
         />
       )}
-      { blur ? (
+      { src.preview ? (
         <PreviewImage 
           {...imageProps} 
           height="100%"

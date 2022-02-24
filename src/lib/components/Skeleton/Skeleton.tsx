@@ -9,8 +9,11 @@ import PulseSkeleton from './bin/PulseSkeleton';
 import { 
   isCircleProps, 
   isBoxProps,
-  SkeletonProps as Props 
+  CircleProps, 
+  BoxProps
 } from './types';
+
+export type Props = CircleProps | BoxProps; 
 
 const Skeleton  = (props: Props): JSX.Element => { 
 

@@ -13,11 +13,9 @@ export default {
   args: { 
     src: { 
       main: 'https://piste-ui.s3.us-west-2.amazonaws.com/off-piste.jpeg', 
-      preview: 'https://piste-ui.s3.us-west-2.amazonaws.com/off-piste--thumbnail.jpg'
     },
     width: 400,
     height: 400,    
-    blur: 10, 
     fit: 'cover',
     xpos: 50, 
     ypos: 50
@@ -27,8 +25,6 @@ export default {
 const Template: ComponentStory<typeof Image> = (args: ImageProps) => {
   return <Image {...args} />; 
 };
-export const Main = Template.bind({});
-
 
 const TemplateWithOffsetBlock: ComponentStory<typeof Image> = (args: ImageProps) => {
   return (
@@ -40,8 +36,26 @@ const TemplateWithOffsetBlock: ComponentStory<typeof Image> = (args: ImageProps)
     </>
   );   
 };
-export const Offscreen = TemplateWithOffsetBlock.bind({});
 
+export const Main = Template.bind({});
+
+export const withProgressiveLoading = Template.bind({})
+withProgressiveLoading.args = { 
+  src: { 
+    main: 'https://piste-ui.s3.us-west-2.amazonaws.com/off-piste.jpeg', 
+    preview: 'https://piste-ui.s3.us-west-2.amazonaws.com/off-piste--thumbnail.jpg'
+  },
+  blur: 10
+}; 
+
+export const isOffscreen = TemplateWithOffsetBlock.bind({});
+isOffscreen.args = { 
+  src: { 
+    main: 'https://piste-ui.s3.us-west-2.amazonaws.com/off-piste.jpeg', 
+    preview: 'https://piste-ui.s3.us-west-2.amazonaws.com/off-piste--thumbnail.jpg'
+  },
+  blur: 10
+}; 
 
 export const asSkeleton = Template.bind({});
 asSkeleton.args = { 

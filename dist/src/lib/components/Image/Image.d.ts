@@ -1,17 +1,22 @@
 import React from 'react';
-import { SkeletonProps } from '../Skeleton';
-export interface Props extends React.HTMLAttributes<HTMLImageElement> {
+import { BaseSkeletonProps } from '../Skeleton';
+interface BaseProps extends React.HTMLAttributes<HTMLImageElement> {
     src: {
         main: string;
-        preview: string;
+        preview?: string;
     };
+    height: number;
+    width: number;
     blur?: number;
-    height?: number;
-    width?: number;
     fit?: 'fill' | 'cover' | 'contain' | 'scale';
     xpos: number;
     ypos: number;
     backgroundColor?: string;
 }
-declare const Image: (props: Props | SkeletonProps) => JSX.Element;
+interface SkeletonProps extends BaseSkeletonProps {
+    height: number;
+    width: number;
+}
+export declare type Props = BaseProps | SkeletonProps;
+declare const Image: (props: Props) => JSX.Element;
 export default Image;

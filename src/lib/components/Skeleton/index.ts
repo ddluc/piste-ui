@@ -2,6 +2,7 @@
 export { default as Skeleton } from './Skeleton'; 
 
 // Export prop types
-export { isSkeleton } from './types';
-export type { SkeletonProps } from './types';
+export type { Props as SkeletonProps } from './Skeleton';
+export { isSkeleton, BaseSkeletonProps } from './types';
+
 
