@@ -1,0 +1,5 @@
+export interface Props {
+    colors?: [string, string];
+}
+declare const DefaultSkeleton: import("styled-components").StyledComponent<"div", import("styled-components").DefaultTheme, Props, never>;
+export default DefaultSkeleton;

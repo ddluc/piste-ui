@@ -12,14 +12,14 @@ export interface Props extends BaseCSSProperties {
     alignContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'start' | 'end' | 'baseline' | 'first baseline' | 'last baseline';
     gap?: string;
     flex?: string;
-    grow?: number;
-    shrink?: number;
-    basis?: number;
+    grow?: number | 'auto' | 'initial' | 'inherit';
+    shrink?: number | 'auto' | 'initial' | 'inherit';
+    basis?: number | 'auto' | 'initial' | 'inherit';
     order?: number;
     alignSelf?: 'auto' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
 }
 export interface ThemedProps extends Props {
     theme: Theme;
 }
-declare const Flex: import("styled-components").StyledComponent<"div", any, import("../Block").BlockProps & Props, never>;
+declare const Flex: import("styled-components").StyledComponent<"div", import("styled-components").DefaultTheme, import("../Block").BlockProps & Props, never>;
 export default Flex;

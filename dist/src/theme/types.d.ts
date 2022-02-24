@@ -60,6 +60,10 @@ export declare type ThemeSpacing = [
     string
 ];
 export declare type ThemeLevels = [number, number, number, number, number, number, number, number, number, number];
+export declare type ThemeSkeleton = {
+    colors: [string, string];
+    animation: 'wave' | 'pulse' | 'none';
+};
 export interface Theme {
     name: string;
     id?: string;
@@ -69,4 +73,5 @@ export interface Theme {
     spacing: ThemeSpacing;
     breakpoints: ThemeBreakpoints;
     zIndex: ThemeLevels;
+    skeleton: ThemeSkeleton;
 }

@@ -18,9 +18,9 @@ export interface Props extends BaseCSSProperties {
   gap?: string; 
   // Properties for flex items
   flex?: string;
-  grow?: number; 
-  shrink?: number; 
-  basis?: number; 
+  grow?: number | 'auto' | 'initial' | 'inherit';
+  shrink?: number | 'auto' | 'initial' | 'inherit'; 
+  basis?: number | 'auto' | 'initial' | 'inherit'; 
   order?: number; 
   alignSelf?: 'auto' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
  }; 

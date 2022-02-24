@@ -13,5 +13,5 @@ export interface Props extends BaseCSSProperties {
 export interface ThemedProps extends Props {
     theme: Theme;
 }
-export declare const Grid: import("styled-components").StyledComponent<"div", any, import("../Block").BlockProps & Props, never>;
+export declare const Grid: import("styled-components").StyledComponent<"div", import("styled-components").DefaultTheme, import("../Block").BlockProps & Props, never>;
 export default Grid;

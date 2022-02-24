@@ -4,7 +4,7 @@ import { Block } from '../../Block';
 import { Image, ImageProps } from '../index'; 
 
 export default {
-  title: 'CSS Utilities/Image',
+  title: 'Core/Image',
   component: Image,
   argTypes: {
     xpos: { control: { type: 'range' } },

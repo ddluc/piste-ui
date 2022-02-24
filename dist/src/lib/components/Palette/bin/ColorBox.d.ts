@@ -9,6 +9,6 @@ export interface ThemedProps extends ColorBoxProps {
     theme: Theme;
 }
 export declare const getThemeColor: ({ color, shade, theme }: ThemedProps) => string;
-export declare const ColorBox: import("styled-components").StyledComponent<"div", any, ColorBoxProps, never>;
-export declare const BrandColorBox: import("styled-components").StyledComponent<"div", any, ColorBoxProps, never>;
+export declare const ColorBox: import("styled-components").StyledComponent<"div", import("styled-components").DefaultTheme, ColorBoxProps, never>;
+export declare const BrandColorBox: import("styled-components").StyledComponent<"div", import("styled-components").DefaultTheme, ColorBoxProps, never>;
 export {};

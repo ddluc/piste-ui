@@ -6,7 +6,8 @@ import {
   ThemeBorder, 
   ThemeSpacing, 
   ThemeBreakpoints,
-  ThemeLevels
+  ThemeLevels,
+  ThemeSkeleton,
 } from './types'; 
 
 declare module 'styled-components' {
@@ -20,6 +21,19 @@ declare module 'styled-components' {
     spacing: ThemeSpacing, 
     breakpoints: ThemeBreakpoints
     zIndex: ThemeLevels,
+    skeleton: ThemeSkeleton
+  }
+
+  interface DefaultTheme { 
+    name: string,
+    id?: '__default' | undefined, 
+    fonts: ThemeFont,
+    palette: ThemePalette,
+    border: ThemeBorder; 
+    spacing: ThemeSpacing, 
+    breakpoints: ThemeBreakpoints
+    zIndex: ThemeLevels,
+    skeleton: ThemeSkeleton
   }
 
 }

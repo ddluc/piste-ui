@@ -49,5 +49,9 @@ export const DEFAULT_THEME: Theme = {
     lg: '1200px'
   }, 
   spacing: generateThemeSpacing(4),
-  zIndex:  generateZIndices()
+  zIndex:  generateZIndices(), 
+  skeleton: { 
+    colors: ["#e2e2e2", '#e7e8eb'], 
+    animation: 'wave'
+  }
 }; 
