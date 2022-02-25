@@ -1,41 +1,38 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Block, BlockProps } from '../index'; 
+import { Block, BlockProps } from '../index';
 
 export default {
   title: 'CSS Utilities/Block',
   component: Block,
-  args: { 
+  args: {
     height: '50px',
-    width: '50px', 
-    display: 'block', 
+    width: '50px',
+    display: 'block',
     margin: ['10px', '10px', '10px', '10px'],
     padding: ['20px', '20px', '20px', '20px'],
-    border: 'dashed 1px #4a4a4a', 
-    opacity: 1, 
-    background: { color: '#EDEDED' }, 
+    border: 'dashed 1px #4a4a4a',
+    opacity: 1,
+    background: { color: '#EDEDED' },
     outline: 'none',
-    position: 'relative', 
+    position: 'relative',
     zIndex: 1,
     left: '',
     right: '',
-    top: '', 
+    top: '',
     bottom: '',
     overflow: 'auto',
     textAlign: 'left'
   } as BlockProps
 } as ComponentMeta<typeof Block>;
 
-
-const Template: ComponentStory<typeof Block> = (args: BlockProps) => {
-  return (
-    <>
-      <Block {...args} /> 
-      <Block {...args} /> 
-      <Block {...args} /> 
-      <Block {...args} /> 
-    </>
-  ); 
-};
+const Template: ComponentStory<typeof Block> = (args: BlockProps) => (
+  <>
+    <Block {...args} />
+    <Block {...args} />
+    <Block {...args} />
+    <Block {...args} />
+  </>
+);
 
 export const Main = Template.bind({});

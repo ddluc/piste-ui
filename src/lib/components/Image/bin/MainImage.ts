@@ -1,5 +1,5 @@
-import styled from 'styled-components'; 
+import styled from 'styled-components';
 
 export const MainImage = styled.img`
-  opacity: ${({opacity = 1}: { opacity: number}) => opacity };
-`; 
+  opacity: ${({ opacity = 1 }: { opacity: number}) => opacity};
+`;

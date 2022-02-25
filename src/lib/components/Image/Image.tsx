@@ -1,4 +1,4 @@
-import React from 'react'; 
+import React from 'react';
 import { Skeleton, isSkeleton, BaseSkeletonProps } from '../Skeleton';
 import { Fit } from '../Fit';
 import { useOnScreen } from '../../hooks/useOnScreen';
@@ -6,88 +6,88 @@ import { useOnScreen } from '../../hooks/useOnScreen';
 import { PreviewImage } from './bin/PreviewImage';
 import { MainImage } from './bin/MainImage';
 
-interface BaseProps extends React.HTMLAttributes<HTMLImageElement>  {
+interface BaseProps extends React.HTMLAttributes<HTMLImageElement> {
   src: {
-    main: string; 
+    main: string;
     preview?: string
-  };  
+  };
   height: number;
-  width: number; 
+  width: number;
   blur?: number;
-  fit?: 'fill' | 'cover' | 'contain' | 'scale'; 
-  xpos: number; 
+  fit?: 'fill' | 'cover' | 'contain' | 'scale';
+  xpos: number;
   ypos: number
-  backgroundColor?: string; 
-} 
+  backgroundColor?: string;
+}
 
-interface SkeletonProps extends BaseSkeletonProps { 
-  height: number, 
-  width: number, 
-}; 
+interface SkeletonProps extends BaseSkeletonProps {
+  height: number,
+  width: number,
+}
 
 export type Props = BaseProps | SkeletonProps;
 
-const Image = (props: Props): JSX.Element => { 
+const Image = (props: Props): JSX.Element => {
 
-  if (isSkeleton(props)) { 
-    return (<Skeleton {...props} type='box' />); 
-  } 
+  if (isSkeleton(props)) {
+    return (<Skeleton {...props} type="box" />);
+  }
 
-  const { 
-    height, 
-    width, 
-    src, 
+  const {
+    height,
+    width,
+    src,
     blur,
     backgroundColor,
     fit,
-    xpos, 
+    xpos,
     ypos,
-    ...imageProps 
-  } = props; 
-  
+    ...imageProps
+  } = props;
+
   const [isLoaded, setIsLoaded] = React.useState<boolean>(false);
   const [isVisible, currentElement] = useOnScreen<HTMLDivElement>();
 
   const onImageLoad = React.useCallback(() => {
-    setIsLoaded(true); 
-  }, [setIsLoaded]); 
+    setIsLoaded(true);
+  }, [setIsLoaded]);
 
   return (
     <Fit
-      ref={currentElement} 
-      height={`${height}px`} 
-      width={`${width}px`} 
-      position='relative'
+      ref={currentElement}
+      height={`${height}px`}
+      width={`${width}px`}
+      position="relative"
       fill={fit === 'fill'}
       contain={fit === 'contain'}
       cover={fit === 'cover'}
       scale={fit === 'scale'}
       align={`${xpos}% ${ypos}%`}
-      background={{ color: backgroundColor ? backgroundColor : 'none' }}
+      background={{ color: backgroundColor || 'none' }}
     >
       { (isVisible || isLoaded) && (
-        <MainImage 
-          {...imageProps} 
+        <MainImage
+          {...imageProps}
           height="100%"
           width="100%"
-          opacity={ isLoaded ? 1 : 0 }
-          src={src.main} 
+          opacity={isLoaded ? 1 : 0}
+          src={src.main}
           onLoad={onImageLoad}
         />
       )}
       { src.preview ? (
-        <PreviewImage 
-          {...imageProps} 
+        <PreviewImage
+          {...imageProps}
           height="100%"
           width="100%"
-          opacity={ isLoaded ? 0 : 1 }  
-          blur={blur} 
-          src={src.preview} 
+          opacity={isLoaded ? 0 : 1}
+          blur={blur}
+          src={src.preview}
         />
       ) : ''}
     </Fit>
   );
 };
 
-// Export the component as the default export 
-export default Image; 
+// Export the component as the default export
+export default Image;

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 /**
  * Check if an element is in viewport
  * @param {number} offset - Number of pixels up to the observable element from the top

@@ -1,19 +1,19 @@
 import styled, { Theme } from 'styled-components';
-import animations from '../animations'; 
+import animations from '../animations';
 
-export interface Props { 
-  colors?: [string, string]; 
-}; 
+export interface Props {
+  colors?: [string, string];
+}
 
-interface ThemedProps extends Props { 
-  theme: Theme; 
+interface ThemedProps extends Props {
+  theme: Theme;
 }
 
 const PulseSkeleton = styled.div<Props>`
   height: 100%;
   width: 100%; 
-  background-color:${ ({ colors }: ThemedProps ) => (colors[0])}; 
-  border-radius:${ ({ theme, }: ThemedProps ) => theme.border.radius }; 
+  background-color:${({ colors }: ThemedProps) => (colors[0])}; 
+  border-radius:${({ theme, }: ThemedProps) => theme.border.radius}; 
   position: relative;
   padding: 0;
   box-shadow: none;
@@ -30,10 +30,10 @@ const PulseSkeleton = styled.div<Props>`
     width: 100%;
     height: 100%;
     animation: 2000ms ease-in ${animations.pulse} forwards infinite; 
-    background-color: ${ ({ colors }: ThemedProps ) => (colors[1])}; 
-    border-radius:${ ({ theme }: ThemedProps ) => theme.border.radius}; 
+    background-color: ${({ colors }: ThemedProps) => (colors[1])}; 
+    border-radius:${({ theme }: ThemedProps) => theme.border.radius}; 
     content: '';
   }
-`; 
+`;
 
-export default PulseSkeleton; 
+export default PulseSkeleton;

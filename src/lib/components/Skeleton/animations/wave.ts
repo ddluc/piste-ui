@@ -40,5 +40,4 @@ export const wave = keyframes`
     transform: scaleX(0);
     transform-origin: left;
   }
-`; 
-
+`;

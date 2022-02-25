@@ -22,5 +22,4 @@ export const pulse = keyframes`
     opacity: 1;
   }
 
-`; 
-
+`;

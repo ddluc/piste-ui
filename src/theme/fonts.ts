@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { createGlobalStyle } from 'styled-components';
 
 import IBMPlexMono__Regular from '../assets/fonts/ibm-plex-mono/IBMPlexMono-Regular.ttf';

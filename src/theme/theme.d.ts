@@ -1,36 +1,38 @@
 // styled.d.ts
 import 'styled-components';
-import { 
+import {
   ThemeFont,
-  ThemePalette, 
-  ThemeBorder, 
-  ThemeSpacing, 
+  ThemePalette,
+  ThemeBorder,
+  ThemeSpacing,
   ThemeBreakpoints,
   ThemeLevels,
   ThemeSkeleton,
-} from './types'; 
+} from './types';
 
 declare module 'styled-components' {
 
+  // eslint-disable-next-line no-unused-vars
   interface Theme {
     name: string,
-    id?: '__default' | undefined, 
+    id?: '__default' | undefined,
     fonts: ThemeFont,
     palette: ThemePalette,
-    border: ThemeBorder; 
-    spacing: ThemeSpacing, 
+    border: ThemeBorder;
+    spacing: ThemeSpacing,
     breakpoints: ThemeBreakpoints
     zIndex: ThemeLevels,
     skeleton: ThemeSkeleton
   }
 
-  interface DefaultTheme { 
+  // eslint-disable-next-line no-unused-vars
+  interface DefaultTheme {
     name: string,
-    id?: '__default' | undefined, 
+    id?: '__default' | undefined,
     fonts: ThemeFont,
     palette: ThemePalette,
-    border: ThemeBorder; 
-    spacing: ThemeSpacing, 
+    border: ThemeBorder;
+    spacing: ThemeSpacing,
     breakpoints: ThemeBreakpoints
     zIndex: ThemeLevels,
     skeleton: ThemeSkeleton

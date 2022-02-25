@@ -1,4 +1,4 @@
-import PisteTheme from './theme'; 
+import PisteTheme from './theme';
 
 // Log Theme
-console.log(PisteTheme.default); 
+console.log(PisteTheme.default);

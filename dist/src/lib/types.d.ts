@@ -42,4 +42,5 @@ export declare type BaseCSSProperties = {
     overflow?: OverflowCSSProperty;
     textAlign?: TextAlignCSSProperty;
 };
+export declare type AnonymousFunction = (...args: any[]) => any;
 export {};

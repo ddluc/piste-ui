@@ -8,5 +8,4 @@ export const shimmer = keyframes`
   100% {
     background-position: 800px 0; 
   }
-`; 
-
+`;

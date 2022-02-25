@@ -1,20 +1,20 @@
 import styled, { Theme } from 'styled-components';
 
-export interface Props { 
-  colors?: [string, string]; 
-}; 
+export interface Props {
+  colors?: [string, string];
+}
 
-interface ThemedProps extends Props { 
-  theme: Theme; 
+interface ThemedProps extends Props {
+  theme: Theme;
 }
 
 const DefaultSkeleton = styled.div<Props>`
   height: 100%;
   width: 100%; 
-  background-color: ${ ({ colors }: ThemedProps ) => (colors[1])}; 
+  background-color: ${({ colors }: ThemedProps) => (colors[1])}; 
   background-repeat: no-repeat;
   background-size: 800px 800px; 
-  border-radius:${ ({ theme, }: ThemedProps ) => theme.border.radius }; 
+  border-radius:${({ theme, }: ThemedProps) => theme.border.radius}; 
   position: relative;
   padding: 0;
   box-shadow: none;
@@ -26,6 +26,6 @@ const DefaultSkeleton = styled.div<Props>`
     cursor: default;
     outline: none;
   }; 
-`; 
+`;
 
-export default DefaultSkeleton; 
+export default DefaultSkeleton;

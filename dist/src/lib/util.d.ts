@@ -1,3 +1,4 @@
+import { AnonymousFunction } from './types';
 export declare const logBuild: () => void;
 /**
  *
@@ -6,4 +7,4 @@ export declare const logBuild: () => void;
  * @param leading
  * @returns
  */
-export declare const debounce: (func: (...args: any[]) => any, interval?: number, leading?: boolean) => (...args: any[]) => any;
+export declare const debounce: (func: AnonymousFunction, interval?: number, leading?: boolean) => (...args: any[]) => any;

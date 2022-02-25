@@ -1,12 +1,12 @@
-import { Block } from '../Block'; 
-import styled, {Theme} from 'styled-components'; 
+import styled, { Theme } from 'styled-components';
+import { Block } from '../Block';
 import { BaseCSSProperties } from '../../types';
 
 // Example component Props
 export interface Props extends BaseCSSProperties {
-  x: boolean, 
+  x: boolean,
   y: boolean,
-}; 
+}
 
 // Extend the Component props with the injected theme
 export interface ThemedProps extends Props {
@@ -15,8 +15,8 @@ export interface ThemedProps extends Props {
 
 // Defined a styled component implmementation
 const Scroll = styled(Block)<Props>`
-  ${({x}: ThemedProps) => x && `overflow-x: scroll` }; 
-  ${({y}: ThemedProps) => y && `overflow-y: scroll` }; 
-`; 
+  ${({ x }: ThemedProps) => x && 'overflow-x: scroll'}; 
+  ${({ y }: ThemedProps) => y && 'overflow-y: scroll'}; 
+`;
 
-export default Scroll; 
+export default Scroll;

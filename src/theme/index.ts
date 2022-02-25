@@ -1,5 +1,5 @@
-import { DEFAULT_THEME } from './default'; 
+import { DEFAULT_THEME } from './default';
 
-export default { 
+export default {
   default: DEFAULT_THEME
-}; 
+};

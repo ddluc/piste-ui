@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useState } from "react";
-import { debounce } from "../util";
+import React, { useRef, useEffect, useState } from 'react';
+import { debounce } from '../util';
 
 /**
  * Check if an element is in viewport
@@ -7,7 +7,7 @@ import { debounce } from "../util";
  * @param {number} throttleMilliseconds - Throttle observable listener, in ms
  */
 export const useOnScreen = <Element extends HTMLElement>(offset = 0,): [Boolean, React.RefObject<Element>] => {
-  
+
   const [isVisible, setIsVisible] = useState(false);
   const currentElement = useRef<Element>();
 
@@ -16,13 +16,13 @@ export const useOnScreen = <Element extends HTMLElement>(offset = 0,): [Boolean,
       setIsVisible(false);
       return;
     }
-    const top = currentElement.current.getBoundingClientRect().top;
+    const { top } = currentElement.current.getBoundingClientRect();
     setIsVisible(top + offset >= 0 && top - offset <= window.innerHeight);
   });
 
   React.useEffect(() => {
-    onScroll(); 
-  }, []); 
+    onScroll();
+  }, []);
 
   useEffect(() => {
     document.addEventListener('scroll', onScroll, true);
@@ -30,4 +30,4 @@ export const useOnScreen = <Element extends HTMLElement>(offset = 0,): [Boolean,
   });
 
   return [isVisible, currentElement];
-}; 
+};

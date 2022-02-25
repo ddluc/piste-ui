@@ -1,4 +1,4 @@
-import { ThemeSpacing, ThemeLevels } from "./types";
+import { ThemeSpacing, ThemeLevels } from './types';
 /**
  * Generates the theme spacing from a root unit
  * @param root the root space unit (in pixels)
