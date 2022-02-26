@@ -51,7 +51,7 @@ export const DEFAULT_THEME: Theme = {
   spacing: generateThemeSpacing(4),
   zIndex: generateZIndices(),
   skeleton: {
-    colors: ['#e2e2e2', '#e7e8eb'],
+    colors: ['#f9f9f9', '#f3f3f3'],
     animation: 'wave'
   }
 };

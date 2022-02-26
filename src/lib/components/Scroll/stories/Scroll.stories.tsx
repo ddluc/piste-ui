@@ -16,18 +16,40 @@ export default {
   } as ScrollProps
 } as ComponentMeta<typeof Scroll>;
 
-const Template: ComponentStory<typeof Scroll> = (args: ScrollProps) => (
+const VerticalScrollTemplate: ComponentStory<typeof Scroll> = (args: ScrollProps) => (
   <Scroll {...args}>
     <Flex
       center
       height="800px"
       width="100%"
       border="dashed 1px #4a4a4a"
-      background={{ color: '#A5B0AE' }}
+      background={{ color: '#d7d7d7' }}
     >
       Content
     </Flex>
   </Scroll>
 );
 
-export const Main = Template.bind({});
+export const withYScroll = VerticalScrollTemplate.bind({});
+withYScroll.args = {
+  direction: 'y'
+};
+
+const HorizontalScrollTemplate: ComponentStory<typeof Scroll> = (args: ScrollProps) => (
+  <Scroll {...args}>
+    <Flex
+      center
+      height="100%"
+      width="800px"
+      border="dashed 1px #4a4a4a"
+      background={{ color: '#d7d7d7' }}
+    >
+      Content
+    </Flex>
+  </Scroll>
+);
+
+export const withXScroll = HorizontalScrollTemplate.bind({});
+withXScroll.args = {
+  direction: 'x'
+};
