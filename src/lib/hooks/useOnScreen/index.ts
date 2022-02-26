@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { debounce } from '../util';
+import { debounce } from '../../util';
 
 /**
  * Check if an element is in viewport
