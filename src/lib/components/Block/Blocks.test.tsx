@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from 'react'; 
 import { render, cleanup } from "@testing-library/react";
 import { Block, BlockProps } from './index'; 
 
@@ -33,7 +33,12 @@ const args: BlockProps = {
 
 // Define unit tests
 describe('Block', () => {
-  it('should render', () => {
+  it('should render with defaults', () => {
+    const result = render(<Block />);
+    const component = result.container.firstChild; 
+    expect(component).toMatchSnapshot(); 
+  });
+  it('should render with defined props', () => {
     const result = render(<Block {...args} />);
     const component = result.container.firstChild; 
     expect(component).toMatchSnapshot(); 

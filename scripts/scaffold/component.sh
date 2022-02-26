@@ -17,9 +17,12 @@ mv stories/__Component.stories.tsx stories/$1.stories.tsx;
 ## Find and replace all instance of __Component with the provided component name; 
 sed -i '' -e "s/__Component/$1/g" ${1}.tsx; 
 sed -i '' -e "s/__Component/$1/g" index.ts; 
+sed -i '' -e "s/__Component/$1/g" ${1}.test.tsx; 
 sed -i '' -e "s/__Component/$1/g" stories/${1}.stories.tsx; 
 
+## Find and replace all instance of __ComponentProps with the provided component name; 
 sed -i '' -e "s/__ComponentProps/$1Props/g" ${1}.tsx; 
 sed -i '' -e "s/__ComponentProps/$1Props/g" index.ts; 
+sed -i '' -e "s/__ComponentProps/$1Props/g" ${1}.test.tsx; 
 sed -i '' -e "s/__ComponentProps/$1Props/g" stories/${1}.stories.tsx; 
 
