@@ -11,7 +11,6 @@ export interface Props {
 export interface ThemedProps extends Props {
   theme: Theme;
 }
-
 const Scale = styled(Block)<Props>`
 width: ${({ lg }: ThemedProps) => lg};
 @media screen and (max-width: ${({ theme }: ThemedProps) => theme.breakpoints.md}) {
