@@ -12,5 +12,9 @@
     "esModuleInterop": true,
     "allowJs": false,
     "sourceMap": true
-  }
+  }, 
+  "exclude": [ 
+    "./scripts/",
+    "./test/", 
+  ]
 }

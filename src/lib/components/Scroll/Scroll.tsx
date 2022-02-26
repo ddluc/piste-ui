@@ -4,8 +4,7 @@ import { BaseCSSProperties } from '../../types';
 
 // Example component Props
 export interface Props extends BaseCSSProperties {
-  x: boolean,
-  y: boolean,
+  direction: 'x' | 'y'
 }
 
 // Extend the Component props with the injected theme
@@ -15,8 +14,8 @@ export interface ThemedProps extends Props {
 
 // Defined a styled component implmementation
 const Scroll = styled(Block)<Props>`
-  ${({ x }: ThemedProps) => x && 'overflow-x: scroll'}; 
-  ${({ y }: ThemedProps) => y && 'overflow-y: scroll'}; 
+  ${({ direction }: ThemedProps) => direction === 'x' && 'overflow-x: scroll'}; 
+  ${({ direction }: ThemedProps) => direction === 'y' && 'overflow-y: scroll'}; 
 `;
 
 export default Scroll;

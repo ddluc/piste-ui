@@ -3,16 +3,13 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Fit, FitProps } from '../index';
 
 // Mocks
-import offPiste from '../mocks/off-piste.jpeg';
+import image from '../__mocks__/ski.jpeg';
 
 export default {
   title: 'CSS Utilities/Fit',
   component: Fit,
   args: {
-    cover: true,
-    contain: false,
-    fill: false,
-    scale: false,
+    fit: 'cover',
     height: '300px',
     width: '300px',
     border: 'dashed 1px #4a4a4a',
@@ -22,7 +19,7 @@ export default {
 
 const Template: ComponentStory<typeof Fit> = (args: FitProps) => (
   <Fit {...args}>
-    <img src={offPiste} alt="Placeholder" />
+    <img src={image} alt="Placeholder" />
   </Fit>
 );
 export const Main = Template.bind({});

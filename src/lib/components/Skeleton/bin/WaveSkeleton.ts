@@ -12,7 +12,7 @@ interface ThemedProps extends Props {
 const WaveSkeleton = styled.div<Props>`
   height: 100%; 
   width: 100%; 
-  background-color:${({ theme }: ThemedProps) => (theme.skeleton.colors[0])}; 
+  background-color:${({ colors }: ThemedProps) => (colors[0])}; 
   border-radius:${({ theme, }: ThemedProps) => theme.border.radius}; 
   position: relative;
   padding: 0;
@@ -30,7 +30,7 @@ const WaveSkeleton = styled.div<Props>`
     width: 100%;
     height: 100%;
     animation: 3000ms ease-in-out ${animations.wave} infinite; 
-    background-color: ${({ theme }: ThemedProps) => (theme.skeleton.colors[1])}; 
+    background-color:${({ colors }: ThemedProps) => (colors[1])}; 
     border-radius:${({ theme }: ThemedProps) => theme.border.radius}; 
     content: '';
   }

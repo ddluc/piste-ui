@@ -3,10 +3,7 @@ import { Block } from '../Block';
 import { BaseCSSProperties } from '../../types';
 
 export interface Props extends BaseCSSProperties {
-  fill?: boolean;
-  contain?: boolean;
-  cover?: boolean;
-  scale?: boolean;
+  fit: 'fill' | 'contain' | 'cover' | 'scale' | 'none'; 
   align: string;
 }
 
@@ -18,15 +15,7 @@ export interface ThemedProps extends Props {
 // Defined a styled component implmementation
 const Fit = styled(Block)<Props>`
   > * {
-    object-fit: ${({
-    fill, contain, cover, scale
-  }: ThemedProps) => {
-    if (fill) return 'fill';
-    if (contain) return 'contain';
-    if (cover) return 'cover';
-    if (scale) return 'scale-down';
-    return 'none';
-  }};
+    object-fit: ${({ fit }: ThemedProps) => fit };
     height: 100%; 
     width:  100%; 
     object-position: ${({ align }) => (align || '50% 50%')};

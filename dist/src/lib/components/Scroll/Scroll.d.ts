@@ -1,8 +1,7 @@
 import { Theme } from 'styled-components';
 import { BaseCSSProperties } from '../../types';
 export interface Props extends BaseCSSProperties {
-    x: boolean;
-    y: boolean;
+    direction: 'x' | 'y';
 }
 export interface ThemedProps extends Props {
     theme: Theme;

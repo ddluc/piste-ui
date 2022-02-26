@@ -2,12 +2,12 @@ import { Theme } from 'styled-components';
 import { BaseCSSProperties } from '../../types';
 export interface Props extends BaseCSSProperties {
     column?: {
-        start: string;
-        end: string;
+        start: number | string;
+        end: number | string;
     };
     row?: {
-        start: string;
-        end: string;
+        start: number | string;
+        end: number | string;
     };
     justify?: 'start' | 'end' | 'center' | 'stretch';
     align?: 'start' | 'end' | 'center' | 'stretch';

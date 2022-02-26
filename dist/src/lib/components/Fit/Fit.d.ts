@@ -1,10 +1,7 @@
 import { Theme } from 'styled-components';
 import { BaseCSSProperties } from '../../types';
 export interface Props extends BaseCSSProperties {
-    fill?: boolean;
-    contain?: boolean;
-    cover?: boolean;
-    scale?: boolean;
+    fit: 'fill' | 'contain' | 'cover' | 'scale' | 'none';
     align: string;
 }
 export interface ThemedProps extends Props {

@@ -12,13 +12,13 @@ export default {
   },
   args: {
     src: {
-      main: 'https://piste-ui.s3.us-west-2.amazonaws.com/off-piste.jpeg',
+      main: 'https://piste-ui.s3.us-west-2.amazonaws.com/ski.jpg',
     },
-    width: 400,
-    height: 400,
+    width: 300,
+    height: 300,
     fit: 'cover',
     xpos: 50,
-    ypos: 50
+    ypos: 50, 
   } as ImageProps
 } as ComponentMeta<typeof Image>;
 
@@ -38,19 +38,21 @@ export const Main = Template.bind({});
 export const withProgressiveLoading = Template.bind({});
 withProgressiveLoading.args = {
   src: {
-    main: 'https://piste-ui.s3.us-west-2.amazonaws.com/off-piste.jpeg',
-    preview: 'https://piste-ui.s3.us-west-2.amazonaws.com/off-piste--thumbnail.jpg'
+    main: 'https://piste-ui.s3.us-west-2.amazonaws.com/ski.jpg',
+    preview: 'https://piste-ui.s3.us-west-2.amazonaws.com/ski--thumbnail.jpg'
   },
-  blur: 10
+  blur: 5, 
+  backgroundColor: '#EDEDED'
 };
 
 export const isOffscreen = TemplateWithOffsetBlock.bind({});
 isOffscreen.args = {
   src: {
-    main: 'https://piste-ui.s3.us-west-2.amazonaws.com/off-piste.jpeg',
-    preview: 'https://piste-ui.s3.us-west-2.amazonaws.com/off-piste--thumbnail.jpg'
+    main: 'https://piste-ui.s3.us-west-2.amazonaws.com/ski.jpg',
+    preview: 'https://piste-ui.s3.us-west-2.amazonaws.com/ski--thumbnail.jpg'
   },
-  blur: 10
+  blur: 5, 
+  backgroundColor: '#EDEDED'
 };
 
 export const asSkeleton = Template.bind({});

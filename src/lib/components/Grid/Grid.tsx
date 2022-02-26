@@ -6,11 +6,11 @@ import { BaseCSSProperties } from '../../types';
 
 // Example component Props
 export interface Props extends BaseCSSProperties {
-  columns: string;
-  rows: string;
-  areas: string[];
-  rowGap: string;
-  columnGap: string;
+  columns?: string;
+  rows?: string;
+  areas?: string[];
+  rowGap?: string;
+  columnGap?: string;
   justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'start' | 'end' | 'left' | 'right';
   alignItems?: 'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'first baseline' | 'last baseline' | 'start' | 'end' | 'self-start' | 'self-end';
   alignContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'start' | 'end' | 'baseline' | 'first baseline' | 'last baseline';
@@ -20,7 +20,7 @@ export interface ThemedProps extends Props {
   theme: Theme;
 }
 
-const formatAreas = (areas: string[]): string => areas.map((area) => `"${area}"`).join('\n');
+export const formatAreas = (areas: string[]): string => areas.map((area) => `"${area}"`).join(' ');
 
 export const Grid = styled(Block)<Props>`
   display: grid; 

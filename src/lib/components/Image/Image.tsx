@@ -58,10 +58,7 @@ const Image = (props: Props): JSX.Element => {
       height={`${height}px`}
       width={`${width}px`}
       position="relative"
-      fill={fit === 'fill'}
-      contain={fit === 'contain'}
-      cover={fit === 'cover'}
-      scale={fit === 'scale'}
+      fit={fit}
       align={`${xpos}% ${ypos}%`}
       background={{ color: backgroundColor || 'none' }}
     >
