@@ -6,16 +6,18 @@
 {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true, 
+        "jest": true
     },
     "extends": [
         "plugin:react/recommended",
         "airbnb"
     ],
+    "ignorePatterns": ["**/*.test.tsx"],
     "globals": {
         "React": true,
         "JSX": true, 
-        "NodeJS": true
+        "NodeJS": true, 
     },
     "parser": "@typescript-eslint/parser",
     "parserOptions": {

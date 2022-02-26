@@ -1,0 +1,21 @@
+{
+  "preset": "ts-jest",
+  "coverageReporters": [ "lcov" ],
+  "globals": {
+    "ts-jest": {
+      "babel": true,
+      "tsconfig": "tsconfig.json"
+    }
+  },
+  "testEnvironment": "jsdom",
+  "moduleFileExtensions": ["js", "ts", "tsx"],
+  "testPathIgnorePatterns": ["/node_modules/", "/dist/", "/scripts/"],
+  "transform": {
+    "^.+\\.js$": "babel-jest",
+    "^.+\\.tsx?$": "ts-jest"
+  },
+  "setupFilesAfterEnv": [
+    "./test/setup.ts"
+  ],
+  "snapshotSerializers": []
+}

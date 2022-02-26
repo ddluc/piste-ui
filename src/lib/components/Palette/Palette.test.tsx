@@ -1,4 +1,3 @@
-// Define unit tests 
 describe('__Component', () => {
   it.todo('should render');
 });   
