@@ -24,7 +24,7 @@ export default {
 
 const defaultCellProps = {
   border: 'dashed 1px #4a4a4a',
-  background: { color: '#A5B0AE' },
+  background: { color: '#d7d7d7' },
   height: '50px'
 } as CellProps;
 

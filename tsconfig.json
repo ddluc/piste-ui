@@ -16,5 +16,7 @@
   "exclude": [ 
     "./scripts/",
     "./test/", 
+    "./**/*.test.ts", 
+    "./**/*.test.tsx", 
   ]
 }

@@ -2,5 +2,6 @@ import { ComponentMeta } from '@storybook/react';
 import { FlexProps } from '../index';
 declare const _default: ComponentMeta<import("styled-components").StyledComponent<"div", import("styled-components").DefaultTheme, import("../../Block").BlockProps & FlexProps, never>>;
 export default _default;
-export declare const Main: any;
+export declare const withFlexItems: any;
+export declare const withFixedItems: any;
 export declare const asPageLayout: any;
