@@ -1,4 +1,4 @@
-import { AnonymousFunction } from './types';
+import { AnonymousFunction } from '../types';
 
 export const logBuild = (): void => {
   console.log('[piste-ui]: Render Build v0.0.1. See https://github.com/ddluc/piste-ui for for more information');
