@@ -13,10 +13,16 @@
     "allowJs": false,
     "sourceMap": true
   }, 
-  "exclude": [ 
+  "exclude": [
+    // Don't build development scripts  
     "./scripts/",
+    // Don't build test configuration scripts
     "./test/", 
+    // Don't build test implemenations
     "./**/*.test.ts", 
     "./**/*.test.tsx", 
+    // Don't build the build folder 
+    // It seems obvious, but it will cause an error if you don't specify)
+    "./dist/*"
   ]
 }
