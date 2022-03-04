@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Flex, FlexProps } from '../index';
 
 export default {
-  title: 'CSS Utilities/Flex',
+  title: 'Layout/Flex',
   component: Flex,
   args: {
     display: 'flex',

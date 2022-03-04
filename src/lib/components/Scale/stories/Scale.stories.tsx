@@ -4,7 +4,7 @@ import { Scale, ScaleProps } from '../index';
 import { Flex } from '../../Flex';
 
 export default {
-  title: 'CSS Utilities/Scale',
+  title: 'Layout/Scale',
   component: Scale,
   args: {
     xs: '80%',

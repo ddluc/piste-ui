@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Block, BlockProps } from '../index';
 
 export default {
-  title: 'CSS Utilities/Block',
+  title: 'Layout/Block',
   component: Block,
   args: {
     height: '50px',

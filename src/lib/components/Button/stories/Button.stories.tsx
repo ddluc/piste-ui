@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Button, ButtonProps } from '../index'; 
 
 export default {
-  title: 'Button',
+  title: 'Core/Button',
   component: Button,
   args: { 
     text: 'A scaffolded component'

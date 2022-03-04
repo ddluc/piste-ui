@@ -4,7 +4,7 @@ import { Flex } from '../../Flex';
 import { Scroll, ScrollProps } from '../index';
 
 export default {
-  title: 'CSS Utilities/Scroll',
+  title: 'Layout/Scroll',
   component: Scroll,
   args: {
     direction: 'x',

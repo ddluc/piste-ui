@@ -6,7 +6,7 @@ import {
 } from '../index';
 
 export default {
-  title: 'CSS Utilities/Grid',
+  title: 'Layout/Grid',
   component: Grid,
   args: {
     columns: '80px 1fr 250px 2fr',
