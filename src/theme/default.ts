@@ -15,6 +15,13 @@ export const DEFAULT_THEME: Theme = {
       normal: 400,
       semibold: 600,
       bold: 700
+    }, 
+    size: {
+      small: 14,
+      normal: 16, 
+      large: 18,
+      subtitle: 24, 
+      title: 36
     }
   },
   palette: {
@@ -49,9 +56,9 @@ export const DEFAULT_THEME: Theme = {
     lg: '1200px'
   },
   spacing: generateThemeSpacing(4),
-  zIndex: generateZIndices(),
   skeleton: {
     colors: ['#f9f9f9', '#f3f3f3'],
     animation: 'wave'
-  }
+  }, 
+  zIndex: generateZIndices(),
 };

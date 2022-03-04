@@ -10,6 +10,13 @@ export declare type ThemeFont = {
         semibold: number;
         bold: number;
     };
+    size: {
+        small: number;
+        normal: number;
+        large: number;
+        subtitle: number;
+        title: number;
+    };
 };
 export declare type Color = string;
 export declare type ThemeColor = {
