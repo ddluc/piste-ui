@@ -2,18 +2,15 @@ import styled, {Theme} from 'styled-components';
 import { TextProperties } from '../types';
 import { AbstractTextStyles } from './AbstractText';
 
-// Example component Props
 export interface Props extends TextProperties {
   style?: string; 
   indent?: string; 
 }; 
 
-// Extend the Component props with the injected theme
 export interface ThemedProps extends Props {
   theme: Theme;
 }
 
-// Defined a styled component implmementation
 export const UnorderedList = styled.ol<Props>`
   ${AbstractTextStyles}
   ${({ style }) => style && `list-style: ${style}` }; 
@@ -21,7 +18,6 @@ export const UnorderedList = styled.ol<Props>`
   line-height: initial;
 `; 
 
-// Defined a styled component implmementation
 export const OrderedList = styled.ul<Props>`
   ${AbstractTextStyles}
   ${({ style }) => style && `list-style: ${style}` }; 
@@ -29,7 +25,6 @@ export const OrderedList = styled.ul<Props>`
   line-height: initial;
 `; 
 
-// Defined a styled component implmementation
 export const ListItem = styled.li<Props>`
   ${AbstractTextStyles}
   font-size: ${({ size, theme }) => size || `${theme.fonts.size.normal}px` };

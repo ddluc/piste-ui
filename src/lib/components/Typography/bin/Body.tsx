@@ -8,7 +8,6 @@ export interface ThemedProps extends Props {
   theme: Theme;
 }
 
-// Defined a styled component implmementation
 export const Body = styled.p<Props>`
   ${AbstractTextStyles}
   font-size: ${({ size, theme }) => size || `${theme.fonts.size.normal}px` };

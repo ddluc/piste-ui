@@ -19,7 +19,7 @@ export const DEFAULT_THEME: Theme = {
     size: {
       small: 14,
       normal: 16, 
-      large: 18,
+      large: 20,
       subtitle: 24, 
       title: 36
     }

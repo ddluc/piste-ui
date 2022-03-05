@@ -2,7 +2,7 @@
  * Typeguard to determine if props are skeleton props
  */
 export interface BaseSkeletonProps {
-    skeleton: true;
+    skeleton?: true;
 }
 export interface BoxProps extends BaseSkeletonProps {
     type?: 'box';

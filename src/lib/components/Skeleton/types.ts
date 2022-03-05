@@ -3,7 +3,7 @@
  */
 
 export interface BaseSkeletonProps {
-  skeleton: true
+  skeleton?: true
 }
 
 export interface BoxProps extends BaseSkeletonProps {

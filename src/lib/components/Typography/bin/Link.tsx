@@ -2,18 +2,15 @@ import styled, {Theme} from 'styled-components';
 import { TextProperties } from '../types';
 import { AbstractTextStyles } from './AbstractText';
 
-// Example component Props
 export interface Props extends TextProperties {
   visited?: boolean; 
   active?: boolean; 
 }; 
 
-// Extend the Component props with the injected theme
 export interface ThemedProps extends Props {
   theme: Theme;
 }
 
-// Defined a styled component implmementation
 export const Link = styled.a<Props>`
   ${AbstractTextStyles}
   margin: 0px 0px; 
