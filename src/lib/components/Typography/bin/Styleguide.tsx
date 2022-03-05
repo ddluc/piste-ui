@@ -1,5 +1,6 @@
 import React from 'react'; 
 import { Block } from '../../Block'
+import { Divider } from '../../Divider';
 import { Body } from './Body'; 
 import { H1, H2, H3, H4, H5, H6 } from './Heading'; 
 import { Link } from './Link';
@@ -9,14 +10,14 @@ import { OrderedList, UnorderedList, ListItem } from './List';
 export const Styleguide = (): JSX.Element => (
   <Block>
     <H4>Typography</H4>
-    <hr />
+    <Divider />
     <H1>Heading One</H1>
     <H2>Heading Two</H2>
     <H3>Heading Three</H3>
     <H4>Heading Four</H4>
     <H5>Heading Five</H5>
     <H6>Heading Six</H6>
-    <hr />
+    <Divider />
     <H4>Body Copy</H4>
     <Body>
       This is some body text
