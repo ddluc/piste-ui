@@ -8,3 +8,9 @@ export declare const logBuild: () => void;
  * @returns
  */
 export declare const debounce: (func: AnonymousFunction, interval?: number, leading?: boolean) => (...args: any[]) => any;
+/**
+ * Wraps a numeric digit and returns a pixel value
+ * @param num
+ * @returns string (in pixel unit)
+ */
+export declare const px: (num: number) => string;

@@ -1,0 +1,9 @@
+import React from 'react';
+import { ComponentMeta } from '@storybook/react';
+import { TextInputProps } from '../index';
+declare const _default: ComponentMeta<React.ForwardRefExoticComponent<TextInputProps & React.RefAttributes<HTMLInputElement>>>;
+export default _default;
+export declare const Main: any;
+export declare const asControlledInput: any;
+export declare const withAnimatedLabel: any;
+export declare const withErrorMessage: any;

@@ -25,3 +25,10 @@ export const debounce = (func: AnonymousFunction, interval = 200, leading = fals
     timeout = setTimeout(invoke, interval);
   };
 };
+
+/**
+ * Wraps a numeric digit and returns a pixel value
+ * @param num 
+ * @returns string (in pixel unit)
+ */
+export const px = (num: number): string => `${num}px`; 
