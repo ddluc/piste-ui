@@ -15,24 +15,24 @@ export const DEFAULT_THEME: Theme = {
       normal: 400,
       semibold: 600,
       bold: 700
-    }, 
+    },
     size: {
       small: 14,
-      normal: 16, 
+      normal: 16,
       large: 20,
-      subtitle: 24, 
+      subtitle: 24,
       title: 36
     }
   },
   palette: {
     primary: {
       main: '#42AD09',
-      contrastText: '#FFFFF',
+      contrastText: '#FFFFFF',
       shades: ['#052E10', '#185C2A', '#4FAD6A', '#85DA9A', '#C3F9CD']
     },
     accent: {
       main: '#3FD4C0',
-      contrastText: '#FFFFF',
+      contrastText: '#FFFFFF',
       shades: ['#052E29', '#275C58', '#3FD4C0', '#80D9D7', '#B7EFFA']
     },
     success: '#84DB6B',
@@ -59,6 +59,6 @@ export const DEFAULT_THEME: Theme = {
   skeleton: {
     colors: ['#f9f9f9', '#f3f3f3'],
     animation: 'wave'
-  }, 
+  },
   zIndex: generateZIndices(),
 };

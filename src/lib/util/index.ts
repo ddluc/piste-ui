@@ -28,7 +28,17 @@ export const debounce = (func: AnonymousFunction, interval = 200, leading = fals
 
 /**
  * Wraps a numeric digit and returns a pixel value
- * @param num 
+ * @param num
  * @returns string (in pixel unit)
  */
-export const px = (num: number): string => `${num}px`; 
+export const px = (num: number): string => `${num}px`;
+
+/**
+ * Addds transparency to a color
+ */
+export const transparentize = (color: string, opacity: number) => {
+  if (!opacity) return color;
+  return color + Math.round(Math.min(Math.max(opacity || 1, 0), 1) * 255)
+    .toString(16)
+    .toUpperCase();
+};

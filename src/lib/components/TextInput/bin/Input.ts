@@ -21,10 +21,7 @@ const Input = styled.input<Props>`
   outline: none;
   width: 100%;
   box-sizing: border-box;
-  transition: 
-    border .2s ease-in-out, 
-    border-color .2s ease-in-out, 
-    box-shadow .2s ease-in-out; 
+  transition: box-shadow .15s ease-in-out; 
 
   &:focus {
     border-color: ${({ theme, error }) => (error ? theme.palette.danger : theme.palette.accent.main)};

@@ -6,4 +6,4 @@ const LabelContainer = styled.label`
   text-align: left; 
 `;
 
-export default LabelContainer; 
+export default LabelContainer;

@@ -14,3 +14,7 @@ export declare const debounce: (func: AnonymousFunction, interval?: number, lead
  * @returns string (in pixel unit)
  */
 export declare const px: (num: number) => string;
+/**
+ * Addds transparency to a color
+ */
+export declare const transparentize: (color: string, opacity: number) => string;
