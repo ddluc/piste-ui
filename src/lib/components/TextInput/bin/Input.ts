@@ -1,5 +1,6 @@
+/* eslint-disable indent */
 import styled from 'styled-components';
-import { px } from '../../../util';
+import { px, transparentize } from '../../../util';
 
 export interface Props {
   error?: boolean;
@@ -25,7 +26,9 @@ const Input = styled.input<Props>`
 
   &:focus {
     border-color: ${({ theme, error }) => (error ? theme.palette.danger : theme.palette.accent.main)};
-    box-shadow: ${({ theme, error }) => (error ? theme.palette.danger : theme.palette.accent.shades[4])} 0px 0px 0px 2px;
+    box-shadow: ${({ theme, error }) => (
+      error ? transparentize(theme.palette.danger, 0.3) : theme.palette.accent.shades[4]
+    )} 0px 0px 0px 2px;
   }
 
   &:disabled {

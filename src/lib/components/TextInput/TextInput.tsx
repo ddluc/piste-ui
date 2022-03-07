@@ -61,8 +61,8 @@ const TextInput = forwardRef<HTMLInputElement, Props>((props: Props, ref): JSX.E
         animated={animated}
         isFocused={isFocused}
         isActive={(isFocused || value.length > 0)}
-        position={{ x: 8, y: 8 }}
-        transpose={{ x: -8, y: -18 }}
+        position={{ x: 8, y: 10 }}
+        transpose={{ x: -8, y: -20 }}
         scale={0.8}
       >
         <Input
