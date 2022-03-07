@@ -1,4 +1,4 @@
-import React from 'react'; 
+import React from 'react';
 
 import StaticLabelText from './bin/StaticLabelText';
 import AnimatedLabelText from './bin/AnimatedLabelText';
@@ -9,38 +9,38 @@ export interface Props {
   htmlFor: string;
   children?: React.ReactNode,
   error?: boolean;
-  disabled?: boolean; 
-  isActive?: boolean; 
-  hideLabel?: boolean; 
+  disabled?: boolean;
+  isActive?: boolean;
+  hideLabel?: boolean;
   animated?: boolean;
-  isFocused?: boolean; 
-  position?: { 
-    x: number; 
+  isFocused?: boolean;
+  position?: {
+    x: number;
     y: number;
-  }; 
-  transpose?: { 
-    x: number; 
-    y: number; 
-  }; 
-  scale?: number; 
+  };
+  transpose?: {
+    x: number;
+    y: number;
+  };
+  scale?: number;
 }
 
 const Label = (props: Props): JSX.Element => {
 
-  const { 
+  const {
     value,
     htmlFor,
     error,
     isActive,
     isFocused,
-    hideLabel,  
+    hideLabel,
     disabled,
     animated,
-    position, 
+    position,
     transpose,
     scale,
     children
-  } = props; 
+  } = props;
 
   return (
     <LabelContainer htmlFor={htmlFor}>
@@ -58,9 +58,8 @@ const Label = (props: Props): JSX.Element => {
           >
             {value}
           </AnimatedLabelText>
-        ) 
-        : (
-          <StaticLabelText 
+        ) : (
+          <StaticLabelText
             hideLabel={hideLabel}
             error={error}
             disabled={disabled}
@@ -72,8 +71,8 @@ const Label = (props: Props): JSX.Element => {
       }
       {children}
     </LabelContainer>
-  ); 
+  );
 
 };
 
-export default Label; 
+export default Label;

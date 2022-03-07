@@ -9,7 +9,7 @@ exports[`Image should render as skeleton 1`] = `
 .c1 {
   height: 100%;
   width: 100%;
-  background-color: #e2e2e2;
+  background-color: #f9f9f9;
   border-radius: 3px;
   position: relative;
   padding: 0;
@@ -31,7 +31,7 @@ exports[`Image should render as skeleton 1`] = `
   height: 100%;
   -webkit-animation: 3000ms ease-in-out dQLxgQ infinite;
   animation: 3000ms ease-in-out dQLxgQ infinite;
-  background-color: #e7e8eb;
+  background-color: #f3f3f3;
   border-radius: 3px;
   content: '';
 }

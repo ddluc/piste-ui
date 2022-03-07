@@ -1,12 +1,9 @@
 import React from 'react'; 
 import { render, cleanup } from "@testing-library/react";
 import { Divider, DividerProps } from './index'; 
+import withTheme from '../../../../test/withTheme'; 
 
-// Optionally wrap compenet with theme
-// import withTheme from '../../../../test/withTheme'; 
-// const result = withTheme(<Divider {...args} />);
 
-// Define unit tests
 describe('Divider', () => {
 
   afterEach(cleanup);
@@ -17,7 +14,7 @@ describe('Divider', () => {
   }; 
 
   it('should render', () => {
-    const result = render(<Divider {...args} />);
+    const result = withTheme(<Divider {...args} />);
     const component = result.container.firstChild; 
     expect(component).toMatchSnapshot(); 
   });

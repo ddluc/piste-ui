@@ -9,7 +9,7 @@ exports[`Skeleton as a box should render with pulse animation 1`] = `
 .c1 {
   height: 100%;
   width: 100%;
-  background-color: #e2e2e2;
+  background-color: #f9f9f9;
   border-radius: 3px;
   position: relative;
   padding: 0;
@@ -31,7 +31,7 @@ exports[`Skeleton as a box should render with pulse animation 1`] = `
   height: 100%;
   -webkit-animation: 2000ms ease-in lbZBOL forwards infinite;
   animation: 2000ms ease-in lbZBOL forwards infinite;
-  background-color: #e7e8eb;
+  background-color: #f3f3f3;
   border-radius: 3px;
   content: '';
 }
@@ -57,8 +57,8 @@ exports[`Skeleton as a box should render with shimmer animation 1`] = `
 .c1 {
   height: 100%;
   width: 100%;
-  background-color: #e7e8eb;
-  background-image: linear-gradient(to right,#e7e8eb 0%,#e2e2e2 20%,#e2e2e2 40%,#e7e8eb 100%);
+  background-color: #f3f3f3;
+  background-image: linear-gradient(to right,#f3f3f3 0%,#f9f9f9 20%,#f9f9f9 40%,#f3f3f3 100%);
   background-repeat: no-repeat;
   background-size: 800px 800px;
   border-radius: 3px;
@@ -99,7 +99,7 @@ exports[`Skeleton as a box should render with wave animation 1`] = `
 .c1 {
   height: 100%;
   width: 100%;
-  background-color: #e2e2e2;
+  background-color: #f9f9f9;
   border-radius: 3px;
   position: relative;
   padding: 0;
@@ -121,7 +121,7 @@ exports[`Skeleton as a box should render with wave animation 1`] = `
   height: 100%;
   -webkit-animation: 3000ms ease-in-out dQLxgQ infinite;
   animation: 3000ms ease-in-out dQLxgQ infinite;
-  background-color: #e7e8eb;
+  background-color: #f3f3f3;
   border-radius: 3px;
   content: '';
 }
@@ -149,7 +149,7 @@ exports[`Skeleton as a circle should render as circle 1`] = `
 .c1 {
   height: 100%;
   width: 100%;
-  background-color: #e2e2e2;
+  background-color: #f9f9f9;
   border-radius: 3px;
   position: relative;
   padding: 0;
@@ -171,7 +171,7 @@ exports[`Skeleton as a circle should render as circle 1`] = `
   height: 100%;
   -webkit-animation: 3000ms ease-in-out dQLxgQ infinite;
   animation: 3000ms ease-in-out dQLxgQ infinite;
-  background-color: #e7e8eb;
+  background-color: #f3f3f3;
   border-radius: 3px;
   content: '';
 }

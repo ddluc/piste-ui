@@ -1,10 +1,8 @@
 import React from 'react'; 
 import { render, cleanup } from "@testing-library/react";
 import { TextInput, TextInputProps } from './index'; 
+import withTheme from '../../../../test/withTheme'; 
 
-// Optionally wrap compenet with theme
-// import withTheme from '../../../../test/withTheme'; 
-// const result = withTheme(<TextInput {...args} />);
 
 // Define unit tests
 describe('TextInput', () => {
@@ -12,11 +10,13 @@ describe('TextInput', () => {
   afterEach(cleanup);
 
   const args: TextInputProps = { 
-    text: 'This is a test'
+    name: 'name', 
+    label: 'First Name', 
+    value: 'John Doe'
   }; 
 
   it('should render', () => {
-    const result = render(<TextInput {...args} />);
+    const result = withTheme(<TextInput {...args} />);
     const component = result.container.firstChild; 
     expect(component).toMatchSnapshot(); 
   });
