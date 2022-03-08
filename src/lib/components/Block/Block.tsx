@@ -21,10 +21,14 @@ const Block = styled.div<Props>`
   ${({ opacity }: ThemedProps) => opacity && `opacity: ${opacity}`}; 
   ${({ border }: ThemedProps) => border && `border: ${border}`}; 
   ${({ background }: ThemedProps) => (background && background.color) && (`background-color: ${background.color}`)}; 
-  ${({ background }: ThemedProps) => (background && background.position) && (`background-position: ${background.position}`)}; 
+  ${({ background }: ThemedProps) => (
+    background && background.position) && (`background-position: ${background.position}`
+  )}; 
   ${({ background }: ThemedProps) => (background && background.image) && (`background-image: ${background.image}`)}; 
   ${({ background }: ThemedProps) => (background && background.repeat) && (`background-repeat: ${background.repeat}`)}; 
-  ${({ background }: ThemedProps) => (background && background.attachment) && (`background-attachment: ${background.attachment}`)}; 
+  ${({ background }: ThemedProps) => (
+    background && background.attachment) && (`background-attachment: ${background.attachment}`
+  )}; 
   ${({ background }: ThemedProps) => (background && background.size) && (`background-size: ${background.size}`)}; 
   ${({ background }: ThemedProps) => (background && background.origin) && (`background-origin: ${background.origin}`)}; 
   ${({ background }: ThemedProps) => (background && background.clip) && (`background-clip: ${background.clip}`)}; 

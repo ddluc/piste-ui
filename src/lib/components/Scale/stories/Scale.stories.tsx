@@ -21,8 +21,8 @@ export default {
 
 const Template: ComponentStory<typeof Scale> = (args: ScaleProps) => (
   <Scale {...args}>
-    <Flex 
-      height="100%" 
+    <Flex
+      height="100%"
       textAlign="center"
       center
     >

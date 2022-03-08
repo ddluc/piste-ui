@@ -1,5 +1,6 @@
 import styled, { Theme } from 'styled-components';
 
+// eslint-disable-next-line max-len
 type ThemeColors = 'primary' | 'accent' | 'success' | 'warning' | 'danger' | 'white' | 'black' | 'grey' | 'lightgrey' | 'neutral' | 'visualization';
 
 type ColorBoxProps = {

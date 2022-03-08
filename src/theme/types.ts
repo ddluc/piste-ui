@@ -9,12 +9,12 @@ export type ThemeFont = {
     normal: number
     semibold: number
     bold: number
-  }, 
-  size: { 
-    small: number, 
-    normal: number, 
-    large: number, 
-    subtitle: number, 
+  },
+  size: {
+    small: number,
+    normal: number,
+    large: number,
+    subtitle: number,
     title: number
   }
 };

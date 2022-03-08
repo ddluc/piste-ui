@@ -66,7 +66,7 @@ const FixedTemplate: ComponentStory<typeof Flex> = (args: FlexProps) => (
 export const withFixedItems = FixedTemplate.bind({});
 withFixedItems.args = {
   justifyContent: 'space-evenly',
-}
+};
 
 const LayoutTemplate: ComponentStory<typeof Flex> = () => {
   const args = {
@@ -75,17 +75,17 @@ const LayoutTemplate: ComponentStory<typeof Flex> = () => {
     opacity: 1,
     padding: ['5px', '5px', '5px', '5px'],
     background: { color: '#EDEDED' }
-  } as FlexProps; 
-  return(
-    <Flex 
-      {...args }
+  } as FlexProps;
+  return (
+    <Flex
+      {...args}
       gap="10px 10px"
-      row 
-      wrap='wrap'
+      row
+      wrap="wrap"
     >
-      <Flex 
-        border={'dashed 1px #4a4a4a'}
-        background={ {color: '#d7d7d7' }}
+      <Flex
+        border="dashed 1px #4a4a4a"
+        background={{ color: '#d7d7d7' }}
         width="100%"
         basis={1}
         height="50px"
@@ -93,7 +93,7 @@ const LayoutTemplate: ComponentStory<typeof Flex> = () => {
       >
         Header
       </Flex>
-      <Flex 
+      <Flex
         border="dashed 1px #4a4a4a"
         background={{ color: '#d7d7d7' }}
         center
@@ -102,7 +102,7 @@ const LayoutTemplate: ComponentStory<typeof Flex> = () => {
       >
         Left Panel
       </Flex>
-      <Flex 
+      <Flex
         border="dashed 1px #4a4a4a"
         background={{ color: '#d7d7d7' }}
         height="300px"
@@ -120,9 +120,9 @@ const LayoutTemplate: ComponentStory<typeof Flex> = () => {
       >
         Right Panel
       </Flex>
-      <Flex 
-        border={'dashed 1px #4a4a4a'}
-        background={ {color: '#d7d7d7' }}
+      <Flex
+        border="dashed 1px #4a4a4a"
+        background={{ color: '#d7d7d7' }}
         width="100%"
         basis={1}
         height="50px"
@@ -131,10 +131,10 @@ const LayoutTemplate: ComponentStory<typeof Flex> = () => {
         Footer
       </Flex>
     </Flex>
-  ); 
-}; 
+  );
+};
 
-export const asPageLayout = LayoutTemplate.bind({}); 
+export const asPageLayout = LayoutTemplate.bind({});
 // Disable all controls
 asPageLayout.parameters = {
   controls: { hideNoControlsWarning: true },

@@ -1,6 +1,7 @@
 import { AnonymousFunction } from '../types';
 
 export const logBuild = (): void => {
+  // eslint-disable-next-line no-console
   console.log('[piste-ui]: Render Build v0.0.1. See https://github.com/ddluc/piste-ui for for more information');
 };
 

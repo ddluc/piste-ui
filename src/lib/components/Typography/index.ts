@@ -1,44 +1,46 @@
-// Main Component Export 
+// Main Component Export
 import { Body } from './bin/Body';
-import { H1, H2, H3, H4, H5, H6 } from './bin/Heading';
-import { Link } from './bin/Link'; 
-import { ListItem, OrderedList, UnorderedList } from './bin/List'; 
+import {
+  H1, H2, H3, H4, H5, H6
+} from './bin/Heading';
+import { Link } from './bin/Link';
+import { ListItem, OrderedList, UnorderedList } from './bin/List';
 
 /**
  * Export Text Components
  */
 
 type TypographyComponents = {
-  Body: typeof Body, 
-  Link: typeof Link, 
+  Body: typeof Body,
+  Link: typeof Link,
   H1: typeof H1,
   H2: typeof H2,
   H3: typeof H3,
   H4: typeof H4,
   H5: typeof H5,
   H6: typeof H6,
-  List: { 
-    Ordered: typeof OrderedList, 
-    Unordered: typeof UnorderedList, 
+  List: {
+    Ordered: typeof OrderedList,
+    Unordered: typeof UnorderedList,
     Item: typeof ListItem
   }
 };
 
-export const Typography: TypographyComponents = { 
-  Body, 
+export const Typography: TypographyComponents = {
+  Body,
   Link,
-  H1, 
-  H2, 
-  H3, 
-  H4, 
-  H5, 
-  H6, 
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  H6,
   List: {
-    Ordered: OrderedList, 
-    Unordered: UnorderedList, 
+    Ordered: OrderedList,
+    Unordered: UnorderedList,
     Item: ListItem
   }
-}; 
+};
 
 // Export prop types
 export type { TextProperties as TextProps } from './types';

@@ -18,7 +18,7 @@ export default {
     height: 300,
     fit: 'cover',
     xpos: 50,
-    ypos: 50, 
+    ypos: 50,
   } as ImageProps
 } as ComponentMeta<typeof Image>;
 
@@ -41,7 +41,7 @@ withProgressiveLoading.args = {
     main: 'https://piste-ui.s3.us-west-2.amazonaws.com/ski.jpg',
     preview: 'https://piste-ui.s3.us-west-2.amazonaws.com/ski--thumbnail.jpg'
   },
-  blur: 5, 
+  blur: 5,
   backgroundColor: '#EDEDED'
 };
 
@@ -51,7 +51,7 @@ isOffscreen.args = {
     main: 'https://piste-ui.s3.us-west-2.amazonaws.com/ski.jpg',
     preview: 'https://piste-ui.s3.us-west-2.amazonaws.com/ski--thumbnail.jpg'
   },
-  blur: 5, 
+  blur: 5,
   backgroundColor: '#EDEDED'
 };
 

@@ -1,38 +1,42 @@
-import React from 'react'; 
-import styled, { Theme } from 'styled-components'
+import React from 'react';
+import styled, { Theme } from 'styled-components';
 
 export interface Props {
-  color?: string; 
+  color?: string;
   size?: 1 | 2 | 3 | 4 | 5;
-  width?: string, 
-  height?: string; 
-  spacing?: { 
-    top?: string; 
+  width?: string,
+  height?: string;
+  spacing?: {
+    top?: string;
     bottom?: string;
-    right?: string; 
-    left?: string; 
-  }; 
+    right?: string;
+    left?: string;
+  };
   alignment?: 'right' | 'center' | 'left';
-  dashed?: boolean; 
-  solid?: boolean; 
+  dashed?: boolean;
+  solid?: boolean;
   type?: 'horizontal' | 'vertical'
 }
 
-interface ThemedProps extends Props { 
+interface ThemedProps extends Props {
   theme: Theme
-}; 
+}
 
 const Divider = styled.hr<Props>`
   position: relative;
-  ${({type = 'horizontal', solid = true, dashed = false, size = 1}: ThemedProps) => {
-    let border; 
-    if (solid) border = `solid ${size}px`; 
+  ${({
+    type = 'horizontal', solid = true, dashed = false, size = 1
+  }: ThemedProps) => {
+    let border;
+    if (solid) border = `solid ${size}px`;
     if (dashed) border = `dashed ${size}px`;
-    if (type === 'horizontal') return `border-bottom: ${border}`; 
-    if (type === 'vertical') return `border-left: ${border}`; 
+    if (type === 'horizontal') return `border-bottom: ${border}`;
+    return `border-left: ${border}`;
   }};
-  border-color: ${({ theme, color }) => (color ? color : theme.palette.neutral[3])};
-  ${({type, height = '200px', width = '100%', spacing = {}, alignment = 'left'}: ThemedProps) => {
+  border-color: ${({ theme, color }) => (color || theme.palette.neutral[3])};
+  ${({
+    type, height = '200px', width = '100%', spacing = {}, alignment = 'left'
+  }: ThemedProps) => {
     if (type === 'vertical') {
       return `
         border-bottom: none; 
@@ -42,7 +46,7 @@ const Divider = styled.hr<Props>`
         width: 1px; 
         margin-left: ${spacing ? spacing.left : '5px'}; 
         margin-right: ${spacing ? spacing.right : '5px'}; 
-      `
+      `;
     }
     return `
       border-top: none; 
@@ -54,10 +58,10 @@ const Divider = styled.hr<Props>`
       margin-bottom: ${spacing ? spacing.bottom : '5px'};
       margin-left: ${alignment === 'left' ? '0px' : 'auto'};
       margin-right: ${alignment === 'right' ? '0px' : 'auto'};
-    `
+    `;
   }};
 
-`; 
+`;
 
-// Export the component as the default export 
-export default Divider; 
+// Export the component as the default export
+export default Divider;

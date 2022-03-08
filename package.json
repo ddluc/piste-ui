@@ -9,6 +9,8 @@
     "test:verbose": "jest --verbose --config jest.config.json src/",
     "test:coverage": "jest --coverage --silent",
     "build": "webpack --config webpack/webpack.prod.js; ./scripts/postbuild.sh",
+    "lint": " eslint --ext ts,tsx src/", 
+    "lint:fix": "eslint --ext ts,tsx  --fix src/",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -o ./docs",
     "scaffold:component": "./scripts/scaffold/component.sh"

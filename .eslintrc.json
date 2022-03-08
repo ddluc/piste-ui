@@ -13,7 +13,7 @@
         "plugin:react/recommended",
         "airbnb"
     ],
-    "ignorePatterns": ["**/*.test.tsx"],
+    "ignorePatterns": ["**/*.test.tsx", "**/*.html"],
     "globals": {
         "React": true,
         "JSX": true, 
@@ -53,6 +53,7 @@
         "padded-blocks": ["off"],
         // Disable react prop-types (not needed, since the project uses Typescript) 
         "react/prop-types": ["off"],
+        // Disable prop-types default props
         "react/require-default-props": ["off"],
         // Fix issues with type definitions
         "no-unused-vars": "off",
