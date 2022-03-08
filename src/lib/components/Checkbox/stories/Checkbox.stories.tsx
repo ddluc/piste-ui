@@ -15,7 +15,9 @@ export default {
   } as CheckboxProps
 } as ComponentMeta<typeof Checkbox>;
 
-const Template: ComponentStory<typeof Checkbox> = (args: CheckboxProps) => (<Checkbox {...args} />);
+const Template: ComponentStory<typeof Checkbox> = (args: CheckboxProps) => (
+  <Checkbox {...args} onChange={() => {}} />
+);
 
 const ControlledTemplate: ComponentStory<typeof Checkbox> = (args: CheckboxProps) => {
 
