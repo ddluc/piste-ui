@@ -1,9 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: "production",
+  mode: 'production',
   entry: path.resolve(__dirname, '../src/index.ts'),
   module: {
     rules: [
@@ -18,7 +20,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', "@babel/preset-react"]
+            presets: ['@babel/preset-env', '@babel/preset-react']
           }
         }
       },
@@ -32,19 +34,10 @@ module.exports = {
         ],
       },
       {
-        test: /\.svg$/,
-        use: [
-          {
-            loader: "babel-loader"
-          },
-          {
-            loader: "react-svg-loader",
-            options: {
-              jsx: false
-            }
-          }
-        ]
-      }, 
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ['@svgr/webpack'],
+      },
       {
         test: /\.(png|jpg|jpeg|gif)$/,
         use: [{
@@ -63,7 +56,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "../src/index.html")
+      template: path.resolve(__dirname, '../src/index.html')
     })
   ]
 };

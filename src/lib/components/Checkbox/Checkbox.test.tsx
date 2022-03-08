@@ -11,6 +11,7 @@ describe('Checkbox', () => {
     name: 'checkbox', 
     label: 'A Checkbox', 
     checked: false,
+    onChange: (): void => { }
   }; 
 
   it('should render as unchecked', () => {

@@ -1,15 +1,16 @@
-import React from 'react'; 
-import { render, cleanup } from "@testing-library/react";
-
-import { DEFAULT_THEME } from '../src/theme/default'; 
+/* eslint-disable import/no-extraneous-dependencies */
+import React from 'react';
+import { render, cleanup } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 
-const withTheme = (component: React.ReactNode) => {
-  return render(
+import { DEFAULT_THEME } from '../src/theme/default';
+
+const withTheme = (component: React.ReactNode) => (
+  render(
     <ThemeProvider theme={DEFAULT_THEME}>
       {component}
     </ThemeProvider>
-  ); 
-};
+  )
+);
 
-export default withTheme; 
+export default withTheme;

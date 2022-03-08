@@ -9,6 +9,9 @@
   },
   "testEnvironment": "jsdom",
   "moduleFileExtensions": ["js", "ts", "tsx"],
+  "moduleNameMapper": {
+    "\\.svg": "<rootDir>/test/__mocks__/svg.ts"
+  },
   "testPathIgnorePatterns": ["/node_modules/", "/dist/", "/scripts/"],
   "transform": {
     "^.+\\.js$": "babel-jest",

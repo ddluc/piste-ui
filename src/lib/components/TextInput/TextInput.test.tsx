@@ -12,7 +12,8 @@ describe('TextInput', () => {
   const args: TextInputProps = { 
     name: 'name', 
     label: 'First Name', 
-    value: 'John Doe'
+    value: 'John Doe',
+    onChange: (): void => {}
   }; 
 
   it('should render', () => {

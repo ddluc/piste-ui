@@ -4,7 +4,7 @@ import { px, transparentize } from '../../../util';
 
 export interface Props {
   error?: boolean;
-  size?: 'sm' | 'normal' | 'lg'
+  size?: 'sm' | 'normal' | 'lg';
 }
 
 const Input = styled.input<Props>`

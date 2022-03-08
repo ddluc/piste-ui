@@ -1,22 +1,23 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const webpackCommon = require('./webpack.common');
 
 module.exports = {
   ...webpackCommon,
-  mode: "production",
+  mode: 'production',
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, '../dist'),
-    library: 'piste-ui', 
+    library: 'piste-ui',
     libraryTarget: 'umd',
     globalObject: 'this'
   },
   externals: {
-    'react': 'react', 
-    'react-dom' : 'reactDOM', 
+    react: 'react',
+    'react-dom': 'reactDOM',
     'styled-components': 'styled-components'
   },
   plugins: [
@@ -25,7 +26,7 @@ module.exports = {
       cleanAfterEveryBuildPatterns: ['*.LICENSE.txt'],
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "../src/index.html")
+      template: path.resolve(__dirname, '../src/index.html')
     })
   ]
 };
