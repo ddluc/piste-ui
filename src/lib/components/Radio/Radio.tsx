@@ -15,7 +15,6 @@ export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   disabled?: boolean;
 }
 
-// Declare the component
 const Radio = (props: Props): JSX.Element => {
   const {
     name,

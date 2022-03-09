@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { ComponentMeta } from '@storybook/react';
 import { CheckboxProps } from '../index';
 declare const _default: ComponentMeta<(props: CheckboxProps) => JSX.Element>;

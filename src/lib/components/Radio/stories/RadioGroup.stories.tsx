@@ -1,5 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
-
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import RadioGroup, { Props as RadioGroupProps } from '../RadioGroup';
@@ -14,13 +12,11 @@ export default {
     touched: false,
     error: '',
     disabled: false,
-
   } as RadioGroupProps
 } as ComponentMeta<typeof RadioGroup>;
 
 const ControlledTemplate: ComponentStory<typeof RadioGroup> = (args: RadioGroupProps) => {
 
-  // eslint-disable-next-line react/destructuring-assignment
   const [value, setValue] = React.useState<string>('');
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {

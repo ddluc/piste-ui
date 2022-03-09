@@ -26,8 +26,8 @@ export const Input = styled.input<Props>`
     display: inline-block;
     border-radius: 50%;
     vertical-align: text-top;
-    width: 25px;
-    height: 25px;
+    width: 21px;
+    height: 21px;
     background-color: ${({ theme, error }) => (
       error ? transparentize(theme.palette.danger, 0.1) : theme.palette.neutral[4]
     )};
@@ -41,10 +41,9 @@ export const Input = styled.input<Props>`
     content: '';
     position: absolute;
     display: inline-block;
-    border-radius: 50%;
-    width: 15px;
-    height: 15px;
-    left: 6px;
+    width: 13px;
+    height: 13px;
+    left: 5px;
     fill: ${({ theme, error }) => (
       error ? transparentize(theme.palette.danger, 0.8) : theme.palette.accent.main
     )};

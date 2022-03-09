@@ -4,7 +4,10 @@ export interface Props {
     name: string;
     touched?: boolean;
     error?: string;
+    help?: string;
     disabled?: boolean;
+    direction?: 'horizontal' | 'vertical';
+    border?: boolean;
     onChange?: (e: any) => void;
     children: React.ReactNode;
 }
