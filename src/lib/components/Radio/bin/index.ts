@@ -1,6 +1,7 @@
 /* eslint-disable indent */
+
 import styled from 'styled-components';
-import { getOutline, px, transparentize } from '../../../util';
+import { px, getOutline, transparentize } from '../../../util';
 import { pulse } from './animations';
 
 type Props = {
@@ -11,71 +12,73 @@ type Props = {
 export const Input = styled.input<Props>`
 
   // The base input styles
-  position: absolute;
+  position: absolute; 
   opacity: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+  width: 100%; 
+  height: 100%; 
+  margin: 0; 
+  padding: 0%; 
   cursor: pointer;
-
-  // The main check "box"
+  
+  // The main radio "container"
   & + label:before {
     content: '';
     display: inline-block;
+    border-radius: 50%;
     vertical-align: text-top;
-    width: 23px;
-    height: 23px;
+    width: 25px;
+    height: 25px;
     background-color: ${({ theme, error }) => (
       error ? transparentize(theme.palette.danger, 0.1) : theme.palette.neutral[4]
     )};
     border: solid ${({ theme }) => theme.border.width};
     border-color: ${({ theme, error }) => (error ? theme.palette.danger : theme.palette.accent.main)};
-    border-radius: ${({ theme }) => theme.border.radius}; 
     transition: box-shadow 250ms ease-out; 
   }
 
-  // The checkmark svg
+  // The radio "fill" icon
   & + label svg {
+    content: '';
     position: absolute;
-    pointer-events: none;
-    left: ${({ theme }) => theme.spacing[1]};
-    top: ${({ theme }) => theme.spacing[1]};
-    width: ${({ theme }) => theme.spacing[4]};
-    height: ${({ theme }) => theme.spacing[4]};
+    display: inline-block;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    left: 6px;
     fill: ${({ theme, error }) => (
-      error ? transparentize(theme.palette.danger, 0.8) : theme.palette.white
+      error ? transparentize(theme.palette.danger, 0.8) : theme.palette.accent.main
     )};
     display: block;    
     animation: ${pulse} 250ms ease both;
+  };
+
+  // the radio "fill" (as checked)
+  &:checked + label svg {
   }
 
-  // The check mark (as chedked)
-  &:checked + label svg {}
-
-  // the check mark (as disabled)
+  // the radio "fill" (as disabled)
   &:disabled + label svg {
     fill: ${({ theme }) => (theme.palette.grey)};
   }
-
-  // The main check "box" on hover
+  
+  // The main radio "container" on hover
   &:hover + label:before {
     box-shadow: ${({ theme, error }) => getOutline(error, theme, 4)}
   }
 
-  // The main check "box" on focus
+  // The main radio "container" on focus
   &:focus + label:before {
     box-shadow: ${({ theme, error }) => getOutline(error, theme, 4)}
   }
 
-  // The main check "box" as checked
+  // The main radio "container" as checked
   &:checked + label:before {
     background-color: ${({ theme, error }) => (
-      error ? transparentize(theme.palette.danger, 0.1) : theme.palette.accent.main
+      error ? transparentize(theme.palette.danger, 0.1) : theme.palette.neutral[4]
     )};
   }
 
-  // The main check "box" as disabled
+  // The main radio "container" as disabled
   &:disabled + label:before {
     box-shadow: none;
     background: ${({ theme }) => theme.palette.lightgrey};
@@ -84,7 +87,6 @@ export const Input = styled.input<Props>`
 
 `;
 
-// The checkmark label
 export const Label = styled.label<Props>`
   display: flex; 
   align-items: center;
