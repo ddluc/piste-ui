@@ -5,6 +5,6 @@ import { ThemeSpacing, ThemeLevels } from './types';
  */
 export declare const generateThemeSpacing: (root?: number) => ThemeSpacing;
 /**
- * Generates the theme z-indices
- */
+* Generates the theme z-indices
+*/
 export declare const generateZIndices: () => ThemeLevels;

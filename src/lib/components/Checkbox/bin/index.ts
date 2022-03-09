@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 import styled from 'styled-components';
-import { px, transparentize } from '../../../util';
+import { getOutline, px, transparentize } from '../../../util';
 import { pulse } from './animations';
 
 type Props = {
@@ -44,7 +44,7 @@ export const Input = styled.input<Props>`
     width: ${({ theme }) => theme.spacing[4]};
     height: ${({ theme }) => theme.spacing[4]};
     fill: ${({ theme, error }) => (
-      error ? transparentize(theme.palette.danger, 0.8) : theme.palette.white
+      error ? transparentize(theme.palette.danger, 0.8) : theme.palette.body
     )};
     display: block;    
     animation: ${pulse} 250ms ease both;
@@ -55,16 +55,12 @@ export const Input = styled.input<Props>`
 
   // The main check "box" on hover
   &:hover + label:before {
-    box-shadow: ${({ theme, error }) => (
-      error ? transparentize(theme.palette.danger, 0.3) : theme.palette.accent.shades[4]
-    )} 0px 0px 0px 2px;
+    box-shadow: ${({ theme, error }) => getOutline(error, theme, 4)}
   }
 
   // The main check "box" on focus
   &:focus + label:before {
-    box-shadow: ${({ theme, error }) => (
-      error ? transparentize(theme.palette.danger, 0.3) : theme.palette.accent.shades[4]
-    )} 0px 0px 0px 2px;
+    box-shadow: ${({ theme, error }) => getOutline(error, theme, 4)}
   }
 
   // The main check "box" as checked

@@ -1,4 +1,5 @@
 import { AnonymousFunction } from '../types';
+import { Theme } from '../../theme/types';
 
 export const logBuild = (): void => {
   // eslint-disable-next-line no-console
@@ -35,6 +36,13 @@ export const debounce = (func: AnonymousFunction, interval = 200, leading = fals
 export const px = (num: number): string => `${num}px`;
 
 /**
+ * Wraps a numeric digit and returns a percent value
+ * @param num
+ * @returns string (in percent unit)
+ */
+export const pcnt = (num: number): string => `${num}%`;
+
+/**
  * Addds transparency to a color
  */
 export const transparentize = (color: string, opacity: number) => {
@@ -42,4 +50,14 @@ export const transparentize = (color: string, opacity: number) => {
   return color + Math.round(Math.min(Math.max(opacity || 1, 0), 1) * 255)
     .toString(16)
     .toUpperCase();
+};
+
+/**
+ * Genereate a box shadow for form elements
+ */
+export const getOutline = (error: boolean, theme: Theme, shade = 4, dangerOpacity = 0.3): string => {
+  if (error) {
+    return `${transparentize(theme.palette.danger, dangerOpacity)} ${theme.forms.outline}`;
+  }
+  return `${theme.palette.accent.shades[shade]} ${theme.forms.outline}`;
 };

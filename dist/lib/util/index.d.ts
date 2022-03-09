@@ -1,4 +1,5 @@
 import { AnonymousFunction } from '../types';
+import { Theme } from '../../theme/types';
 export declare const logBuild: () => void;
 /**
  *
@@ -15,6 +16,16 @@ export declare const debounce: (func: AnonymousFunction, interval?: number, lead
  */
 export declare const px: (num: number) => string;
 /**
+ * Wraps a numeric digit and returns a percent value
+ * @param num
+ * @returns string (in percent unit)
+ */
+export declare const pcnt: (num: number) => string;
+/**
  * Addds transparency to a color
  */
 export declare const transparentize: (color: string, opacity: number) => string;
+/**
+ * Genereate a box shadow for form elements
+ */
+export declare const getOutline: (error: boolean, theme: Theme, shade?: number, dangerOpacity?: number) => string;

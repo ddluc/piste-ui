@@ -33,6 +33,7 @@ export type ThemePalette = {
   success: Color;
   warning: Color;
   danger: Color;
+  body: Color;
   white: Color;
   black: Color;
   grey: Color;
@@ -67,6 +68,10 @@ export type ThemeSkeleton = {
   animation: 'wave' | 'pulse' | 'none'
 }
 
+export type ThemeForm = {
+  outline: string;
+}
+
 export interface Theme {
   name: string,
   id?: string,
@@ -76,5 +81,6 @@ export interface Theme {
   spacing: ThemeSpacing,
   breakpoints: ThemeBreakpoints
   zIndex: ThemeLevels,
-  skeleton: ThemeSkeleton
+  skeleton: ThemeSkeleton,
+  forms: ThemeForm,
 }

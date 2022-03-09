@@ -38,6 +38,7 @@ export const DEFAULT_THEME: Theme = {
     success: '#84DB6B',
     warning: '#F0DA72',
     danger: '#DB7B71',
+    body: '#FFFFFF',
     white: '#FFFFFF',
     black: '#000000',
     grey: '#C4C4C4',
@@ -56,9 +57,12 @@ export const DEFAULT_THEME: Theme = {
     lg: '1200px'
   },
   spacing: generateThemeSpacing(4),
+  zIndex: generateZIndices(),
   skeleton: {
     colors: ['#f9f9f9', '#f3f3f3'],
     animation: 'wave'
   },
-  zIndex: generateZIndices(),
+  forms: {
+    outline: '0px 0px 0px 2px',
+  }
 };

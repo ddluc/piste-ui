@@ -8,6 +8,7 @@ import {
   ThemeBreakpoints,
   ThemeLevels,
   ThemeSkeleton,
+  ThemeForm,
 } from './types';
 
 declare module 'styled-components' {
@@ -22,7 +23,8 @@ declare module 'styled-components' {
     spacing: ThemeSpacing,
     breakpoints: ThemeBreakpoints
     zIndex: ThemeLevels,
-    skeleton: ThemeSkeleton
+    skeleton: ThemeSkeleton,
+    forms: ThemeForm
   }
 
   // eslint-disable-next-line no-unused-vars
@@ -35,7 +37,8 @@ declare module 'styled-components' {
     spacing: ThemeSpacing,
     breakpoints: ThemeBreakpoints
     zIndex: ThemeLevels,
-    skeleton: ThemeSkeleton
+    skeleton: ThemeSkeleton,
+    forms: ThemeForm
   }
 
 }
