@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { ComponentMeta } from '@storybook/react';
 import { SkeletonProps } from '../index';
 declare const _default: ComponentMeta<(props: SkeletonProps) => JSX.Element>;

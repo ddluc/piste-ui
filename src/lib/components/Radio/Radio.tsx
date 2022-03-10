@@ -1,11 +1,13 @@
 import React from 'react';
 import { Block } from '../Block';
+import { Flex } from '../Flex';
+import { Skeleton, isSkeleton, BaseSkeletonProps } from '../Skeleton';
 
 import CircleSVG from './bin/assets/circle.svg';
 
 import { Input, Label } from './bin';
 
-export interface Props extends React.HTMLAttributes<HTMLInputElement> {
+interface BaseProps extends React.HTMLAttributes<HTMLInputElement> {
   label: string;
   value: string;
   name?: string;
@@ -15,7 +17,23 @@ export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   disabled?: boolean;
 }
 
+interface SkeletonProps extends BaseSkeletonProps, BaseProps {
+  skeleton?: boolean;
+}
+
+type Props = BaseProps | SkeletonProps;
+
 const Radio = (props: Props): JSX.Element => {
+
+  if (isSkeleton(props)) {
+    return (
+      <Flex row gap="0px 8px" alignItems="center">
+        <Skeleton {...props} type="box" height={18} width={18} />
+        <Skeleton {...props} type="box" height={18} width={160} />
+      </Flex>
+    );
+  }
+
   const {
     name,
     label,

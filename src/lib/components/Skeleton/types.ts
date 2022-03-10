@@ -3,7 +3,7 @@
  */
 
 export interface BaseSkeletonProps {
-  skeleton?: true
+  skeleton?: boolean
 }
 
 export interface BoxProps extends BaseSkeletonProps {
@@ -27,7 +27,7 @@ export interface CircleProps extends BaseSkeletonProps {
   secondaryColor?: string;
 }
 
-export const isSkeleton = (props: any): props is BaseSkeletonProps => 'skeleton' in props;
+export const isSkeleton = (props: any): props is BaseSkeletonProps => ('skeleton' in props && props.skeleton);
 
 export const isBoxProps = (props: any): props is BoxProps => props.type === 'box';
 

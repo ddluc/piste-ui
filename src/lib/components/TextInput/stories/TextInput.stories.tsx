@@ -11,7 +11,9 @@ export default {
     placeholder: 'Enter some text...',
     label: 'Text Input',
     hideLabel: false,
-
+    animated: false,
+    touched: false,
+    disabled: false,
   } as TextInputProps
 } as ComponentMeta<typeof TextInput>;
 
@@ -47,4 +49,9 @@ withErrorMessage.args = {
   value: 'daniel#ddluc.com',
   error: 'Please enter a valid email',
   touched: true,
+};
+
+export const asSkeleton = Template.bind({});
+asSkeleton.args = {
+  skeleton: true
 };

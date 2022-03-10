@@ -1,5 +1,6 @@
 import React from 'react';
-export interface Props extends React.HTMLAttributes<HTMLInputElement> {
+import { BaseSkeletonProps } from '../Skeleton';
+interface BaseProps extends React.HTMLAttributes<HTMLInputElement> {
     label: string;
     value: string;
     name?: string;
@@ -8,5 +9,9 @@ export interface Props extends React.HTMLAttributes<HTMLInputElement> {
     error?: string;
     disabled?: boolean;
 }
+interface SkeletonProps extends BaseSkeletonProps, BaseProps {
+    skeleton?: boolean;
+}
+declare type Props = BaseProps | SkeletonProps;
 declare const Radio: (props: Props) => JSX.Element;
 export default Radio;

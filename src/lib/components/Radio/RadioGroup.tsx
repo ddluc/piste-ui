@@ -1,7 +1,11 @@
 import React from 'react';
 import { FormMessage, Fieldset, Legend } from '../Form';
+import { Flex } from '../Flex';
+import { Skeleton, isSkeleton, BaseSkeletonProps } from '../Skeleton';
 
-export interface Props {
+import Radio from './Radio';
+
+export interface BaseProps {
   legend: string;
   name: string;
   touched?: boolean;
@@ -14,7 +18,31 @@ export interface Props {
   children: React.ReactNode
 }
 
+interface SkeletonProps extends BaseSkeletonProps, BaseProps {
+  skeleton?: boolean;
+}
+
+export type Props = SkeletonProps | BaseProps;
+
 const RadioGroup = (props: Props): JSX.Element => {
+
+  if (isSkeleton(props)) {
+    const { children } = props;
+    return (
+      <Flex
+        column
+        gap="12px 0px"
+        padding={['12px', '12px', '12px', '12px']}
+        margin={['0px', '0px', '10px', '4px']}
+      >
+        <Skeleton skeleton type="box" height={20} fluid />
+        { React.Children.map(children, (child) => (
+          <Radio skeleton label="" value="" />
+        ))}
+      </Flex>
+    );
+  }
+
   const {
     name,
     legend,

@@ -1,18 +1,21 @@
 import React, { forwardRef } from 'react';
 import { Block } from '../Block';
+import { Flex } from '../Flex';
 import { Label } from '../Label';
+import { FormMessage } from '../Form';
+import { Skeleton, isSkeleton, BaseSkeletonProps } from '../Skeleton';
 
-import ErrorText from './bin/ErrorText';
 import Input from './bin/Input';
 
-export interface Props {
+interface BaseProps {
   name: string;
   label: string;
+  value: string;
   placeholder?: string;
   hideLabel?: boolean;
   animated?: boolean;
   error?: string;
-  value?: string;
+  help?: string;
   type?: 'text' | 'email' | 'tel' | 'password';
   touched?: boolean;
   disabled?: boolean;
@@ -20,17 +23,34 @@ export interface Props {
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
 }
 
+interface SkeletonProps extends BaseSkeletonProps, BaseProps {
+  skeleton?: boolean;
+}
+
+export type Props = BaseProps | SkeletonProps;
+
 const TextInput = forwardRef<HTMLInputElement, Props>((props: Props, ref): JSX.Element => {
+
+  if (isSkeleton(props)) {
+    const { animated, hideLabel } = props;
+    return (
+      <Flex column gap="8px 0px">
+        { !(animated || hideLabel) && <Skeleton {...props} type="box" height={14} width={140} /> }
+        <Skeleton {...props} type="box" height={40} fluid />
+      </Flex>
+    );
+  }
 
   const {
     name,
     label,
+    value,
     hideLabel,
     animated = false,
     placeholder,
     type,
     error,
-    value,
+    help,
     onChange,
     onBlur,
     touched,
@@ -80,7 +100,7 @@ const TextInput = forwardRef<HTMLInputElement, Props>((props: Props, ref): JSX.E
           ref={ref}
         />
       </Label>
-      <ErrorText error={error} touched={touched} />
+      <FormMessage error={error} touched={touched} help={help} />
     </Block>
   );
 

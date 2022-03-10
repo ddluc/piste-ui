@@ -35,3 +35,8 @@ const ControlledTemplate: ComponentStory<typeof RadioGroup> = (args: RadioGroupP
 };
 
 export const asRadioGroup = ControlledTemplate.bind({});
+
+export const asSkeleton = ControlledTemplate.bind({});
+asSkeleton.args = {
+  skeleton: true
+};

@@ -14,6 +14,7 @@ const Fieldset = styled.fieldset<Props>`
   column-gap: ${({ theme }) => theme.spacing[4]};
   border: ${({ theme, border }) => (border ? `solid ${theme.border.width}` : 'none')}; 
   border-color: ${({ theme, error }) => (error ? theme.palette.danger : theme.palette.neutral[3])}; 
+  border-radius: ${({ theme }) => theme.border.radius};
 `;
 
 export default Fieldset;

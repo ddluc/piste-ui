@@ -7,3 +7,4 @@ export declare const Main: any;
 export declare const asControlledInput: any;
 export declare const withAnimatedLabel: any;
 export declare const withErrorMessage: any;
+export declare const asSkeleton: any;

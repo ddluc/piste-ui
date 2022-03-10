@@ -40,3 +40,8 @@ withErrorMessage.args = {
   touched: true,
   error: 'Please select an option'
 };
+
+export const asSkeleton = Template.bind({});
+asSkeleton.args = {
+  skeleton: true
+};
