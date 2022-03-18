@@ -15,5 +15,5 @@ export interface Props extends BaseCSSProperties {
 export interface ThemedProps extends Props {
     theme: Theme;
 }
-declare const Cell: import("styled-components").StyledComponent<"div", import("styled-components").DefaultTheme, import("../Block").BlockProps & Props, never>;
+declare const Cell: import("styled-components").StyledComponent<(props: import("../Block").BlockProps) => JSX.Element, import("styled-components").DefaultTheme, Props, never>;
 export default Cell;

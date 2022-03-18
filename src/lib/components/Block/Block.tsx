@@ -1,13 +1,17 @@
+import React from 'react';
 import styled, { Theme } from 'styled-components';
 import { BaseCSSProperties } from '../../types';
 
-export interface Props extends BaseCSSProperties {}
+export interface Props extends BaseCSSProperties {
+  children?: React.ReactNode
+  ref?: React.RefObject<HTMLDivElement>
+}
 
 export interface ThemedProps extends Props {
   theme: Theme;
 }
 
-const Block = styled.div<Props>`
+const StyledBlock = styled.div<Props>`
   display: ${({ display = 'block' }: ThemedProps) => display};  
   height: ${({ height = 'auto' }: ThemedProps) => height}; 
   width: ${({ width = 'auto' }: ThemedProps) => width}; 
@@ -39,4 +43,9 @@ const Block = styled.div<Props>`
   ${({ float }: ThemedProps) => float && `float: ${float}`}; 
 `;
 
+// Wrap the styled component as a react component for better type
+// definitions
+const Block = (props: Props): JSX.Element => <StyledBlock {...props} />;
+
+// Default the main component
 export default Block;
