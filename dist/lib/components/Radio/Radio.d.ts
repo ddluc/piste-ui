@@ -12,6 +12,6 @@ interface BaseProps extends React.HTMLAttributes<HTMLInputElement> {
 interface SkeletonProps extends BaseSkeletonProps, BaseProps {
     skeleton?: boolean;
 }
-declare type Props = BaseProps | SkeletonProps;
+export declare type Props = BaseProps | SkeletonProps;
 declare const Radio: (props: Props) => JSX.Element;
 export default Radio;

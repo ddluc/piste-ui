@@ -21,7 +21,7 @@ interface SkeletonProps extends BaseSkeletonProps, BaseProps {
   skeleton?: boolean;
 }
 
-type Props = BaseProps | SkeletonProps;
+export type Props = BaseProps | SkeletonProps;
 
 const Radio = (props: Props): JSX.Element => {
 

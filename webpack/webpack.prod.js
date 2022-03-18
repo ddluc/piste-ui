@@ -1,4 +1,6 @@
+/* eslint-disable quote-props */
 /* eslint-disable import/no-extraneous-dependencies */
+
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -16,7 +18,7 @@ module.exports = {
     globalObject: 'this'
   },
   externals: {
-    react: 'react',
+    'react': 'react',
     'react-dom': 'reactDOM',
     'styled-components': 'styled-components'
   },
