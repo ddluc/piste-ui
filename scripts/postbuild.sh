@@ -8,3 +8,6 @@ cp package.json dist/package.json;
 cp README.md dist/README.md;
 # Remove stories directories from dist
 find ./dist -type d -name stories -exec rm -rf {} +;
+#Publish Yalc Package
+cd dist; 
+yalc publish --push

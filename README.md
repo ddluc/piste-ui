@@ -43,7 +43,7 @@ This will automatically generate a new `Button` component in `src/lib/component/
 * Don't export components in the `bin/` directory. If they are needed elsewhere, abstract them into a new component
 * Don't group components by functionality. All components live in `src/lib/components`. 
 * Add a `types.ts` file if a component introduces a new type associated with the component implementation 
-* Add a `utils.ts` file if the compnent executes additional business for improved testability. 
+* Add a `utils.ts` file if the compnent executes additional logic for improved testability. 
 
 
 
