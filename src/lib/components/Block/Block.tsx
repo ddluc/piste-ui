@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styled, { Theme } from 'styled-components';
 import { BaseCSSProperties } from '../../types';
 
 export interface Props extends BaseCSSProperties {
   children?: React.ReactNode
-  ref?: React.RefObject<HTMLDivElement>
+  ref?: React.ForwardedRef<HTMLDivElement>
 }
 
 export interface ThemedProps extends Props {
@@ -45,7 +45,10 @@ const StyledBlock = styled.div<Props>`
 
 // Wrap the styled component as a react component for better type
 // definitions
-const Block = (props: Props): JSX.Element => <StyledBlock {...props} />;
+
+const Block = forwardRef<HTMLDivElement, Props>((props: Props, ref): JSX.Element => (
+  <StyledBlock {...props} ref={ref} />
+));
 
 // Default the main component
 export default Block;
