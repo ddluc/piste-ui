@@ -5,6 +5,7 @@ import { useOnScreen } from '../../hooks/useOnScreen';
 
 import { PreviewImage } from './bin/PreviewImage';
 import { MainImage } from './bin/MainImage';
+import { px, pcnt } from '../../util';
 
 interface BaseProps extends React.HTMLAttributes<HTMLImageElement> {
   src: {
@@ -55,11 +56,11 @@ const Image = (props: Props): JSX.Element => {
   return (
     <Fit
       ref={currentElement}
-      height={`${height}px`}
-      width={`${width}px`}
+      height={px(height)}
+      width={px(width)}
       position="relative"
       fit={fit}
-      align={`${xpos}% ${ypos}%`}
+      align={`${pcnt(xpos)} ${pcnt(ypos)}`}
       background={{ color: backgroundColor || 'none' }}
     >
       { (isVisible || isLoaded) && (
