@@ -26,7 +26,7 @@ export const getBadgePallete = (theme: Theme): BadgePalette => ({
     icon: theme.palette.primary.contrastText,
   },
   success: {
-    background: transparentize(theme.palette.warning, 0.1),
+    background: transparentize(theme.palette.success, 0.1),
     text: theme.palette.success,
     border: theme.palette.success,
     icon: theme.palette.success,

@@ -16,7 +16,7 @@ export interface ThemedProps extends ContainerProps {
 }
 
 // Defined a styled component implmementation
-export const DefaultBadge = styled.button<ContainerProps>`
+export const DefaultBadge = styled.div<ContainerProps>`
   width: fit-content;
   max-width: 200px;
   display: flex; 

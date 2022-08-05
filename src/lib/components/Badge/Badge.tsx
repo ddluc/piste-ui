@@ -26,13 +26,13 @@ const Badge = (props: Props): JSX.Element => {
   const theme: Theme = useTheme();
 
   const palette = getBadgePallete(theme);
-
   const isClickable = onClick !== null;
-
   const hasText = text !== '';
 
   return (
     <DefaultBadge
+      as={isClickable ? 'button' : 'div'}
+      onClick={onClick}
       palette={palette[type]}
       iconPosition={iconPosition}
       isClickable={isClickable}
