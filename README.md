@@ -27,7 +27,7 @@ This will automatically generate a new `Button` component in `src/lib/component/
 ```
 
 * `__mocks__/`: Add mock data and assets neded for tests and stories 
-* `bin/`: Add supplementatl components which are not abstract or re-usable
+* `bin/`: Add supplemental components which are not abstract or re-usable
 * `stories/`: The components storybook implementation
 * `Button.tsx`: The main component implementation. 
 * `Button.test.tsx`: The component tests
@@ -35,7 +35,7 @@ This will automatically generate a new `Button` component in `src/lib/component/
 
 #### Best Practices
 
-* Define only one component an prop type per file.
+* Define only one component and prop type per file.
 * Implement test cases to maintain ~95% test coverage
 * Provide default component styles from theme and expose theme overrides via props
 * Export both the `Component` and the `ComponentProps` from the index file
