@@ -89,3 +89,10 @@ export const withOverflowText = Template.bind({});
 withOverflowText.args = {
   text: 'This is a button with some really long instructions which breaks the layout'
 };
+
+export const asSkeleton = Template.bind({});
+asSkeleton.args = {
+  skeleton: true,
+  width: 120,
+  height: 40,
+};

@@ -1,10 +1,11 @@
-import React, { isValidElement } from 'react';
+import React from 'react';
 import { useTheme, Theme } from 'styled-components';
 import { PaletteOption } from '../../types';
+import { Skeleton, isSkeleton, BaseSkeletonProps } from '../Skeleton';
 import { getBadgePallete } from './bin/Palette';
 import { DefaultBadge, BadgeIcon, BadgeText } from './bin';
 
-export interface Props {
+export interface BaseProps {
   text?: string
   icon?: React.ReactNode
   iconPosition?: 'right' | 'left'
@@ -13,7 +14,19 @@ export interface Props {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
+interface SkeletonProps extends BaseSkeletonProps {
+  width: number,
+}
+
+export type Props = BaseProps | SkeletonProps;
+
 const Badge = (props: Props): JSX.Element => {
+
+  if (isSkeleton(props)) {
+    const { width = 40 } = props;
+    return (<Skeleton {...props} width={width} height={22} type="box" />);
+  }
+
   const {
     text = '',
     icon,

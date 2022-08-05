@@ -1,4 +1,5 @@
 import React from 'react';
+import { Skeleton, isSkeleton, BaseSkeletonProps } from '../Skeleton';
 import { DefaultButton } from './bin/DefaultButton';
 import { IntentButton } from './bin/IntentButton';
 import { SecondaryButton } from './bin/SecondaryButton';
@@ -7,7 +8,7 @@ import { MinimalButton } from './bin/MinimalButton';
 import { ButtonIcon } from './bin/Icon';
 import { ButtonText } from './bin/Text';
 
-export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface BaseProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variation?: 'default' | 'secondary' | 'minimal';
   intent?: 'success' | 'danger' | 'warning' | 'none';
   type: 'button' | 'submit';
@@ -19,7 +20,19 @@ export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   color?: string;
 }
 
+interface SkeletonProps extends BaseSkeletonProps {
+  width: number
+  height: number
+}
+
+export type Props = BaseProps | SkeletonProps;
+
 const Button = (props: Props): JSX.Element => {
+
+  if (isSkeleton(props)) {
+    const { width = 80, height = 40 } = props;
+    return (<Skeleton width={width} height={height} type="box" />);
+  }
 
   const {
     variation = 'default',

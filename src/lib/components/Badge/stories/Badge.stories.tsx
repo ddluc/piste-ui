@@ -80,7 +80,7 @@ const GroupTemplate: ComponentStory<typeof Badge> = (args: BadgeProps) => (
   </Flex>
 );
 
-export const Main = Template.bind({});
+export const asDefault = Template.bind({});
 
 export const withIcon = IconTemplate.bind({});
 withIcon.args = {
@@ -124,6 +124,12 @@ asDanger.args = {
 export const withOverflowText = Template.bind({});
 withOverflowText.args = {
   text: 'This is a badge with some really long instructions which breaks the layout'
+};
+
+export const asSkeleton = Template.bind({});
+asSkeleton.args = {
+  skeleton: true,
+  width: 80
 };
 
 export const AsBadgeGroup = GroupTemplate.bind({});
