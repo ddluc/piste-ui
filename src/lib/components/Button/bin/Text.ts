@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { px } from '../../../util';
 
 type Props = {};
 

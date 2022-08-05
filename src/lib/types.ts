@@ -18,6 +18,7 @@
   clip?: 'border-box' | 'padding-box' | 'content-box' | 'initial' | 'inherit';
 
 };
+
 export type PaddingCSSProperty = [string, string, string, string];
 export type MarginCSSProperty = [string, string, string, string];
 export type PositionCSSProperty = 'static' | 'relative' | 'fixed' | 'absolute' | 'sticky';
@@ -47,3 +48,20 @@ export type BaseCSSProperties = {
 };
 
 export type AnonymousFunction = (...args: any[]) => any;
+
+export type PaletteOption =
+'primary'
+| 'accent'
+| 'success'
+| 'warning'
+| 'danger'
+| 'neutral'
+| 'black'
+| 'grey'
+| 'white'
+| 'vis1'
+| 'vis2'
+| 'vis3'
+| 'vis4'
+| 'vis5'
+| 'vis6';

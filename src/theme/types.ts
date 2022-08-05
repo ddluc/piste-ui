@@ -11,6 +11,7 @@ export type ThemeFont = {
     bold: number
   },
   size: {
+    xsmall: number,
     small: number,
     normal: number,
     large: number,
