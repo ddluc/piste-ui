@@ -17,6 +17,7 @@ export const DEFAULT_THEME: Theme = {
       bold: 700
     },
     size: {
+      xsmall: 12,
       small: 14,
       normal: 16,
       large: 20,
@@ -36,7 +37,7 @@ export const DEFAULT_THEME: Theme = {
       shades: ['#052E29', '#275C58', '#3FD4C0', '#80D9D7', '#B7EFFA']
     },
     success: '#84DB6B',
-    warning: '#F0DA72',
+    warning: '#d3ba40',
     danger: '#DB7B71',
     body: '#FFFFFF',
     white: '#FFFFFF',
