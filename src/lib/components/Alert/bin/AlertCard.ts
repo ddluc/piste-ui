@@ -19,10 +19,9 @@ export const AlertCard = styled.div<ThemedProps>`
   border-top: solid 3px; 
   border-color: ${(props: ThemedProps) => props.theme.palette.primary.main}; 
   border-radius:${(props: ThemedProps) => props.theme.border.radius};
-  transform: translateY(-1000%);
 
   ${({ state }: ThemedProps) => {
-    if (state === 'active') {
+    if (state === 'active' || state === 'pending') {
       return css`animation: 500ms ease-in-out ${animations.open} forwards;`;
     }
     if (state === 'complete') {

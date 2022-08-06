@@ -17,10 +17,7 @@ export const AlertItem = (props: Props): JSX.Element => {
   const [state, setState] = React.useState<AlertState>('pending');
 
   React.useEffect(() => {
-    const timer = setTimeout(() => {
-      setState('active');
-    }, 100);
-    return () => clearTimeout(timer);
+    setState('active');
   }, []);
 
   React.useEffect(() => {

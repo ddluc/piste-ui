@@ -22,7 +22,7 @@ export const useAlertManager = () => {
     const index = getAlertIndex(alert.id);
     // Don't add item if it exists in the hook state
     if (index != null) return;
-    const result = [...alerts, { ...alert, duration: alert.duration } as Alert];
+    const result = [{ ...alert, duration: alert.duration } as Alert, ...alerts];
     setAlerts(result);
   };
 
