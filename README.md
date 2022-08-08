@@ -2,7 +2,7 @@
 
 A hackable UI framework built with React + Typescript. A work in progress. 
 
-View the [**Live Demo**](https://ddluc.github.io/piste-ui/)
+View the [**Live Demo**](https://ddluc.github.io/piste-ui/?path=/story/core-button--as-default)
 
 ### Component Anatomy
 
