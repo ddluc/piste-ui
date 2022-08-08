@@ -4,6 +4,8 @@
  * ==================================================================
  */
 
+import React from 'react';
+
 /**
  * Define base CSS property types
  */
@@ -65,3 +67,12 @@ export type PaletteOption =
 | 'vis4'
 | 'vis5'
 | 'vis6';
+
+export type AlertData = {
+  id: string,
+  title: string
+  content: string
+  duration?: number
+  type?: PaletteOption
+  icon?: React.ReactNode
+};

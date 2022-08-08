@@ -1,8 +1,11 @@
+import React from 'react';
 import styled, { css, Theme } from 'styled-components';
 import animations from '../animations';
+import { AlertPaletteItem } from './Palette';
 
-type AlertCardProps = {
+export type AlertCardProps = {
   state: 'pending' | 'active' | 'complete';
+  palette: AlertPaletteItem
 };
 
 export interface ThemedProps extends AlertCardProps {
@@ -14,11 +17,13 @@ export const AlertCard = styled.div<ThemedProps>`
   max-width: 320px;
   padding: 20px;
   margin: 10px auto; 
-  background-color: ${(props: ThemedProps) => props.theme.palette.white}; 
+  color: ${({ palette }) => palette.text}; 
+  background-color: ${({ palette }) => palette.background};
   box-shadow: 8px 9px 10px 2px rgba(0,0,0,0.1);
   border-top: solid 3px; 
-  border-color: ${(props: ThemedProps) => props.theme.palette.primary.main}; 
   border-radius:${(props: ThemedProps) => props.theme.border.radius};
+  border-color: ${(props: ThemedProps) => props.palette.border}; 
+  fill: ${(props: ThemedProps) => props.palette.icon}; 
 
   ${({ state }: ThemedProps) => {
     if (state === 'active' || state === 'pending') {

@@ -8,7 +8,7 @@ export interface ThemedProps extends AlertBoxProps {
 
 // Defined a styled component implmementation
 export const AlertBox = styled.div<ThemedProps>`
-  position: absolute; 
+  position: fixed; 
   width: 320px; 
   top: 10px; 
   left: 50%;

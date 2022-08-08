@@ -1,10 +1,10 @@
-/* eslint-disable no-underscore-dangle */
 import React from 'react';
-import { AlertBox, AlertItem } from './bin';
-import type { Alert } from '../../hooks/useAlertManager';
+import Alert from './Alert';
+import { AlertBox } from './bin';
+import type { AlertData } from '../../types';
 
 export interface Props {
-  alerts: Alert[]
+  alerts: AlertData[]
   removeAlert: (id: string) => void
 }
 
@@ -15,8 +15,8 @@ const AlertController = (props: Props): JSX.Element => {
 
   return (
     <AlertBox>
-      {alerts.map((alert: Alert): JSX.Element => (
-        <AlertItem key={alert.id} alert={alert} removeAlert={removeAlert} />
+      {alerts.map((alert: AlertData): JSX.Element => (
+        <Alert key={alert.id} {...alert} removeAlert={removeAlert} />
       ))}
     </AlertBox>
   );

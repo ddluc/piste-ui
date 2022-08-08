@@ -2,42 +2,39 @@
 
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { AlertController, AlertControllerProps } from '../index';
-import { useAlertManager, Alert } from '../../../hooks/useAlertManager';
-import { Block } from '../../Block';
-import { Button } from '../../Button';
+import { Alert, AlertProps } from '../index';
+
+import InfoIcon from '../__mocks__/info.svg';
 
 export default {
   title: 'Core/Alert',
-  component: AlertController,
+  component: Alert,
   args: {
-  } as AlertControllerProps
-} as ComponentMeta<typeof AlertController>;
+    id: '12345',
+    title: 'This is an alert!',
+    type: 'primary',
+    content: '',
+    duration: 10000000,
+    icon: <InfoIcon height="16px" width="16px" />
+  } as AlertProps,
+  argTypes: {
+    icon: { table: { disable: true } }
+  }
+} as ComponentMeta<typeof Alert>;
 
-const Template: ComponentStory<typeof AlertController> = (args: AlertControllerProps) => {
+const removeAlert = (id: string) => {};
 
-  const { alerts, addAlert, removeAlert } = useAlertManager();
+const Template: ComponentStory<typeof Alert> = (args: AlertProps) => (
+  <Alert {...args} removeAlert={removeAlert} />
+);
 
-  const handleButtonClick = () => {
-    const id = `${Math.floor(Math.random() * 1000)}`;
-    const alert: Alert = {
-      id,
-      title: `Alert id #${id}`,
-      content: '',
-      duration: 5000
-    };
-    addAlert(alert);
-  };
+const ContentTemplate: ComponentStory<typeof Alert> = (args: AlertProps) => (
+  <Alert {...args} />
+);
 
-  return (
-    <>
-      <Block>
-        <Button type="button" onClick={handleButtonClick} text="Add New Alert" />
-      </Block>
-      <AlertController alerts={alerts} removeAlert={removeAlert} />
-    </>
-  );
+export const asDefault = Template.bind({});
 
+export const withContent = ContentTemplate.bind({});
+withContent.args = {
+  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
 };
-
-export const Main = Template.bind({});

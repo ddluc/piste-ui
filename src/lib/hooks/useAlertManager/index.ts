@@ -1,15 +1,9 @@
 import React from 'react';
-
-export type Alert = {
-  id?: string,
-  title: string
-  content: React.ReactNode
-  duration?: number
-};
+import { AlertData } from '../../types';
 
 export const useAlertManager = () => {
 
-  const [alerts, setAlerts] = React.useState<Alert[]>([]);
+  const [alerts, setAlerts] = React.useState<AlertData[]>([]);
 
   const getAlertIndex = (id: string): number | null => {
     // Don't add item if it already exists
@@ -18,11 +12,11 @@ export const useAlertManager = () => {
     return null;
   };
 
-  const addAlert = (alert: Alert): void => {
+  const addAlert = (alert: AlertData): void => {
     const index = getAlertIndex(alert.id);
     // Don't add item if it exists in the hook state
     if (index != null) return;
-    const result = [{ ...alert, duration: alert.duration } as Alert, ...alerts];
+    const result = [{ ...alert, duration: alert.duration } as AlertData, ...alerts];
     setAlerts(result);
   };
 
