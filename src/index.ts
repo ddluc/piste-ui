@@ -8,16 +8,13 @@ export type { Theme as PisteTheme } from './theme/types';
  * Export Utilities
  */
 
-export {
-  px,
-  pcnt,
-  debounce,
-  transparentize
-} from './lib/util';
+export { px, pcnt, debounce, transparentize } from './lib/util';
 
 /**
  * Export Components
  */
+export { Alert, AlertController } from './lib/components/Alert';
+export { Badge } from './lib/components/Badge';
 export { Block, BlockProps } from './lib/components/Block';
 export { Button, ButtonProps } from './lib/components/Button';
 export { Checkbox, CheckboxProps } from './lib/components/Checkbox';

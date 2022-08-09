@@ -13,8 +13,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -o ./docs",
     "scaffold:component": "./scripts/scaffold/component.sh",
-    "yalc:push": "yalc publish --push",
-    "sync": "nodemon --watch src --ext ts,tsx --exec 'npm run yalc:push'"
+    "sync": "nodemon --watch src --ext ts,tsx --exec 'npm run build'"
   },
   "repository": {
     "type": "git",
