@@ -1,6 +1,6 @@
 {
   "name": "piste-ui",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A modular and configurable UI framework for web engineers ",
   "main": "index.js",
   "scripts": {

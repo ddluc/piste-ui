@@ -8,7 +8,9 @@ export type { Theme as PisteTheme } from './theme/types';
  * Export Utilities
  */
 
-export { px, pcnt, debounce, transparentize } from './lib/util';
+export {
+  px, pcnt, debounce, transparentize
+} from './lib/util';
 
 /**
  * Export Components
