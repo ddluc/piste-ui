@@ -1,6 +1,6 @@
 {
   "name": "piste-ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A modular and configurable UI framework for web engineers ",
   "main": "index.js",
   "scripts": {
@@ -9,11 +9,12 @@
     "test:verbose": "jest --verbose --config jest.config.json src/",
     "test:coverage": "jest --coverage --silent",
     "build": "webpack --config webpack/webpack.prod.js; ./scripts/postbuild.sh",
-    "lint": " eslint --ext ts,tsx src/", 
-    "lint:fix": "eslint --ext ts,tsx  --fix src/",
+    "lint": " eslint --ext ts,tsx src/",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -o ./docs",
-    "scaffold:component": "./scripts/scaffold/component.sh"
+    "scaffold:component": "./scripts/scaffold/component.sh",
+    "yalc:push": "yalc publish --push",
+    "sync": "nodemon --watch src --ext ts,tsx --exec 'npm run yalc:push'"
   },
   "repository": {
     "type": "git",
@@ -69,6 +70,7 @@
     "html-webpack-plugin": "^5.5.0",
     "jest": "^27.5.1",
     "jest-styled-components": "^7.0.8",
+    "nodemon": "^2.0.19",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "storybook-addon-styled-component-theme": "^2.0.0",
@@ -85,6 +87,5 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "styled-components": "^5.3.3"
-  },
-  "dependencies": {}
+  }
 }

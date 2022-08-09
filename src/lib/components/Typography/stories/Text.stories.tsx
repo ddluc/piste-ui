@@ -7,6 +7,6 @@ export default {
   component: Styleguide,
 } as ComponentMeta<typeof Styleguide>;
 
-const Template: ComponentStory<typeof Styleguide> = (args) => <Styleguide {...args} />;
+const Template: ComponentStory<typeof Styleguide> = (args: any) => <Styleguide {...args} />;
 
 export const Main = Template.bind({});
