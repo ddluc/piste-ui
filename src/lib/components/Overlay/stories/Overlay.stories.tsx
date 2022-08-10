@@ -7,9 +7,11 @@ import { Block } from '../../Block';
 import { Button } from '../../Button';
 
 export default {
-  title: 'Overlay',
+  title: 'Core/Overlay',
+  args: {
+    preventScroll: true
+  } as OverlayProps,
   component: Overlay,
-
 } as ComponentMeta<typeof Overlay>;
 
 const Template: ComponentStory<typeof Overlay> = (args: OverlayProps) => {
