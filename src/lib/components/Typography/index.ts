@@ -1,5 +1,6 @@
 // Main Component Export
 import { Body } from './bin/Body';
+import { Text } from './bin/Text';
 import {
   H1, H2, H3, H4, H5, H6
 } from './bin/Heading';
@@ -21,6 +22,7 @@ type TypographyComponents = {
   H5: typeof H5,
   H6: typeof H6,
   Mono: typeof Mono,
+  Text: typeof Text,
   List: {
     Ordered: typeof OrderedList,
     Unordered: typeof UnorderedList,
@@ -39,6 +41,7 @@ export const Typography: TypographyComponents = {
   H5,
   H6,
   Mono,
+  Text,
   List: {
     Ordered: OrderedList,
     Unordered: UnorderedList,

@@ -8,7 +8,7 @@ export interface ThemedProps extends Props {
   theme: Theme;
 }
 
-export const Body = styled.span<Props>`
+export const Text = styled.span<Props>`
   ${AbstractTextStyles}
   font-size: ${({ size, theme }) => size || `${theme.fonts.size.normal}px`};
   line-height: ${({ lineHeight, theme }) => lineHeight || `${Math.floor(theme.fonts.size.normal * 1.5)}px`}; ;
