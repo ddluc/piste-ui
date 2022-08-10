@@ -17,12 +17,12 @@ export const Link = styled.a<Props>`
   text-decoration: none; 
   font-size: ${({ size, theme }) => size || `${theme.fonts.size.normal}px`};
   color: ${({ theme, visited, active }) => {
-    if (active) return theme.palette.primary.shades[1];
+    if (active) return theme.palette.primary.shades[2];
     if (visited) return theme.palette.neutral[2];
-    return theme.palette.primary.main;
+    return theme.palette.primary.shades[2];
   }};
   border-bottom: ${({ active }) => (active ? 'solid 2px' : 'none')};
-  border-color: ${({ active, theme }) => (active ? theme.palette.primary.shades[1] : 'none')};
+  border-color: ${({ active, theme }) => (active ? theme.palette.primary.shades[2] : 'none')};
 
   &:hover {
     cursor: pointer;
@@ -40,8 +40,5 @@ export const Link = styled.a<Props>`
   &:visited {
     color: ${({ theme }) => theme.palette.primary.shades[4]};
   }
-
-  
-
 
 `;

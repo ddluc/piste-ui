@@ -5,6 +5,7 @@ import {
 } from './bin/Heading';
 import { Link } from './bin/Link';
 import { ListItem, OrderedList, UnorderedList } from './bin/List';
+import { Mono } from './bin/Mono';
 
 /**
  * Export Text Components
@@ -19,11 +20,13 @@ type TypographyComponents = {
   H4: typeof H4,
   H5: typeof H5,
   H6: typeof H6,
+  Mono: typeof Mono,
   List: {
     Ordered: typeof OrderedList,
     Unordered: typeof UnorderedList,
     Item: typeof ListItem
   }
+
 };
 
 export const Typography: TypographyComponents = {
@@ -35,6 +38,7 @@ export const Typography: TypographyComponents = {
   H4,
   H5,
   H6,
+  Mono,
   List: {
     Ordered: OrderedList,
     Unordered: UnorderedList,
