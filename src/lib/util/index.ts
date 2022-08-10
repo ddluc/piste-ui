@@ -54,6 +54,10 @@ export const transparentize = (color: string, opacity: number) => {
 
 /**
  * Genereate a box shadow for form elements
+ * @param error form element has error
+ * @param theme the ui theme
+ * @param shade the shade to use for the outline
+ * @param dangerOpacity the opacity to set for error outline
  */
 export const getOutline = (error: boolean, theme: Theme, shade = 4, dangerOpacity = 0.3): string => {
   if (error) {
