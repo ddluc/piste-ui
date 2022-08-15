@@ -36,4 +36,4 @@ const Template: ComponentStory<typeof Overlay> = (args: OverlayProps) => {
   );
 };
 
-export const as = Template.bind({});
+export const asDefault = Template.bind({});
