@@ -1,16 +1,16 @@
 import React from 'react';
 import { useTheme } from 'styled-components';
-import { Overlay } from '../Overlay';
 import {
   SideSheetContainer as Container
 } from './bin';
-import { Button } from '../Button';
 import CloseIcon from './bin/assets/close.svg';
+import { Overlay } from '../Overlay';
+import { Button } from '../Button';
 import { Block } from '../Block';
 
 export interface Props {
   children: React.ReactNode
-  onClose: () => void
+  onClose?: () => void
 }
 
 const Sidesheet = (props: Props): JSX.Element => {
