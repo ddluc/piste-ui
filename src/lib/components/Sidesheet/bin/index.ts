@@ -34,6 +34,3 @@ export const SideSheetContainer = styled.div<ThemedProps>`
     width: 80%;
   }
 `;
-
-export const CloseButton = styled.button`
-`;
