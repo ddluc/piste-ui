@@ -1,18 +1,11 @@
-/*
- * Define styled utility components specific to this components implementation
- * with and example implementation
- */
 import styled, { css, Theme } from 'styled-components';
-import animations from './animations';
+import animations, { OVERLAY_ANIMATION_DURATION } from './animations';
+import { OverlayState } from '../../../types';
 
-type OverlayState = 'opening' | 'opened' | 'closing' | 'closed';
-
-// Example component Props
 type OverlayContainerProps = {
   state: OverlayState;
 };
 
-// Extend the Component props with the injected theme
 export interface ThemedProps extends OverlayContainerProps {
   theme: Theme;
 }
@@ -29,9 +22,9 @@ export const OverlayContainer = styled.div<ThemedProps>`
   &::before {
   ${(props: ThemedProps) => {
     if (props.state === 'opening' || props.state === 'opened') {
-      return css`animation: 500ms ease-in-out 0s forwards ${animations.fadeIn};`;
+      return css`animation: ${OVERLAY_ANIMATION_DURATION}ms ease-in-out 0s forwards ${animations.fadeIn};`;
     }
-    return css`animation: 500ms ease-in-out 0s forwards ${animations.fadeOut};`;
+    return css`animation: ${OVERLAY_ANIMATION_DURATION}ms ease-in-out 0s forwards ${animations.fadeOut};`;
   }};
     background-color: ${(props: ThemedProps) => props.theme.palette.neutral[1]};
     left: 0px;

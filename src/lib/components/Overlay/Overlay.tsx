@@ -1,9 +1,8 @@
 import React from 'react';
-import { OverlayContainer } from './bin';
+import { OverlayContainer as Container } from './bin';
+import { OverlayState } from '../../types';
 
-type OverlayState = 'opening' | 'opened' | 'closing' | 'closed';
-
-const OVERLAY_ANIMATION_DURATION = 500;
+import { OVERLAY_ANIMATION_DURATION } from './bin/animations';
 
 export interface Props {
   preventScroll?: boolean
@@ -77,9 +76,9 @@ const Overlay = (props: Props): JSX.Element => {
   }, [state]);
 
   return (
-    <OverlayContainer state={state} onClick={onOverlayClick}>
+    <Container state={state} onClick={onOverlayClick}>
       {children && children({ state, setState })}
-    </OverlayContainer>
+    </Container>
   );
 };
 

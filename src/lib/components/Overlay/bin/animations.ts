@@ -1,5 +1,7 @@
 import { keyframes } from 'styled-components';
 
+export const OVERLAY_ANIMATION_DURATION = 500;
+
 const fadeIn = keyframes`
 
   0% {

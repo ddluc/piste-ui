@@ -1,7 +1,8 @@
 import styled, { css, Theme } from 'styled-components';
 import animations from './animation';
+import { OverlayState } from '../../../types';
 
-type SidesheetState = 'opening' | 'opened' | 'closing' | 'closed';
+type SidesheetState = OverlayState;
 
 type SideSheetContainerProps = {
   state: SidesheetState
