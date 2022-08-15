@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css, Theme } from 'styled-components';
-import animations from '../animations';
+import animations from './animations';
 import { AlertPaletteItem } from './Palette';
 
 export type AlertCardProps = {

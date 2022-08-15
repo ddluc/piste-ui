@@ -25,17 +25,33 @@ export const getThemeColor = ({ color, shade = null, theme }: ThemedProps): stri
 };
 
 export const ColorBox = styled.div<ColorBoxProps>`
-  height: 40px; 
-  width: 40px;
+  position: relative;
+  height: 60px; 
+  width: 60px;
   margin: 5px 5px 5px 5px;    
   border: ${({ border }) => (border ? `solid 1px ${border}` : '')}; 
   background-color: ${getThemeColor};
+  &::after {
+    content: '${getThemeColor}';
+    font-size: 11px;
+    width: 60px;
+    position: absolute; 
+    bottom: -20px;
+  }
 `;
 
 export const BrandColorBox = styled.div<ColorBoxProps>`
-  height: 40px; 
-  width: 40px;   
+  position: relative;
+  height: 60px; 
+  width: 60px;   
   margin: 5px 20px 5px 5px; 
   border: ${({ border }) => (border ? `solid 1px ${border}` : '')}; 
   background-color: ${getThemeColor};
+  &::after {
+    content: '${getThemeColor}';
+    font-size: 11px;
+    width: 60px;
+    position: absolute; 
+    bottom: -20px;
+  }
 `;

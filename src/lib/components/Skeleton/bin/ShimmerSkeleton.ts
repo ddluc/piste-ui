@@ -1,5 +1,5 @@
 import styled, { Theme } from 'styled-components';
-import animations from '../animations';
+import animations from './animations';
 
 export interface Props {
   colors?: [string, string];

@@ -18,7 +18,7 @@ const StyledBlock = styled.div<Props>`
   ${({ position = 'relative' }: ThemedProps) => position && `position: ${position}`}; 
   ${({ left }: ThemedProps) => left && `left: ${left}`}; 
   ${({ right }: ThemedProps) => right && `right: ${right}`}; 
-  ${({ top }: ThemedProps) => top && `left: ${top}`}; 
+  ${({ top }: ThemedProps) => top && `top: ${top}`}; 
   ${({ bottom }: ThemedProps) => bottom && `bottom: ${bottom}`}; 
   ${({ margin }: ThemedProps) => margin && `margin: ${margin[0]} ${margin[1]} ${margin[2]} ${margin[3]}`}; 
   ${({ padding }: ThemedProps) => padding && `padding: ${padding[0]} ${padding[1]} ${padding[2]} ${padding[3]}`}; 

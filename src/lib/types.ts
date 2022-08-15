@@ -76,3 +76,5 @@ export type AlertData = {
   type?: PaletteOption
   icon?: React.ReactNode
 };
+
+export type OverlayState = 'opening' | 'opened' | 'closing' | 'closed';
