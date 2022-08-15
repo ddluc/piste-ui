@@ -3,9 +3,11 @@ import { OverlayContainer } from './bin';
 
 type OverlayState = 'opening' | 'opened' | 'closing' | 'closed';
 
+const OVERLAY_ANIMATION_DURATION = 500;
+
 export interface Props {
-  children?: React.ReactNode
   preventScroll?: boolean
+  children?: (props: { state: OverlayState, setState: React.Dispatch<React.SetStateAction<OverlayState>> }) => JSX.Element
   onClose?: () => void
 }
 
@@ -21,7 +23,7 @@ const Overlay = (props: Props): JSX.Element => {
     }
   }, []);
 
-  const onOverlayClick = () => {
+  const onOverlayClick = (e: any) => {
     setState('closing');
   };
 
@@ -60,12 +62,15 @@ const Overlay = (props: Props): JSX.Element => {
     }
   }, [state]);
 
+  /**
+   * Automate closing of overlay
+   */
   React.useEffect(() => {
     if (state === 'closing') {
       const timer = setTimeout(() => {
         setState('closed');
         onClose();
-      }, 500);
+      }, OVERLAY_ANIMATION_DURATION);
       return () => clearTimeout(timer);
     }
     return null;
@@ -73,7 +78,7 @@ const Overlay = (props: Props): JSX.Element => {
 
   return (
     <OverlayContainer state={state} onClick={onOverlayClick}>
-      {children}
+      {children && children({ state, setState })}
     </OverlayContainer>
   );
 };
