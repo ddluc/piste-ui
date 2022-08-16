@@ -13,7 +13,7 @@ import TrashIcon from '../__mocks__/trash.svg';
 const { H1, Body, Text } = Typography;
 
 export default {
-  title: 'Dialogue',
+  title: 'Core/Dialog',
   component: Dialog,
   args: {} as DialogProps,
   argTypes: {
