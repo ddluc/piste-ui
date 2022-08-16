@@ -1,29 +1,6 @@
 import { keyframes } from 'styled-components';
 
-const slideInBottom = keyframes`
-
-  0% {
-    bottom: -1000px;
-  }
-
-  100% {
-    bottom: 10px;
-  }
-
-`;
-
-const slideOutBottom = keyframes`
-
-  0% { 
-    bottom: 10px; 
-  }
-
-  100% { 
-    bottom: -1000px;
-  }
-`;
-
-const slideInTop = keyframes`
+const popIn = keyframes`
 
   0% { 
     transform: scale(0.6);
@@ -46,7 +23,7 @@ const slideInTop = keyframes`
 
 `;
 
-const slideOutTop = keyframes`
+const popOut = keyframes`
 
   0% { 
     transform: scale(1);
@@ -65,10 +42,8 @@ const slideOutTop = keyframes`
 `;
 
 const animations = {
-  slideInBottom,
-  slideOutBottom,
-  slideInTop,
-  slideOutTop,
+  popIn,
+  popOut
 };
 
 export default animations;
