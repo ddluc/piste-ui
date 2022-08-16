@@ -13,8 +13,8 @@ export const Dropdown = styled.div<ThemedProps>`
   position: absolute;
   height: 16px; 
   width: 16px;
-  right: 0px;
-  top: 0px;
+  right: 10px;
+  top: 10px;
   transform: rotate(180deg);
   fill: ${({ theme }) => theme.palette.grey};
   ${({ open }) => {

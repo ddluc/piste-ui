@@ -1,6 +1,7 @@
 import React from 'react';
 import { ElevationLevel } from '../../types';
 import { Card } from '../Card';
+import { Block } from '../Block';
 import { Header, Content, Dropdown } from './bin';
 
 import ArrowIcon from './bin/assets/arrow.svg';
@@ -24,7 +25,7 @@ const Accordion = (props: Props): JSX.Element => {
     controlled,
     children,
     elevation,
-    height = 120,
+    height = 1000,
     onClick
   } = props;
 
@@ -41,14 +42,14 @@ const Accordion = (props: Props): JSX.Element => {
   const shouldRenderContent = () => (controlled ? open : isOpen);
 
   return (
-    <Card elevation={elevation}>
+    <Card elevation={elevation} padding={['0px', '0px', '0px', '0px']}>
       <Header onClick={handleHeaderClick}>
         <strong>{title}</strong>
         <Dropdown open={shouldRenderContent()}>
           <ArrowIcon height="16px" width="16px" />
         </Dropdown>
       </Header>
-      <Content open={shouldRenderContent()} height={height}>
+      <Content open={shouldRenderContent()} maxHeight={height}>
         {children}
       </Content>
     </Card>

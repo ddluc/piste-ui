@@ -83,7 +83,7 @@ const Card = styled(Block)<ContainerProps>`
   }}; 
 
   border-radius: ${({ theme }) => theme.border.radius}; 
-  padding: 10px;
+  padding: ${({ padding }) => (padding ? `${padding[0]} ${padding[1]} ${padding[2]} ${padding[3]}` : '10px')}; 
 
 `;
 

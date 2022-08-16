@@ -32,15 +32,18 @@ const GroupTemplate: ComponentStory<typeof Accordion> = (args: AccordionProps) =
   const [active, setActive] = React.useState<string | null>(null);
 
   const onClick = (id: string) => {
-    if (active === id) setActive(null);
-    setActive(id);
+    if (active === id) {
+      setActive(null);
+    } else {
+      setActive(id);
+    }
   };
 
   const isOpen = (id: string) => id === active;
 
   return (
     <Flex column gap="10px">
-      <Accordion id="1" title="Accordion 1" onClick={onClick} controlled open={isOpen('1')}>
+      <Accordion id="1" title="Accordion 1" onClick={onClick} controlled open={isOpen('1')} height={140}>
         <small>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis odio accumsan,
           convallis libero in, efficitur erat. Duis porta neque et faucibus eleifend. Maecenas
@@ -50,7 +53,7 @@ const GroupTemplate: ComponentStory<typeof Accordion> = (args: AccordionProps) =
           Proin erat lacus, placerat at diam sed, viverra cursus mi.
         </small>
       </Accordion>
-      <Accordion id="2" title="Accordion 1" onClick={onClick} controlled open={isOpen('2')}>
+      <Accordion id="2" title="Accordion 2" onClick={onClick} controlled open={isOpen('2')} height={140}>
         <small>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis odio accumsan,
           convallis libero in, efficitur erat. Duis porta neque et faucibus eleifend. Maecenas
@@ -60,7 +63,7 @@ const GroupTemplate: ComponentStory<typeof Accordion> = (args: AccordionProps) =
           Proin erat lacus, placerat at diam sed, viverra cursus mi.
         </small>
       </Accordion>
-      <Accordion id="3" title="Accordion 1" onClick={onClick} controlled open={isOpen('3')}>
+      <Accordion id="3" title="Accordion 3" onClick={onClick} controlled open={isOpen('3')} height={140}>
         <small>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis odio accumsan,
           convallis libero in, efficitur erat. Duis porta neque et faucibus eleifend. Maecenas

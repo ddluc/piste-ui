@@ -19,7 +19,7 @@ export const Header = styled.button<ThemedProps>`
   position: relative; 
   width: 100%; 
   margin: 0px; 
-  padding: 0px;
+  padding: 10px;
   font-family:  ${({ theme }) => theme.fonts.family.body}; 
   font-size:  ${({ theme }) => px(theme.fonts.size.small)};
   text-align: left;   
