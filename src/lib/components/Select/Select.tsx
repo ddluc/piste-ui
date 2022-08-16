@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Block } from '../Block';
 import { Flex } from '../Flex';
 import { Label } from '../Label';
@@ -38,7 +38,7 @@ interface SkeletonProps extends BaseSkeletonProps, BaseProps {
 
 export type Props = BaseProps | SkeletonProps;
 
-const Select = (props: Props): JSX.Element => {
+const Select = forwardRef<HTMLSelectElement, Props>((props: Props, ref): JSX.Element => {
 
   if (isSkeleton(props)) {
     const { animated, hideLabel } = props;
@@ -129,6 +129,7 @@ const Select = (props: Props): JSX.Element => {
             onBlur={onBlurHandler}
             onClick={onClickHandler}
             value={(value || 'default')}
+            ref={ref}
           >
             {renderPlaceholder()}
             {renderOptions()}
@@ -141,6 +142,6 @@ const Select = (props: Props): JSX.Element => {
       </Label>
     </Block>
   );
-};
+});
 
 export default Select;
