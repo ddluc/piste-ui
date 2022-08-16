@@ -25,12 +25,23 @@ const slideOutBottom = keyframes`
 
 const slideInTop = keyframes`
 
-  0% {
-    top: -1000px;
+  0% { 
+    transform: scale(0.6);
+    opacity: 0;
   }
 
-  100% {
-    top: 200px;
+  30% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+
+  60% {
+    transform: scale(1);
+  }
+
+  100% { 
+    transform: scale(1);
+    opacity: 1
   }
 
 `;
@@ -38,11 +49,18 @@ const slideInTop = keyframes`
 const slideOutTop = keyframes`
 
   0% { 
-    top: 200px; 
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  75% { 
+    transform: scale(0.6);
+    opacity: 0
   }
 
   100% { 
-    top: -1000px;
+    transform: scale(0.6);
+    opacity: 0
   }
 `;
 

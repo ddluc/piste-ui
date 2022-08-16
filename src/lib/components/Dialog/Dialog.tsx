@@ -60,7 +60,6 @@ const Dialogue = (props: Props): JSX.Element => {
 
   /**
    * Confirm Dialog
-   * @param e
    */
   const onConfirmClick = (setOverlayState: React.Dispatch<React.SetStateAction<OverlayState>>) => {
     setOverlayState('closing');

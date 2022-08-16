@@ -14,17 +14,20 @@ export interface ThemedProps extends DialogContainerProps {
 export const DialogContainer = styled.div<ThemedProps>`
   background-color: ${(props: ThemedProps) => props.theme.palette.white}; 
   width: 600px;
+  height: fit-content;
+  max-height: 600px;
   padding: 30px 10px;
   position: absolute;
   left: 0; 
   right: 0; 
-  margin-left: auto; 
-  margin-right: auto; 
+  top: 0; 
+  bottom: 0;
+  margin: auto; 
   border-radius: ${(props: ThemedProps) => props.theme.border.radius}; ;
   
   ${(props: ThemedProps) => {
     if (props.state === 'opening' || props.state === 'opened') {
-      return css`animation: 500ms ease-out 0s forwards ${animations.slideInTop};`;
+      return css`animation: 300ms ease-out 0s forwards ${animations.slideInTop};`;
     }
     return css`animation: 300ms ease-in 0s forwards ${animations.slideOutTop};`;
   }};
