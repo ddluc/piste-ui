@@ -11,7 +11,7 @@ import { ButtonText } from './bin/Text';
 export interface BaseProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variation?: 'default' | 'secondary' | 'minimal';
   intent?: 'success' | 'danger' | 'warning' | 'none';
-  type: 'button' | 'submit';
+  type?: 'button' | 'submit';
   text?: string;
   icon?: React.ReactNode;
   iconPosition?: 'right' | 'left';
