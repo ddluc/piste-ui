@@ -31,7 +31,7 @@ const ControlledTemplate: ComponentStory<typeof TextInput> = (args: TextInputPro
   return <TextInput {...args} value={value} onChange={onChange} />;
 };
 
-export const Main = Template.bind({});
+export const asDefault = Template.bind({});
 
 export const asControlledInput = ControlledTemplate.bind({});
 asControlledInput.args = {
