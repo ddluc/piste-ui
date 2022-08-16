@@ -3,15 +3,15 @@ import styled, { Theme, css } from 'styled-components';
 import animations from './animation';
 import { OverlayState } from '../../../types';
 
-type DialogueContainerProps = {
+type DialogContainerProps = {
   state: OverlayState
 };
 
-export interface ThemedProps extends DialogueContainerProps {
+export interface ThemedProps extends DialogContainerProps {
   theme: Theme;
 }
 
-export const DialogueContainer = styled.div<ThemedProps>`
+export const DialogContainer = styled.div<ThemedProps>`
   background-color: ${(props: ThemedProps) => props.theme.palette.white}; 
   width: 600px;
   padding: 30px 10px;
@@ -40,7 +40,7 @@ export const DialogueContainer = styled.div<ThemedProps>`
   }
 `;
 
-export const DialogueFooter = styled.div<{theme: Theme}>`
+export const DialogFooter = styled.div<{theme: Theme}>`
   display: flex; 
   justify-content: flex-end;
   padding-left: 10px;

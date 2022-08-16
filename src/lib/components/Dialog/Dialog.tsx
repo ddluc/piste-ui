@@ -1,14 +1,15 @@
 import React from 'react';
 import { useTheme } from 'styled-components';
 import {
-  DialogueContainer as Container,
-  DialogueFooter as Footer
+  DialogContainer as Container,
+  DialogFooter as Footer
 } from './bin';
 import CloseIcon from './bin/assets/close.svg';
 import { Overlay } from '../Overlay';
 import { Button } from '../Button';
 import { Block } from '../Block';
 import { useWindowSize } from '../../hooks/useWindowResize';
+import { OverlayState } from '../../types';
 
 export interface Props {
   children: React.ReactNode
@@ -18,6 +19,7 @@ export interface Props {
   confirmText?: string
   cancelText?: string
   onClose?: () => void
+  onCancel?: () => void
   onConfirm?: () => void
 }
 
@@ -31,6 +33,7 @@ const Dialogue = (props: Props): JSX.Element => {
     confirmText = 'Confirm',
     cancelText = 'Cancel',
     onClose,
+    onCancel,
     onConfirm
   } = props;
 
@@ -45,6 +48,25 @@ const Dialogue = (props: Props): JSX.Element => {
     e.stopPropagation();
   };
 
+  /**
+   * Close Dialog
+   * @param e
+   * @param setOverlayState
+   */
+  const onCancelClick = (setOverlayState: React.Dispatch<React.SetStateAction<OverlayState>>) => {
+    setOverlayState('closing');
+    onCancel();
+  };
+
+  /**
+   * Confirm Dialog
+   * @param e
+   */
+  const onConfirmClick = (setOverlayState: React.Dispatch<React.SetStateAction<OverlayState>>) => {
+    setOverlayState('closing');
+    onConfirm();
+  };
+
   return (
     <Overlay preventScroll onClose={onClose}>
       {({ state, setState }) => (
@@ -53,7 +75,7 @@ const Dialogue = (props: Props): JSX.Element => {
             <Button
               type="button"
               variation="minimal"
-              onClick={() => setState('closing')}
+              onClick={() => onCancelClick(setState)}
               icon={<CloseIcon width="16px" height="16px" fill={theme.palette.neutral[2]} />}
             />
           </Block>
@@ -65,13 +87,16 @@ const Dialogue = (props: Props): JSX.Element => {
                 variation="secondary"
                 text={cancelText}
                 fluid={windowSize.width < 720}
+                onClick={() => onCancelClick(setState)}
               />
               <Button
                 type="button"
                 variation="default"
                 text={confirmText}
                 intent={intent}
+                icon={confirmIcon && confirmIcon}
                 fluid={windowSize.width < 720}
+                onClick={(e) => onConfirmClick(setState)}
               />
             </Footer>
           )}
