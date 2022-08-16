@@ -14,8 +14,12 @@ export default {
 
 const Template: ComponentStory<typeof Card> = (args: CardProps) => (
   <Card {...args}>
-    <Typography.H1>This is a Card</Typography.H1>
-    <Typography.Body>This is a Card</Typography.Body>
+    <Typography.H4>This is a Card</Typography.H4>
+    <Typography.Body size="14px" lineHeight="18px">
+      Morbi ut nulla a erat efficitur aliquam id vel lectus.
+      Nullam consectetur quam nec sapien facilisis egestas.
+      Pellentesque rutrum tellus purus, ut sodales sem congue elementum.
+    </Typography.Body>
   </Card>
 );
 

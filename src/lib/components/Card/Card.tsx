@@ -1,13 +1,15 @@
 import styled, { Theme } from 'styled-components';
+import { ElevationLevel } from '../../types';
 import { Block } from '../Block';
 
 type ContainerProps = {
-  elevation: 0 | 1 | 2 | 3 | 4 | 6 | 8 | 12 | 16;
-  border: string;
+  elevation?: ElevationLevel
+  border?: string
+  children?: React.ReactNode
 };
 
 export interface ThemedProps extends ContainerProps {
-  theme: Theme;
+  theme: Theme
 }
 
 const Card = styled(Block)<ContainerProps>`

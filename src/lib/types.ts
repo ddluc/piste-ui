@@ -35,6 +35,8 @@ export type BaseCSSProperties = {
   float?: CSSFLoatProperty;
   margin?: MarginCSSProperty;
   padding?: PaddingCSSProperty;
+  m?: string;
+  p?: string;
   border?: string;
   opacity?: number;
   background?: BackgroundCSSProperty;
@@ -78,3 +80,5 @@ export type AlertData = {
 };
 
 export type OverlayState = 'opening' | 'opened' | 'closing' | 'closed';
+
+export type ElevationLevel = 0 | 1 | 2 | 3 | 4 | 6 | 8 | 12 | 16;
