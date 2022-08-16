@@ -2,17 +2,17 @@ import styled, { Theme } from 'styled-components';
 import { ElevationLevel } from '../../types';
 import { Block } from '../Block';
 
-type ContainerProps = {
+export type Props = {
   elevation?: ElevationLevel
   border?: string
   children?: React.ReactNode
 };
 
-export interface ThemedProps extends ContainerProps {
+export interface ThemedProps extends Props {
   theme: Theme
 }
 
-const Card = styled(Block)<ContainerProps>`
+const Card = styled(Block)<Props>`
   min-height: 20px;
   transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   box-shadow: ${({ elevation }) => {
