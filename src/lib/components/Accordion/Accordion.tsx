@@ -25,7 +25,7 @@ const Accordion = (props: Props): JSX.Element => {
     controlled,
     children,
     elevation,
-    height = 1000,
+    height = 400,
     onClick
   } = props;
 

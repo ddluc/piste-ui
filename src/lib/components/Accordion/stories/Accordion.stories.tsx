@@ -10,7 +10,8 @@ export default {
   title: 'Core/Accordion',
   component: Accordion,
   args: {
-    title: 'This is an accordion'
+    title: 'This is an accordion',
+    height: 200
   } as AccordionProps
 } as ComponentMeta<typeof Accordion>;
 
@@ -63,7 +64,7 @@ const GroupTemplate: ComponentStory<typeof Accordion> = (args: AccordionProps) =
           Proin erat lacus, placerat at diam sed, viverra cursus mi.
         </small>
       </Accordion>
-      <Accordion id="3" title="Accordion 3" onClick={onClick} controlled open={isOpen('3')} height={140}>
+      <Accordion id="3" title="Accordion 3" onClick={onClick} controlled open={isOpen('3')} height={280}>
         <small>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis odio accumsan,
           convallis libero in, efficitur erat. Duis porta neque et faucibus eleifend. Maecenas
