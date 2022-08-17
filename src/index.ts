@@ -44,6 +44,7 @@ export { Radio, RadioProps } from './lib/components/Radio';
 export { Scale, ScaleProps } from './lib/components/Scale';
 export { Scroll, ScrollProps } from './lib/components/Scroll';
 export { Select, SelectProps } from './lib/components/Select';
+export { Sidesheet, SidesheetProps } from './lib/components/Sidesheet';
 export { Skeleton, SkeletonProps } from './lib/components/Skeleton';
 export { TextInput, TextInputProps } from './lib/components/TextInput';
 export { Typography, TextProps } from './lib/components/Typography';
