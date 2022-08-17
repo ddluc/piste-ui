@@ -5,11 +5,12 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Spacer, SpacerProps } from '../index';
 
 export default {
-  title: 'Spacer',
+  title: 'Layout/Spacer',
   component: Spacer,
   args: {
-    spacing: 1,
-    debug: true
+    spacing: 12,
+    debug: true,
+    height: ''
   } as SpacerProps
 } as ComponentMeta<typeof Spacer>;
 
