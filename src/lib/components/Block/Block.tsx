@@ -21,7 +21,7 @@ const StyledBlock = styled.div<Props>`
   ${({ top }: ThemedProps) => top && `top: ${top}`}; 
   ${({ bottom }: ThemedProps) => bottom && `bottom: ${bottom}`}; 
   ${({ m }: ThemedProps) => m && `margin: ${m}`}; 
-  ${({ p }: ThemedProps) => p && `padding: ${p}`}; 
+  ${({ p }: ThemedProps) => p && `padding: ${p}`};
   ${({ margin }: ThemedProps) => margin && `margin: ${margin[0]} ${margin[1]} ${margin[2]} ${margin[3]}`}; 
   ${({ padding }: ThemedProps) => padding && `padding: ${padding[0]} ${padding[1]} ${padding[2]} ${padding[3]}`}; 
   ${({ opacity }: ThemedProps) => opacity && `opacity: ${opacity}`}; 
@@ -41,7 +41,7 @@ const StyledBlock = styled.div<Props>`
   ${({ outline }: ThemedProps) => outline && `outline: ${outline}`}; 
   ${({ textAlign }: ThemedProps) => textAlign && `text-align: ${textAlign}`}; 
   ${({ overflow }: ThemedProps) => overflow && `overflow: ${overflow}`}; 
-  ${({ zIndex }: ThemedProps) => zIndex && `zIndex: ${zIndex}`}; 
+  ${({ zIndex }: ThemedProps) => zIndex && `z-index: ${zIndex}`}; 
   ${({ float }: ThemedProps) => float && `float: ${float}`}; 
 `;
 
