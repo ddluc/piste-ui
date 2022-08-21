@@ -9,13 +9,20 @@ import { Button } from '../Button';
 import { Block } from '../Block';
 
 export interface Props {
-  children: React.ReactNode
+  show?: boolean
+  children?: React.ReactNode
+  closeIcon?: React.ReactNode
   onClose?: () => void
 }
 
 const Sidesheet = (props: Props): JSX.Element => {
 
-  const { children, onClose } = props;
+  const {
+    children,
+    show = true,
+    closeIcon,
+    onClose
+  } = props;
 
   const theme = useTheme();
 
@@ -26,16 +33,20 @@ const Sidesheet = (props: Props): JSX.Element => {
     e.stopPropagation();
   };
 
+  const onCloseButtonClick = () => {
+    onClose();
+  };
+
   return (
-    <Overlay preventScroll onClose={onClose}>
-      {({ state, setState }) => (
+    <Overlay preventScroll show={show} onClose={onClose}>
+      {({ state }) => (
         <Container state={state} onClick={onSideSheetClick}>
           <Block position="absolute" top="10px" right="10px">
             <Button
               type="button"
               variation="minimal"
-              onClick={() => setState('closing')}
-              icon={<CloseIcon width="16px" height="16px" fill={theme.palette.neutral[2]} />}
+              onClick={onCloseButtonClick}
+              icon={closeIcon || <CloseIcon width="16px" height="16px" fill={theme.palette.neutral[2]} />}
             />
           </Block>
           {children}

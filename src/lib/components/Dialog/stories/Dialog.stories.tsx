@@ -15,7 +15,10 @@ const { H1, Body, Text } = Typography;
 export default {
   title: 'Core/Dialog',
   component: Dialog,
-  args: {} as DialogProps,
+  args: {
+    show: true,
+    footer: true
+  } as DialogProps,
   argTypes: {
     onClose: { action: 'close' },
     onConfirm: { action: 'confirm' },
@@ -23,7 +26,7 @@ export default {
   },
 } as ComponentMeta<typeof Dialog>;
 
-const Template: ComponentStory<typeof Dialog> = (args: DialogProps) => {
+const ControlledTemplate: ComponentStory<typeof Dialog> = (args: DialogProps) => {
 
   const [show, setShow] = React.useState<boolean>(false);
   const { onClose } = args;
@@ -40,29 +43,40 @@ const Template: ComponentStory<typeof Dialog> = (args: DialogProps) => {
   return (
     <Block height="2000px">
       <Button text="Show Dialog" onClick={showDialog} />
-      { show && (
-        <Dialog {...args} onClose={closeDialog}>
-          <Block padding={['10px', '0px', '0px', '0px']}>
-            <H1>Hello!</H1>
-            <Divider />
-            <Body>This is the content Body</Body>
-          </Block>
-        </Dialog>
-      )}
+      <Dialog {...args} show={show} onClose={closeDialog}>
+        <Block padding={['10px', '0px', '0px', '0px']}>
+          <H1>Hello!</H1>
+          <Divider />
+          <Body>This is the content Body</Body>
+        </Block>
+      </Dialog>
     </Block>
   );
 };
+
+const Template: ComponentStory<typeof Dialog> = (args: DialogProps) => (
+  <Dialog {...args}>
+    <Block padding={['10px', '0px', '0px', '0px']}>
+      <H1>Hello!</H1>
+      <Divider />
+      <Body>This is the content Body</Body>
+    </Block>
+  </Dialog>
+);
 
 export const asDefault = Template.bind({});
 
 export const withoutFooter = Template.bind({});
 withoutFooter.args = {
-  showFooter: false
+  footer: false
 };
 
 export const withIntent = Template.bind({});
 withIntent.args = {
+  footer: true,
   confirmIcon: <TrashIcon height="16px" width="16px" />,
   confirmText: 'Delete',
   intent: 'danger'
 };
+
+export const asControlled = ControlledTemplate.bind({});
