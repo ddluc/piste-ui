@@ -12,6 +12,7 @@ export interface Props {
 export const DefaultButton = styled.button<Props>`
   display: flex; 
   justify-content: 'space-beteween';
+  align-content: center;
   gap: 0px ${({ theme }) => theme.spacing[2]}; ; 
   flex-direction: ${({ iconPosition }) => (iconPosition === 'right' ? 'row-reverse' : 'row')}; 
   background-color: ${({ theme }) => theme.palette.primary.main}; 
