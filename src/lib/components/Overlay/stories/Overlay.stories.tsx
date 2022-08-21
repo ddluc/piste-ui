@@ -9,12 +9,17 @@ import { Button } from '../../Button';
 export default {
   title: 'Core/Overlay',
   args: {
-    preventScroll: true
+    preventScroll: true,
+    show: false
   } as OverlayProps,
   component: Overlay,
 } as ComponentMeta<typeof Overlay>;
 
-const Template: ComponentStory<typeof Overlay> = (args: OverlayProps) => {
+const Template: ComponentStory<typeof Overlay> = (args: OverlayProps) => (
+  <Overlay {...args} />
+);
+
+const ControlledTemplate: ComponentStory<typeof Overlay> = (args: OverlayProps) => {
 
   const [show, setShow] = React.useState<boolean>(false);
 
@@ -29,11 +34,10 @@ const Template: ComponentStory<typeof Overlay> = (args: OverlayProps) => {
   return (
     <Block height="2000px">
       <Button type="button" text="Show Overlay" onClick={showOverlay} />
-      { show && (
-        <Overlay {...args} onClose={hideOverlay} />
-      )}
+      <Overlay {...args} show={show} onClose={hideOverlay} />
     </Block>
   );
 };
 
 export const asDefault = Template.bind({});
+export const asControlled = ControlledTemplate.bind({});

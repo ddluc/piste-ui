@@ -6,40 +6,50 @@ import { OVERLAY_ANIMATION_DURATION } from './bin/animations';
 
 export interface Props {
   preventScroll?: boolean
-  children?: (props: { state: OverlayState, setState: React.Dispatch<React.SetStateAction<OverlayState>> }) => JSX.Element
+  show?: boolean
   onClose?: () => void
+  children?: (props: { state: OverlayState, setState: React.Dispatch<React.SetStateAction<OverlayState>> }) => JSX.Element
 }
 
 const Overlay = (props: Props): JSX.Element => {
 
-  const { children, onClose, preventScroll } = props;
+  const {
+    children,
+    onClose = () => {},
+    show = true,
+    preventScroll
+  } = props;
 
-  const [state, setState] = React.useState<OverlayState>('opening');
+  const [state, setState] = React.useState<OverlayState>('closed');
 
   const onEsc = React.useCallback((event: KeyboardEvent) => {
     if (event.key === 'Escape') {
-      setState('closing');
+      onClose();
     }
   }, []);
 
   const onOverlayClick = (e: any) => {
-    setState('closing');
+    onClose();
   };
 
   /**
-   * Set the initial state of the overlay to opened
+   * Open and close the overlay via show property
    */
   React.useEffect(() => {
-    if (state === 'opening') {
-      setState('opened');
+    if (show) {
+      if (state === 'closed') setState('opened');
     }
-  }, []);
+    if (!show) {
+      if (state === 'closing') setState('closed');
+      if (state === 'opened') setState('closing');
+    }
+  }, [show]);
 
   /**
    * Toggle body scroll based on overlay state
    */
   React.useEffect(() => {
-    if (preventScroll) {
+    if (preventScroll && state === 'opened') {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
@@ -47,7 +57,7 @@ const Overlay = (props: Props): JSX.Element => {
     return () => {
       document.body.style.overflow = 'auto';
     };
-  }, [preventScroll]);
+  }, [state, preventScroll]);
 
   /**
    * Toggle event key listener for escape key
@@ -68,12 +78,13 @@ const Overlay = (props: Props): JSX.Element => {
     if (state === 'closing') {
       const timer = setTimeout(() => {
         setState('closed');
-        onClose();
       }, OVERLAY_ANIMATION_DURATION);
       return () => clearTimeout(timer);
     }
-    return null;
+    return () => {};
   }, [state]);
+
+  if (state === 'closed') return <div />;
 
   return (
     <Container state={state} onClick={onOverlayClick}>

@@ -10,7 +10,6 @@ export interface ThemedProps extends OverlayContainerProps {
   theme: Theme;
 }
 
-// Defined a styled component implmementation
 export const OverlayContainer = styled.div<ThemedProps>`
   position: fixed; 
   top: 0px; 
@@ -21,18 +20,19 @@ export const OverlayContainer = styled.div<ThemedProps>`
 
   &::before {
   ${(props: ThemedProps) => {
-    if (props.state === 'opening' || props.state === 'opened') {
+    if (props.state === 'opened') {
       return css`animation: ${OVERLAY_ANIMATION_DURATION}ms ease-in-out 0s forwards ${animations.fadeIn};`;
     }
     return css`animation: ${OVERLAY_ANIMATION_DURATION}ms ease-in-out 0s forwards ${animations.fadeOut};`;
   }};
-    background-color: ${(props: ThemedProps) => props.theme.palette.neutral[1]};
-    left: 0px;
-    top: 0px;
-    position: fixed;
-    display: block;
-    width: 100%;
-    height: 100%;
-    content: " ";
+  
+  display: block;
+  background-color: ${(props: ThemedProps) => props.theme.palette.neutral[1]};
+  left: 0px;
+  top: 0px;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  content: " ";
   }
 `;

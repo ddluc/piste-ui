@@ -19,7 +19,7 @@ const slideOut = keyframes`
   }
 
   100% { 
-    right: -800px;
+    right: -1000px;
   }
 `;
 

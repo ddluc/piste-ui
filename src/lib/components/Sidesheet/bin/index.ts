@@ -20,7 +20,7 @@ export const SideSheetContainer = styled.div<ThemedProps>`
   position: absolute;
   right: -500px;
   ${(props: ThemedProps) => {
-    if (props.state === 'opening' || props.state === 'opened') {
+    if (props.state === 'opened') {
       return css`animation: 500ms ease-out 0s forwards ${animations.slideIn};`;
     }
     return css`animation: 300ms ease-in 0s forwards ${animations.slideOut};`;

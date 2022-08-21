@@ -28,7 +28,7 @@ export const DialogContainer = styled.div<ThemedProps>`
   border-radius: ${(props: ThemedProps) => props.theme.border.radius}; ;
   
   ${(props: ThemedProps) => {
-    if (props.state === 'opening' || props.state === 'opened') {
+    if (props.state === 'opened') {
       return css`animation: 300ms ease-out 100ms forwards ${animations.popIn};`;
     }
     return css`animation: 300ms ease-in 0ms forwards ${animations.popOut};`;

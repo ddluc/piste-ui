@@ -13,7 +13,8 @@ import { OverlayState } from '../../types';
 
 export interface Props {
   children: React.ReactNode
-  showFooter?: boolean
+  show?: boolean
+  footer?: boolean
   intent?: 'success' | 'danger' | 'warning' | 'none'
   confirmIcon?: React.ReactNode
   confirmText?: string
@@ -27,8 +28,9 @@ export interface Props {
 const Dialogue = (props: Props): JSX.Element => {
   const {
     children,
+    show = true,
     intent = 'none',
-    showFooter = true,
+    footer = true,
     confirmIcon,
     confirmText = 'Confirm',
     cancelText = 'Cancel',
@@ -53,40 +55,40 @@ const Dialogue = (props: Props): JSX.Element => {
    * @param e
    * @param setOverlayState
    */
-  const onCancelClick = (setOverlayState: React.Dispatch<React.SetStateAction<OverlayState>>) => {
-    setOverlayState('closing');
+  const onCancelClick = () => {
+    onClose();
     onCancel();
   };
 
   /**
    * Confirm Dialog
    */
-  const onConfirmClick = (setOverlayState: React.Dispatch<React.SetStateAction<OverlayState>>) => {
-    setOverlayState('closing');
+  const onConfirmClick = () => {
     onConfirm();
+    onClose();
   };
 
   return (
-    <Overlay preventScroll onClose={onClose}>
+    <Overlay preventScroll show={show} onClose={onClose}>
       {({ state, setState }) => (
         <Container state={state} onClick={onSideSheetClick}>
           <Block position="absolute" top="10px" right="10px">
             <Button
               type="button"
               variation="minimal"
-              onClick={() => onCancelClick(setState)}
+              onClick={() => onCancelClick()}
               icon={<CloseIcon width="16px" height="16px" fill={theme.palette.neutral[2]} />}
             />
           </Block>
           {children}
-          { showFooter && (
+          { footer && (
             <Footer>
               <Button
                 type="button"
                 variation="secondary"
                 text={cancelText}
                 fluid={windowSize.width < 720}
-                onClick={() => onCancelClick(setState)}
+                onClick={() => onCancelClick()}
               />
               <Button
                 type="button"
@@ -95,7 +97,7 @@ const Dialogue = (props: Props): JSX.Element => {
                 intent={intent}
                 icon={confirmIcon && confirmIcon}
                 fluid={windowSize.width < 720}
-                onClick={(e) => onConfirmClick(setState)}
+                onClick={(e) => onConfirmClick()}
               />
             </Footer>
           )}
