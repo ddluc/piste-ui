@@ -11,16 +11,16 @@ import { DefaultTabs } from './bin/DefaultTabs';
 type TabData = {
   label: string;
   name: string;
-  active: number;
+
 };
 
 export interface Props {
   tabs: TabData[];
+  active?: number;
 }
 
 // Declare the component
-const Tabs = (props: Props, active: number): JSX.Element => {
-  const { tabs } = props;
+const Tabs: React.FC<Props> = ({ tabs, active = 0 }) => {
   const [activeTab, setActiveTab] = useState(active);
 
   const onTabChange = (index: number) => {
