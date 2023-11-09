@@ -31,7 +31,7 @@ Default.args = {
 
 // Template for Tab Group Controlled story
 export const Tab = Template.bind({});
-Default.args = {
+Tab.args = {
   tabs: [
     { label: 'Single Tab', name: 'singletab', icon: '' },
   ],
@@ -42,7 +42,7 @@ Default.args = {
 
 // Template for Tab Group Controlled story
 export const TabGroupControlled = Template.bind({});
-Default.args = {
+TabGroupControlled.args = {
   tabs: [
     { label: 'Dashboard', name: 'dashboard', icon: '' },
     { label: 'Messages', name: 'messages', icon: ''  },
@@ -55,11 +55,11 @@ Default.args = {
 };
 // Template for Tab Group Loading story
 export const TabGroupLoading = Template.bind({});
-Default.args = {
+TabGroupLoading.args = {
   tabs: [
-    { label: 'Home', name: 'home', icon: '' },
-    { label: 'Profile', name: 'profile', icon: '' },
-    { label: 'Messages', name: 'messages', icon: '' },
+    { label: 'Friends', name: 'friends', icon: '' },
+    { label: 'Relatives', name: 'relatives', icon: '' },
+    { label: 'Immediate Family', name: 'family', icon: '' },
   ],
   title: 'Default Title',
   divider: false,
