@@ -29,9 +29,20 @@ Default.args = {
   active: 0,
 };
 
-// Template for main story
-export const Main = Template.bind({});
-Main.args = {
+// Template for Tab Group Controlled story
+export const Tab = Template.bind({});
+Default.args = {
+  tabs: [
+    { label: 'Single Tab', name: 'singletab', icon: '' },
+  ],
+  title: 'Single Tab',
+  divider: true,
+  active: 0,
+};
+
+// Template for Tab Group Controlled story
+export const TabGroupControlled = Template.bind({});
+Default.args = {
   tabs: [
     { label: 'Dashboard', name: 'dashboard', icon: '' },
     { label: 'Messages', name: 'messages', icon: ''  },
@@ -41,4 +52,16 @@ Main.args = {
   title: 'Main Title',
   divider: true,
   active: 3,
+};
+// Template for Tab Group Loading story
+export const TabGroupLoading = Template.bind({});
+Default.args = {
+  tabs: [
+    { label: 'Home', name: 'home', icon: '' },
+    { label: 'Profile', name: 'profile', icon: '' },
+    { label: 'Messages', name: 'messages', icon: '' },
+  ],
+  title: 'Default Title',
+  divider: false,
+  active: 0,
 };
