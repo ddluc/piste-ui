@@ -1,5 +1,5 @@
 /*
- * Define styled utility components specific to this components implementation 
+ * Define styled utility components specific to this components implementation
  * with and example implementation
  */
 import styled, { Theme } from 'styled-components';

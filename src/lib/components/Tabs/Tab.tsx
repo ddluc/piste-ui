@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
-import { DefaultTab } from './bin/DefaultTab'; 
+import { DefaultTab } from './bin/DefaultTab';
 
 // Define the component Props interface
 // If additional custom types are needed,

@@ -32,9 +32,9 @@ export const Main = Template.bind({});
 Main.args = {
   tabs: [
     { label: 'Dashboard' },
-    { label: 'Messages'},
+    { label: 'Messages' },
     { label: 'History' },
     { label: 'Help' },
   ],
-  activeTab: 0, 
+  activeTab: 0,
 };
