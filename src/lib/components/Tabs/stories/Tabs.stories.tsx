@@ -24,7 +24,9 @@ Default.args = {
     { label: 'Profile', name: 'profile', icon: '' },
     { label: 'Messages', name: 'messages', icon: '' },
   ],
-  activeTab: 0,
+  title: 'Default Title',
+  divider: false,
+  active: 0,
 };
 
 // Template for main story
@@ -36,5 +38,7 @@ Main.args = {
     { label: 'History', name: 'history', icon: '' },
     { label: 'Help', name: 'help', icon: '' },
   ],
-  activeTab: 3,
+  title: 'Main Title',
+  divider: true,
+  active: 3,
 };

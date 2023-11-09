@@ -11,6 +11,7 @@ import { DefaultTabs } from './bin/DefaultTabs';
 type TabData = {
   label: string;
   name: string;
+  active: number;
 };
 
 export interface Props {
@@ -18,11 +19,11 @@ export interface Props {
 }
 
 // Declare the component
-const Tabs = (props: Props): JSX.Element => {
+const Tabs = (props: Props, active: number): JSX.Element => {
   const { tabs } = props;
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState(active);
 
-  const handleTabClick = (index: number) => {
+  const onTabChange = (index: number) => {
     console.log(`${index} was clicked`);
     setActiveTab(index);
   };
@@ -30,7 +31,7 @@ const Tabs = (props: Props): JSX.Element => {
   return (
     <DefaultTabs>
       {tabs.map((tab, index) => (
-        <Tab key={tab.name} label={tab.label} isActive={index === activeTab} onClick={() => handleTabClick(index)} />
+        <Tab key={tab.name} label={tab.label} isActive={index === activeTab} onClick={() => onTabChange(index)} />
       ))}
     </DefaultTabs>
   );
