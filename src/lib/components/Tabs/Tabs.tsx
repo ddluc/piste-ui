@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
 import Tab from './Tab';
-import { DefaultTabs } from './bin/DefaultTabs'; /
+import { DefaultTabs } from './bin/DefaultTabs';
 
 // Define the component Props interface
 // If additional custom types are needed,
@@ -20,11 +20,12 @@ export interface Props {
 const Tabs = (props: Props): JSX.Element => {
   const { tabs } = props;
   return (
-    <DefaultTabs> {/* Use your styled component here */}
+    <DefaultTabs>
       {tabs.map((tab, index) => (
+        // eslint-disable-next-line react/no-array-index-key
         <Tab key={index} label={tab.label} />
       ))}
-    </DefaultTabs> 
+    </DefaultTabs>
   );
 };
 
