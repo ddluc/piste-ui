@@ -10,7 +10,7 @@ import { DefaultTabs } from './bin/DefaultTabs';
 // Define a type for individual tab data
 type TabData = {
   label: string;
-  id: string;
+  name: string;
 };
 
 export interface Props {
@@ -30,7 +30,7 @@ const Tabs = (props: Props): JSX.Element => {
   return (
     <DefaultTabs>
       {tabs.map((tab, index) => (
-        <Tab key={tab.id} label={tab.label} isActive={index === activeTab} onClick={() => handleTabClick(index)} />
+        <Tab key={tab.name} label={tab.label} isActive={index === activeTab} onClick={() => handleTabClick(index)} />
       ))}
     </DefaultTabs>
   );
