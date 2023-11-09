@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
+import { DefaultTab } from './bin/DefaultTab'; 
 
 // Define the component Props interface
 // If additional custom types are needed,
@@ -11,7 +12,7 @@ export interface Props {
 // Declare the component
 const Tab = (props: Props): JSX.Element => {
   const { label } = props;
-  return (<div className="Tab"><p>{label}</p></div>);
+  return (<div>{label}</div>);
 };
 
 // Export the component as the default export

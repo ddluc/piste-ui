@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
 import Tab from './Tab';
-import { DefaultTabs } from './bin/DefaultTabs'; // Import your styled component
+import { DefaultTabs } from './bin/DefaultTabs'; /
 
 // Define the component Props interface
 // If additional custom types are needed,

@@ -8,7 +8,10 @@ export default {
   title: 'Tabs',
   component: Tabs,
   args: {
-    text: 'A scaffolded component'
+    tabs: [
+      { label: 'Example Tab 1' },
+      { label: 'Example Tab 2' }
+    ]
   } as TabsProps
 } as ComponentMeta<typeof Tabs>;
 
