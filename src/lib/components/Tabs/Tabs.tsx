@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import React from 'react';
+import React, {useState} from 'react';
 import Tab from './Tab';
 import { DefaultTabs } from './bin/DefaultTabs';
 
@@ -10,6 +10,7 @@ import { DefaultTabs } from './bin/DefaultTabs';
 // Define a type for individual tab data
 type TabData = {
   label: string;
+  id: string;
 };
 
 export interface Props {
@@ -19,11 +20,17 @@ export interface Props {
 // Declare the component
 const Tabs = (props: Props): JSX.Element => {
   const { tabs } = props;
+  const [activeTab, setActiveTab] = useState(0);
+
+  const handleTabClick = (index: number) => {
+    console.log(`${index} was clicked`);
+    setActiveTab(index);
+  };
+
   return (
     <DefaultTabs>
       {tabs.map((tab, index) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <Tab key={index} label={tab.label} />
+        <Tab key={tab.id} label={tab.label} isActive={index === activeTab} onClick={() => handleTabClick(index)} />
       ))}
     </DefaultTabs>
   );

@@ -20,9 +20,9 @@ const Template: ComponentStory<typeof Tabs> = (args: TabsProps) => (<Tabs {...ar
 export const Default = Template.bind({});
 Default.args = {
   tabs: [
-    { label: 'Home' },
-    { label: 'Profile' },
-    { label: 'Messages' },
+    { label: 'Home', id: 'home' },
+    { label: 'Profile', id: 'profile' },
+    { label: 'Messages', id: 'messages' },
   ],
   activeTab: 0,
 };
@@ -31,10 +31,10 @@ Default.args = {
 export const Main = Template.bind({});
 Main.args = {
   tabs: [
-    { label: 'Dashboard' },
-    { label: 'Messages' },
-    { label: 'History' },
-    { label: 'Help' },
+    { label: 'Dashboard', id: 'dashboard' },
+    { label: 'Messages', id: 'messages' },
+    { label: 'History', id: 'history' },
+    { label: 'Help', id: 'help' },
   ],
-  activeTab: 0,
+  activeTab: 3,
 };

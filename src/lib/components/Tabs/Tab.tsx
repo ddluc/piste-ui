@@ -1,18 +1,29 @@
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
-import { DefaultTab } from './bin/DefaultTab';
+import styled from 'styled-components';
 
-// Define the component Props interface
-// If additional custom types are needed,
-// add those to a types.ts file in the component directory
 export interface Props {
-  label: string
+  label: string;
+  isActive: boolean;
+  onClick: () => void; // The onClick handler function
 }
 
+const StyledTab = styled.div`
+    &:hover {
+        cursor: pointer;
+    }
+    &.tab.active {
+    background-color: yellow;
+  }
+`;
+
 // Declare the component
-const Tab = (props: Props): JSX.Element => {
-  const { label } = props;
-  return (<div>{label}</div>);
+const Tab: React.FC<Props> = ({ label, onClick, isActive }): JSX.Element => {
+  const tabClassName = isActive ? 'tab active' : 'tab';
+  return (
+    <StyledTab onClick={onClick} className={tabClassName}>{label}</StyledTab>
+
+  );
 };
 
 // Export the component as the default export
