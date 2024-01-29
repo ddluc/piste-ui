@@ -56,7 +56,7 @@ const RadioGroup = (props: Props): JSX.Element => {
     children
   } = props;
 
-  const RadioButtons = React.Children.map(children, (child) => {
+  const RadioButtons = React.Children.map(children, (child: React.ReactElement<BaseProps>) => {
     if (React.isValidElement(child)) {
       // Pass shared props to child radio elements
       return React.cloneElement(child, {
