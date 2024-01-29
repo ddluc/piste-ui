@@ -2,7 +2,7 @@
 
 import styled, { Theme } from 'styled-components';
 
-export const HeaderCell = styled.th<{ width?: string }>`
-  width: ${(props) => props.width || 'auto'};
+export const HeaderCell = styled.th<{ width?: number }>`
+  width: ${(props) => (props.width ? `${props.width}%` : 'auto')};
   text-align: left;
 `;

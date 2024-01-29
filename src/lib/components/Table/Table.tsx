@@ -3,16 +3,32 @@ import { BaseTable } from './bin';
 import { PaletteIndex, PaletteOption } from '../../types';
 import { Props as BaseTableProps } from './bin/BaseTable';
 
+export type TableDataRow<T> = T & { id: number | string}
+
+export type TableDataColumn = {
+  key: number | string;
+  header: string;
+  sortable?: boolean;
+  width: number
+}
+
 // Define the component Props interface
 // If additional custom types are needed,
 // add those to a types.ts file in the component directory
-export interface Props extends BaseTableProps {
-  children?: React.ReactNode
+export interface Props<T = {}> extends BaseTableProps {
+  rows: TableDataRow<T>[]
+  columns: TableDataColumn[]
+  children: (args: {
+    rows: TableDataRow<T>[];
+    columns: TableDataColumn[]
+  }) => React.ReactNode;
 }
 
 // Declare the component
 const Table = (props: Props): JSX.Element => {
   const {
+    rows,
+    columns,
     children,
     spacing = 4,
     alternate = true,
@@ -28,7 +44,7 @@ const Table = (props: Props): JSX.Element => {
       even={even}
       odd={odd}
     >
-      {children}
+      {children({ rows, columns })}
     </BaseTable>
   );
 };

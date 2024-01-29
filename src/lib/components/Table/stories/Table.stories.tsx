@@ -5,6 +5,9 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Table, { TableProps } from '../index';
 import { Button } from '../../Button';
+import { TableDataColumn, TableDataRow } from '../Table';
+
+import mocks, { type Data } from '../__mocks__';
 
 export default {
   title: 'core/Table',
@@ -17,64 +20,55 @@ export default {
     alternate: true,
     even: 'red',
     odd: 'black',
-  } as TableProps,
+    rows: mocks.rows,
+    columns: mocks.columns
+  } as TableProps<Data>,
   argTypes: {
     even: { control: { type: 'color' } },
     odd: { control: { type: 'color' } }
   }
 } as ComponentMeta<typeof Table.Table>;
 
-const Template: ComponentStory<typeof Table.Table> = (args: TableProps) => (
+const Template: ComponentStory<typeof Table.Table> = (args: TableProps<Data>) => (
   <Table.Table
+    rows={args.rows}
+    columns={args.columns}
     spacing={args.spacing}
     scrollbar={args.scrollbar}
     alternate={args.alternate}
     even={args.even}
     odd={args.odd}
   >
-    <Table.Header>
-      <Table.Row>
-        <Table.HeaderCell width="20%">Column 1</Table.HeaderCell>
-        <Table.HeaderCell width="50%">Column 2</Table.HeaderCell>
-        <Table.HeaderCell width="20%">Column 3</Table.HeaderCell>
-        <Table.HeaderCell width="10%" />
-      </Table.Row>
-    </Table.Header>
-    <Table.Body>
-      <Table.Row>
-        <Table.BodyCell>Row 1, Cell 1</Table.BodyCell>
-        <Table.BodyCell>Row 1, Cell 2: This is some extra content</Table.BodyCell>
-        <Table.BodyCell>Row 1, Cell 3</Table.BodyCell>
-        <Table.BodyCell>
-          <Button variation="default" text="Action" />
-        </Table.BodyCell>
-      </Table.Row>
-      <Table.Row>
-        <Table.BodyCell>Row 2, Cell 1</Table.BodyCell>
-        <Table.BodyCell>Row 2, Cell 2: This is some extra content</Table.BodyCell>
-        <Table.BodyCell>Row 2, Cell 3</Table.BodyCell>
-        <Table.BodyCell>
-          <Button variation="default" text="Action" />
-        </Table.BodyCell>
-      </Table.Row>
-      <Table.Row>
-        <Table.BodyCell>Row 3, Cell 1</Table.BodyCell>
-        <Table.BodyCell>Row 3, Cell 2: This is some extra content</Table.BodyCell>
-        <Table.BodyCell>Row 3, Cell 3</Table.BodyCell>
-        <Table.BodyCell>
-          <Button variation="default" text="Action" />
-        </Table.BodyCell>
-      </Table.Row>
-      <Table.Row>
-        <Table.BodyCell>Row 4, Cell 1</Table.BodyCell>
-        <Table.BodyCell>Row 4, Cell 2: This is some extra content</Table.BodyCell>
-        <Table.BodyCell>Row 4, Cell 3</Table.BodyCell>
-        <Table.BodyCell>
-          <Button variation="default" text="Action" />
-        </Table.BodyCell>
-      </Table.Row>
-      {/* Additional rows as needed */}
-    </Table.Body>
+    {({ rows, columns }) => (
+      <>
+        <Table.Header>
+          <Table.Row>
+            {columns.map((column: TableDataColumn) => (
+              <Table.HeaderCell
+                key={column.key}
+                width={column.width}
+              >
+                {column.header}
+              </Table.HeaderCell>
+            ))}
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          {rows.map((row: TableDataRow<Data>) => (
+            <Table.Row key={row.id}>
+              <Table.BodyCell>{row.resort}</Table.BodyCell>
+              <Table.BodyCell>{row.description}</Table.BodyCell>
+              <Table.BodyCell>{row.terrain}</Table.BodyCell>
+              <Table.BodyCell>{row.elevation}</Table.BodyCell>
+              <Table.BodyCell>{row.runs}</Table.BodyCell>
+              <Table.BodyCell>
+                <Button variation="default" text="Action" />
+              </Table.BodyCell>
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </>
+    )}
   </Table.Table>
 );
 
