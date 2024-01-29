@@ -20,7 +20,7 @@ const columns: TableDataColumn[] = [
     key: 'description',
     header: 'Description',
     sortable: false,
-    width: 45
+    width: 35
   },
   {
     key: 'terrain',
@@ -29,16 +29,16 @@ const columns: TableDataColumn[] = [
     width: 10
   },
   {
-    key: 'elev',
+    key: 'elevation',
     header: 'Elevation',
-    sortable: false,
-    width: 10
+    sortable: true,
+    width: 15
   },
   {
     key: 'runs',
     header: 'Runs',
-    sortable: false,
-    width: 10
+    sortable: true,
+    width: 15
   }
 ];
 

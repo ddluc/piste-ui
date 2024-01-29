@@ -1,13 +1,17 @@
 import React from 'react';
 import { BaseTable } from './bin';
 import { Props as BaseTableProps } from './bin/BaseTable';
+import { Nullable } from '../../types';
 
 type RowId = number | string;
 
-export type TableDataRow<T> = T & { id: RowId}
+export type TableDataRow<T = {}> = T & {
+  id: RowId
+  [key: string]: any
+}
 
 export type TableDataColumn = {
-  key: RowId;
+  key: string;
   header: string;
   sortable?: boolean;
   width: number
@@ -21,14 +25,20 @@ export interface Props<T = {}> extends BaseTableProps {
   columns: TableDataColumn[],
   selectable: boolean,
   children: (args: {
+    // Data Props
     rows?: TableDataRow<T>[];
     columns?: TableDataColumn[]
+    // Select Props
     selectable: boolean,
     isSelected?: (id: RowId) => boolean;
     isBulkSelected?: () => boolean;
     onRowSelected?: (id: RowId) => void;
     onBulkSelect?: (isSelected: boolean) => void;
     selectedRows?: Set<RowId>;
+    // Sort Props
+    sortDirection: string;
+    sortColumn: Nullable<string>
+    onSortColumn: (column: String) => void;
   }) => React.ReactNode;
 }
 
@@ -46,9 +56,17 @@ const Table = (props: Props): JSX.Element => {
     scrollbar = { height: 5 }
   } = props;
 
-  // State to track selected rows
+  // Table State
+  const [preparedRows, setPreparedRows] = React.useState<TableDataRow[]>([]);
   const [selectedRows, setSelectedRows] = React.useState<Set<RowId>>(new Set());
   const [bulkSelected, setBulkSelected] = React.useState<boolean>(false);
+  const [sortDirection, setSortDirection] = React.useState<string>('asc');
+  const [sortColumn, setSortColumn] = React.useState<Nullable<string>>(null);
+
+  // Reset the table rows when the provided data changes
+  React.useEffect(() => {
+    setPreparedRows(rows);
+  }, [rows]);
 
   const isSelected = (id: RowId) => selectedRows.has(id);
 
@@ -79,6 +97,27 @@ const Table = (props: Props): JSX.Element => {
     }
   };
 
+  // Handle sort state
+  const onSortColumn = (column: string) => {
+    setSortColumn(column);
+    if (sortDirection === 'asc') {
+      setSortDirection('desc');
+    } else {
+      setSortDirection('asc');
+    }
+  };
+
+  // Sort rows
+  React.useEffect(() => {
+    if (!sortColumn) return;
+    const sortedRows = [...preparedRows].sort((a: TableDataRow<{ any: any}>, b: TableDataRow) => {
+      if (a[sortColumn] < b[sortColumn]) return sortDirection === 'asc' ? -1 : 1;
+      if (a[sortColumn] > b[sortColumn]) return sortDirection === 'asc' ? 1 : -1;
+      return 0;
+    });
+    setPreparedRows(sortedRows);
+  }, [sortColumn, sortDirection, preparedRows]);
+
   return (
     <BaseTable
       spacing={spacing}
@@ -88,14 +127,17 @@ const Table = (props: Props): JSX.Element => {
       odd={odd}
     >
       {children({
-        rows,
+        rows: preparedRows,
         columns,
         selectable,
         selectedRows,
         isSelected,
         isBulkSelected,
         onRowSelected,
-        onBulkSelect
+        onBulkSelect,
+        sortColumn,
+        sortDirection,
+        onSortColumn
       })}
     </BaseTable>
   );

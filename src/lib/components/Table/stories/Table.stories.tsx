@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable object-curly-newline */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/jsx-pascal-case */
@@ -10,7 +11,6 @@ import { TableDataColumn, TableDataRow } from '../Table';
 
 import mocks, { type Data } from '../__mocks__';
 import { Checkbox } from '../../Checkbox';
-import { Flex } from '../../Flex';
 
 export default {
   title: 'core/Table',
@@ -44,7 +44,7 @@ const Template: ComponentStory<typeof Table.Table> = (args: TableProps<Data>) =>
     even={args.even}
     odd={args.odd}
   >
-    {({ rows, columns, selectable, onRowSelected, onBulkSelect, isSelected, isBulkSelected }) => (
+    {({ rows, columns, selectable, onRowSelected, onBulkSelect, isSelected, isBulkSelected, sortColumn, sortDirection, onSortColumn }) => (
       <>
         <Table.Header>
           <Table.Row>
@@ -62,8 +62,12 @@ const Template: ComponentStory<typeof Table.Table> = (args: TableProps<Data>) =>
               <Table.HeaderCell
                 key={column.key}
                 width={column.width}
+                onClick={() => onSortColumn(column.key)}
               >
                 {column.header}
+                {column.sortable && sortColumn === column.key && (
+                  <span>{sortDirection === 'asc' ? ' ↑' : ' ↓'}</span>
+                )}
               </Table.HeaderCell>
             ))}
           </Table.Row>

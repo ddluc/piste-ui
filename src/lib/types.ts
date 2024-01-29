@@ -6,6 +6,8 @@
 
 import React from 'react';
 
+export type Nullable<T> = T | null;
+
 /**
  * Define base CSS property types
  */

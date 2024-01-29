@@ -8,4 +8,8 @@ export { HeaderCell } from './HeaderCell';
 export { BodyCell } from './BodyCell';
 
 export const Body = styled.tbody``;
-export const Row = styled.tr``;
+export const Row = styled.tr`  
+  &:hover { 
+    font-weight: bold;
+  }
+`;
