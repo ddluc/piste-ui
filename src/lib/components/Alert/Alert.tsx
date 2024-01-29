@@ -43,7 +43,7 @@ const Alert = (props: Props): JSX.Element => {
       }, duration);
       return () => clearTimeout(timer);
     }
-    return null;
+    return () => null;
   }, [state]);
 
   React.useEffect(() => {
@@ -53,7 +53,7 @@ const Alert = (props: Props): JSX.Element => {
       }, 500);
       return () => clearTimeout(timer);
     }
-    return null;
+    return () => null;
   }, [state]);
 
   return (
