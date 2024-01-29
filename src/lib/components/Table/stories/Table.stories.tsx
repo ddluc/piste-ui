@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/jsx-pascal-case */
 
@@ -8,6 +9,8 @@ import { Button } from '../../Button';
 import { TableDataColumn, TableDataRow } from '../Table';
 
 import mocks, { type Data } from '../__mocks__';
+import { Checkbox } from '../../Checkbox';
+import { Flex } from '../../Flex';
 
 export default {
   title: 'core/Table',
@@ -21,7 +24,8 @@ export default {
     even: 'red',
     odd: 'black',
     rows: mocks.rows,
-    columns: mocks.columns
+    columns: mocks.columns,
+    selectable: true,
   } as TableProps<Data>,
   argTypes: {
     even: { control: { type: 'color' } },
@@ -31,6 +35,7 @@ export default {
 
 const Template: ComponentStory<typeof Table.Table> = (args: TableProps<Data>) => (
   <Table.Table
+    selectable={args.selectable}
     rows={args.rows}
     columns={args.columns}
     spacing={args.spacing}
@@ -39,10 +44,20 @@ const Template: ComponentStory<typeof Table.Table> = (args: TableProps<Data>) =>
     even={args.even}
     odd={args.odd}
   >
-    {({ rows, columns }) => (
+    {({ rows, columns, selectable, onRowSelected, onBulkSelect, isSelected, isBulkSelected }) => (
       <>
         <Table.Header>
           <Table.Row>
+            {selectable && (
+              <Table.HeaderCell width={5} key="bulk-select">
+                <Checkbox
+                  checked={isBulkSelected()}
+                  name="bulk-select"
+                  label=""
+                  onChange={() => onBulkSelect(!isBulkSelected())}
+                />
+              </Table.HeaderCell>
+            )}
             {columns.map((column: TableDataColumn) => (
               <Table.HeaderCell
                 key={column.key}
@@ -56,6 +71,14 @@ const Template: ComponentStory<typeof Table.Table> = (args: TableProps<Data>) =>
         <Table.Body>
           {rows.map((row: TableDataRow<Data>) => (
             <Table.Row key={row.id}>
+              <Table.BodyCell>
+                <Checkbox
+                  checked={isSelected(row.id)}
+                  name={row.id}
+                  label=""
+                  onChange={(e) => onRowSelected(row.id)}
+                />
+              </Table.BodyCell>
               <Table.BodyCell>{row.resort}</Table.BodyCell>
               <Table.BodyCell>{row.description}</Table.BodyCell>
               <Table.BodyCell>{row.terrain}</Table.BodyCell>

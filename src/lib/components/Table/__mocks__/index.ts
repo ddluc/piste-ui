@@ -20,7 +20,7 @@ const columns: TableDataColumn[] = [
     key: 'description',
     header: 'Description',
     sortable: false,
-    width: 50
+    width: 45
   },
   {
     key: 'terrain',
