@@ -70,6 +70,9 @@ export type PaletteOption =
 | 'vis5'
 | 'vis6';
 
+// Indexes on the theme's palete
+export type PaletteIndex = 0 | 1 | 2 | 3 | 4 | 5;
+
 export type AlertData = {
   id: string,
   title: string

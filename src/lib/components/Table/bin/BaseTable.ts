@@ -1,14 +1,16 @@
 import styled, { Theme } from 'styled-components';
-import { PaletteOption } from '../../../types';
 
-type Props = {
+export type Props = {
   spacing: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
   scrollbar: {
     height?: number
-    color?: PaletteOption
-    background?: PaletteOption
-    hover?: PaletteOption
+    color?: string
+    background?: string
+    hover?: string
   }
+  alternate: boolean
+  even?: string
+  odd?: string
 }
 
 export const BaseTable = styled.table<Props>`
@@ -28,28 +30,38 @@ export const BaseTable = styled.table<Props>`
       background-color: ${({ scrollbar, theme }) => scrollbar.background || theme.palette.neutral[3]};
     }
     &::-webkit-scrollbar-thumb {
-      background-color: ${({ scrollbar, theme }) => scrollbar.background || theme.palette.neutral[2]};
-      border-radius: 2px;
+      background-color: ${({ scrollbar, theme }) => scrollbar.color || theme.palette.neutral[2]};
+      border-radius: ${({ theme }) => `${theme.border.radius}` || '4px'};
     }
     &::-webkit-scrollbar-thumb:hover {
-      background-color: ${({ scrollbar, theme }) => scrollbar.background || theme.palette.neutral[1]};
+      background-color: ${({ scrollbar, theme }) => scrollbar.hover || theme.palette.neutral[1]};
     }
   }
   // Header Spacing
   thead { 
     th { 
-      padding: ${({ spacing }) => `${spacing * 2}px 0px`};
+      padding: ${({ spacing }) => `${spacing * 2}px ${spacing}px`};
     }
   }
-  // Body Spacing 
+  // Body Colors & Spacing 
   tbody { 
-    // Separates the top row from the table header 
-    tr:first-child td { 
-      padding-top: 20px;
-      padding-top: ${({ spacing }) => `${spacing * 4}px`};
-    }
+    // Spacing
     td { 
-      padding: ${({ spacing }) => `${spacing * 2}px ${spacing * 4}px ${spacing * 2}px 0px`};
+      padding: ${({ spacing }) => `${spacing * 2}px ${spacing * 4}px ${spacing * 2}px ${spacing}px`};
+    }
+    /* tr:first-child td { 
+      padding-top: ${({ spacing }) => `${spacing * 2 + 2}px`};
+    } */
+    // Alternating Rows 
+    tr:nth-child(odd) {
+      background-color: ${({ alternate, odd, theme }) => alternate && (odd || theme.palette.white)};
+    }
+    tr:nth-child(even) {
+      background-color: ${({ alternate, even, theme }) => alternate && (even || theme.palette.lightgrey)};
     }
   }
+  
+
+
+
 `;

@@ -1,7 +1,14 @@
 /* eslint-disable max-len */
 
 import styled, { Theme } from 'styled-components';
+import { PaletteOption } from '../../../types';
 
-export const Header = styled.thead`
-  border-bottom: solid 1px ${({ theme }) => theme.palette.neutral[0]};
+export type Props = {
+  border?: PaletteOption
+}
+
+export const Header = styled.thead<Props>`
+  border-bottom: solid 1px ${({ theme, border }) => (
+    border || theme.palette.neutral[0]
+  )};
 `;
