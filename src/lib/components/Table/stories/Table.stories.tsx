@@ -21,8 +21,6 @@ export default {
       height: 5,
     },
     alternate: true,
-    even: 'red',
-    odd: 'black',
     rows: mocks.rows,
     columns: mocks.columns,
     selectable: true,
@@ -75,14 +73,16 @@ const Template: ComponentStory<typeof Table.Table> = (args: TableProps<Data>) =>
         <Table.Body>
           {rows.map((row: TableDataRow<Data>) => (
             <Table.Row key={row.id}>
-              <Table.BodyCell>
-                <Checkbox
-                  checked={isSelected(row.id)}
-                  name={row.id}
-                  label=""
-                  onChange={(e) => onRowSelected(row.id)}
-                />
-              </Table.BodyCell>
+              { selectable && (
+                <Table.BodyCell>
+                  <Checkbox
+                    checked={isSelected(row.id)}
+                    name={row.id}
+                    label=""
+                    onChange={(e) => onRowSelected(row.id)}
+                  />
+                </Table.BodyCell>
+              )}
               <Table.BodyCell>{row.resort}</Table.BodyCell>
               <Table.BodyCell>{row.description}</Table.BodyCell>
               <Table.BodyCell>{row.terrain}</Table.BodyCell>
