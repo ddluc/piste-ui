@@ -13,6 +13,7 @@ export type Props = {
   alternate: boolean
   gridColor?: string
   headerColor?: string;
+  activeColor?: string;
   even?: string
   odd?: string
 }
@@ -57,13 +58,22 @@ export const BaseTable = styled.table<Props>`
     }
     tr { 
       background-color: ${({ alternate, theme }) => (!alternate ? theme.palette.white : 'none')};
+      &:hover { 
+        background-color: ${({ theme, activeColor }) => activeColor || theme.palette.neutral[5]};
+      }
     }
     // Alternating Rows 
     tr:nth-child(odd) {
       background-color: ${({ alternate, odd, theme }) => alternate && (odd || theme.palette.white)};
+      &:hover { 
+        background-color: ${({ theme, activeColor }) => activeColor || theme.palette.neutral[5]};
+      }
     }
     tr:nth-child(even) {
       background-color: ${({ alternate, even, theme }) => alternate && (even || theme.palette.lightgrey)};
+      &:hover { 
+         background-color: ${({ theme, activeColor }) => activeColor || theme.palette.neutral[5]};
+      }
     }
   }
   

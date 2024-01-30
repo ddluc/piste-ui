@@ -43,6 +43,7 @@ const MainTemplate: ComponentStory<typeof Table.Table> = (args: TableProps<Data>
     alternate={args.alternate}
     gridlines={args.gridlines}
     headerColor={args.headerColor}
+    activeColor={args.activeColor}
     gridColor={args.gridColor}
     even={args.even}
     odd={args.odd}
