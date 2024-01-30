@@ -65,8 +65,12 @@ const Table = (props: Props): JSX.Element => {
   React.useEffect(() => {
     if (!sortColumn) return;
     const sortedRows = [...rows].sort((a: TableDataRow<{ any: any}>, b: TableDataRow) => {
-      if (a[sortColumn] < b[sortColumn]) return sortDirection === 'asc' ? -1 : 1;
-      if (a[sortColumn] > b[sortColumn]) return sortDirection === 'desc' ? -1 : 1;
+      if (sortDirection === 'asc') {
+        return (a[sortColumn] < b[sortColumn]) ? -1 : 1;
+      }
+      if (sortDirection === 'desc') {
+        return (a[sortColumn] > b[sortColumn]) ? -1 : 1;
+      }
       return 0;
     });
     setPreparedRows(sortedRows);

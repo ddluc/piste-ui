@@ -61,8 +61,12 @@ export const HeaderCell = ({
   } = column;
   const isActiveSort = () => (sortColumn === key);
 
+  const onHeaderClick = () => {
+    if (sortable) onClick();
+  };
+
   return (
-    <BaseHeaderCell width={width} onClick={onClick} sortable={!!sortable} active={isActiveSort()}>
+    <BaseHeaderCell width={width} onClick={onHeaderClick} sortable={sortable} active={isActiveSort()}>
       <Flex wrap="nowrap" gap="2px" alignItems="center">
         {header}
         {(sortable) && (
