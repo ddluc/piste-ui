@@ -39,6 +39,12 @@ const columns: TableDataColumn[] = [
     header: 'Runs',
     sortable: true,
     width: 15
+  },
+  {
+    key: 'actions',
+    header: '',
+    sortable: false,
+    width: 10
   }
 ];
 
@@ -82,7 +88,7 @@ const rows: TableDataRow<Data>[] = [
     terrain: 'Advanced',
     elevation: 7200,
     runs: 14
-  }
+  },
 ];
 
 export default {

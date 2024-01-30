@@ -1,7 +1,9 @@
+/* eslint-disable indent */
 import styled, { Theme } from 'styled-components';
 
 export type Props = {
   spacing: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+  gridlines?: boolean
   scrollbar: {
     height?: number
     color?: string
@@ -9,6 +11,8 @@ export type Props = {
     hover?: string
   }
   alternate: boolean
+  gridColor?: string
+  headerColor?: string;
   even?: string
   odd?: string
 }
@@ -16,22 +20,23 @@ export type Props = {
 export const BaseTable = styled.table<Props>`
   width: 100%;
   font-family: ${({ theme }) => theme.fonts.family.display};
-  border-collapse: collapse;
+  border-collapse: ${({ gridlines }) => (gridlines ? 'separate' : 'collapse')};
+  border-radius: ${({ theme }) => `${theme.border.radius}`};
+  background-color: ${({ gridlines, gridColor }) => ((gridlines && gridColor) ? gridColor : 'transparent')};
   // Responsive Scrolling
-  @media screen and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
     display: block;
     overflow-x: auto;
     white-space: nowrap;
-    width: 100%;
     -webkit-overflow-scrolling: touch;
-    /* Custom scrollbar styles */
+    // Custom scrollbar styles
     &::-webkit-scrollbar {
-      height: ${({ scrollbar }) => `${scrollbar.height}px` || '5px'};
+      height: ${({ scrollbar }) => `${scrollbar.height}px`};
       background-color: ${({ scrollbar, theme }) => scrollbar.background || theme.palette.neutral[3]};
     }
     &::-webkit-scrollbar-thumb {
       background-color: ${({ scrollbar, theme }) => scrollbar.color || theme.palette.neutral[2]};
-      border-radius: ${({ theme }) => `${theme.border.radius}` || '4px'};
+      border-radius: ${({ theme }) => `${theme.border.radius}`};
     }
     &::-webkit-scrollbar-thumb:hover {
       background-color: ${({ scrollbar, theme }) => scrollbar.hover || theme.palette.neutral[1]};
@@ -40,21 +45,25 @@ export const BaseTable = styled.table<Props>`
   // Header Spacing
   thead { 
     th { 
-      padding: ${({ spacing }) => `${spacing * 2}px ${spacing * 2}px`};
+      padding: ${({ spacing, theme }) => theme.spacing[spacing]};
+      background-color: ${({ headerColor, theme }) => (headerColor || theme.palette.white)};
     }
   }
   // Body Colors & Spacing 
   tbody { 
     // Spacing
     td { 
-      padding: ${({ spacing }) => `${spacing * 2}px ${spacing * 4}px ${spacing * 2}px ${spacing * 2}px`};
+      padding: ${({ spacing, theme }) => theme.spacing[spacing]};
+    }
+    tr { 
+      background-color: ${({ alternate, theme }) => (!alternate ? theme.palette.white : 'none')};
     }
     // Alternating Rows 
     tr:nth-child(odd) {
       background-color: ${({ alternate, odd, theme }) => alternate && (odd || theme.palette.white)};
     }
     tr:nth-child(even) {
-      background-color: ${({ alternate, even, theme }) => alternate && (even || theme.palette.neutral[3])};
+      background-color: ${({ alternate, even, theme }) => alternate && (even || theme.palette.lightgrey)};
     }
   }
   

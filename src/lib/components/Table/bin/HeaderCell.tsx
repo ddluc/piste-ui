@@ -12,9 +12,11 @@ export const BaseHeaderCell = styled.th<{ width?: number, sortable: boolean, act
   font-weight: normal;
   &:hover { 
     ${({ sortable }) => (sortable ? 'cursor: pointer;' : '')};
-    ${({ sortable, active }) => ((!active && sortable) ? 'opacity: 0.5' : '')};
+    span {
+      ${({ sortable, active }) => ((!active && sortable) ? 'opacity: 0.6' : '')};
+    }
     div.icon {
-      opacity: 1;
+      opacity: ${({ active }) => (active ? '1' : '0.6')};
     }
   }
   ${({ active, theme }) => (active ? `color: ${theme.palette.accent.shades[1]}` : '')};
@@ -68,7 +70,7 @@ export const HeaderCell = ({
   return (
     <BaseHeaderCell width={width} onClick={onHeaderClick} sortable={sortable} active={isActiveSort()}>
       <Flex wrap="nowrap" gap="2px" alignItems="center">
-        {header}
+        <span>{header}</span>
         {(sortable) && (
           <SortIcon className="icon" isActiveSort={isActiveSort()} sortDirection={sortDirection}>
             ↑
