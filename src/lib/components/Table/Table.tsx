@@ -1,32 +1,46 @@
 import React from 'react';
-import { BaseTable } from './bin';
+import { BaseTable, TableSkeleton } from './bin';
 import { Props as BaseTableProps } from './bin/BaseTable';
 import { Nullable } from '../../types';
+import { Flex } from '../Flex';
+import { Skeleton, isSkeleton, BaseSkeletonProps } from '../Skeleton';
 
 import { TableDataColumn, TableDataRow } from './types';
+import { TableSkeletonProps } from './bin/Skeleton';
 
 // Define the component Props interface
 // If additional custom types are needed,
 // add those to a types.ts file in the component directory
-export interface Props<T = {}> extends BaseTableProps {
+export interface BaseProps<T = {}> extends BaseTableProps {
   rows: TableDataRow<T>[]
-  columns: TableDataColumn[],
-  sort?: string,
-  asc?: boolean,
-  desc?: boolean,
+  columns: TableDataColumn[]
+  sort?: string
+  asc?: boolean
+  desc?: boolean
   children: (args: {
     // Data Props
-    rows?: TableDataRow<T>[];
+    rows?: TableDataRow<T>[]
     columns?: TableDataColumn[]
     // Sort Props
-    sortDirection: string;
+    sortDirection: string
     sortColumn: Nullable<string>
-    onSortColumn: (column: String) => void;
-  }) => React.ReactNode;
+    onSortColumn: (column: String) => void
+  }) => React.ReactNode
 }
+
+interface SkeletonProps<T> extends TableSkeletonProps, BaseProps {
+  skeleton?: boolean
+}
+
+export type Props<T = {}> = BaseProps<T> | SkeletonProps<T>;
 
 // Declare the component
 const Table = (props: Props): JSX.Element => {
+
+  if (isSkeleton(props)) {
+    return <TableSkeleton {...props} />;
+  }
+
   const {
     rows,
     columns,

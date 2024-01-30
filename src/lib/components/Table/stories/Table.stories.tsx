@@ -36,22 +36,7 @@ export default {
 } as ComponentMeta<typeof Table.Table>;
 
 const MainTemplate: ComponentStory<typeof Table.Table> = (args: TableProps<Data>) => (
-  <Table.Table
-    rows={args.rows}
-    sort={args.sort}
-    asc={args.asc}
-    desc={args.desc}
-    columns={args.columns}
-    spacing={args.spacing}
-    scrollbar={args.scrollbar}
-    alternate={args.alternate}
-    gridlines={args.gridlines}
-    headerColor={args.headerColor}
-    activeColor={args.activeColor}
-    gridColor={args.gridColor}
-    even={args.even}
-    odd={args.odd}
-  >
+  <Table.Table {...args}>
     {({ rows, columns, sortColumn, sortDirection, onSortColumn }) => (
       <>
         <Table.Header>
@@ -89,3 +74,4 @@ const MainTemplate: ComponentStory<typeof Table.Table> = (args: TableProps<Data>
 );
 
 export const Main = MainTemplate.bind({});
+export const AsSkeleton = MainTemplate.bind({});

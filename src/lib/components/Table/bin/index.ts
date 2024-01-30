@@ -2,6 +2,8 @@
 
 import styled, { Theme } from 'styled-components';
 
+export { TableSkeleton } from './Skeleton';
+
 export { BaseTable } from './BaseTable';
 export { Header } from './Header';
 export { HeaderCell } from './HeaderCell';
