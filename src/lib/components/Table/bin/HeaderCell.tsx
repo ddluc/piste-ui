@@ -73,7 +73,7 @@ export const HeaderCell = ({
         <span>{header}</span>
         {(sortable) && (
           <SortIcon className="icon" isActiveSort={isActiveSort()} sortDirection={sortDirection}>
-            ↑
+            { isActiveSort() ? '↑' : '↕' }
           </SortIcon>
         )}
       </Flex>

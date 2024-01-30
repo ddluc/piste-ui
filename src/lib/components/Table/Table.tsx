@@ -3,7 +3,7 @@ import { BaseTable } from './bin';
 import { Props as BaseTableProps } from './bin/BaseTable';
 import { Nullable } from '../../types';
 
-import { TableDataColumn, TableDataRow, RowId } from './types';
+import { TableDataColumn, TableDataRow } from './types';
 
 // Define the component Props interface
 // If additional custom types are needed,
@@ -11,6 +11,9 @@ import { TableDataColumn, TableDataRow, RowId } from './types';
 export interface Props<T = {}> extends BaseTableProps {
   rows: TableDataRow<T>[]
   columns: TableDataColumn[],
+  sort?: string,
+  asc?: boolean,
+  desc?: boolean,
   children: (args: {
     // Data Props
     rows?: TableDataRow<T>[];
@@ -27,6 +30,9 @@ const Table = (props: Props): JSX.Element => {
   const {
     rows,
     columns,
+    sort,
+    asc,
+    desc,
     children,
     spacing = 4,
     alternate = true,
@@ -65,7 +71,7 @@ const Table = (props: Props): JSX.Element => {
     }
   };
 
-  // Sort rows
+  // Sort rows (uncontrolled)
   React.useEffect(() => {
     if (!sortColumn) return;
     const sortedRows = [...rows].sort((a: TableDataRow<{ any: any}>, b: TableDataRow) => {
@@ -79,6 +85,13 @@ const Table = (props: Props): JSX.Element => {
     });
     setPreparedRows(sortedRows);
   }, [sortColumn, sortDirection, rows]);
+
+  // Sort rows (controlled)
+  React.useEffect(() => {
+    setSortColumn(sort);
+    if (asc) setSortDirection('asc');
+    else if (desc) setSortDirection('desc');
+  }, [sort, asc, desc]);
 
   return (
     <BaseTable

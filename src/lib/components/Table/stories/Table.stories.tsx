@@ -24,7 +24,8 @@ export default {
     alternate: true,
     rows: mocks.rows,
     columns: mocks.columns,
-    gridlines: false
+    gridlines: false,
+    sort: 'elevation'
   } as TableProps<Data>,
   argTypes: {
     even: { control: { type: 'color' } },
@@ -37,6 +38,9 @@ export default {
 const MainTemplate: ComponentStory<typeof Table.Table> = (args: TableProps<Data>) => (
   <Table.Table
     rows={args.rows}
+    sort={args.sort}
+    asc={args.asc}
+    desc={args.desc}
     columns={args.columns}
     spacing={args.spacing}
     scrollbar={args.scrollbar}
