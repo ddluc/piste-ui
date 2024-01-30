@@ -46,7 +46,7 @@ const Checkbox = (props: Props): JSX.Element => {
   } = props;
 
   return (
-    <Block position="relative">
+    <Flex position="relative">
       <Input
         type="checkbox"
         name={name}
@@ -67,7 +67,7 @@ const Checkbox = (props: Props): JSX.Element => {
       </Label>
 
       <FormMessage error={error} touched={touched} help={help} />
-    </Block>
+    </Flex>
   );
 
 };

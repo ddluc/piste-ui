@@ -6,6 +6,8 @@
 
 import React from 'react';
 
+export type Nullable<T> = T | null;
+
 /**
  * Define base CSS property types
  */
@@ -69,6 +71,9 @@ export type PaletteOption =
 | 'vis4'
 | 'vis5'
 | 'vis6';
+
+// Indexes on the theme's palete
+export type PaletteIndex = 0 | 1 | 2 | 3 | 4 | 5;
 
 export type AlertData = {
   id: string,
