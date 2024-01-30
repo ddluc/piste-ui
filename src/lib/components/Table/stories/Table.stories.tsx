@@ -73,5 +73,21 @@ const MainTemplate: ComponentStory<typeof Table.Table> = (args: TableProps<Data>
   </Table.Table>
 );
 
-export const Main = MainTemplate.bind({});
+// Main
+export const AsDefault = MainTemplate.bind({});
+
+// with Gridlines
+export const WithGridlines = MainTemplate.bind({});
+WithGridlines.args = {
+  gridlines: true,
+  gridColor: '#e1e1e1',
+  headerColor: '#e1e1e1'
+};
+
+// As Skeleton
 export const AsSkeleton = MainTemplate.bind({});
+AsSkeleton.args = {
+  skeleton: true,
+  rowCount: 5,
+  colCount: 5
+};
