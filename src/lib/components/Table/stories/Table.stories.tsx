@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable max-len */
 /* eslint-disable object-curly-newline */
 /* eslint-disable react/destructuring-assignment */
@@ -7,10 +8,9 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Table, { TableProps } from '../index';
 import { Button } from '../../Button';
-import { TableDataColumn, TableDataRow } from '../Table';
+import { TableDataColumn, TableDataRow } from '../types';
 
 import mocks, { type Data } from '../__mocks__';
-import { Checkbox } from '../../Checkbox';
 
 export default {
   title: 'core/Table',
@@ -23,7 +23,6 @@ export default {
     alternate: true,
     rows: mocks.rows,
     columns: mocks.columns,
-    selectable: true,
   } as TableProps<Data>,
   argTypes: {
     even: { control: { type: 'color' } },
@@ -31,9 +30,8 @@ export default {
   }
 } as ComponentMeta<typeof Table.Table>;
 
-const Template: ComponentStory<typeof Table.Table> = (args: TableProps<Data>) => (
+const MainTemplate: ComponentStory<typeof Table.Table> = (args: TableProps<Data>) => (
   <Table.Table
-    selectable={args.selectable}
     rows={args.rows}
     columns={args.columns}
     spacing={args.spacing}
@@ -42,47 +40,24 @@ const Template: ComponentStory<typeof Table.Table> = (args: TableProps<Data>) =>
     even={args.even}
     odd={args.odd}
   >
-    {({ rows, columns, selectable, onRowSelected, onBulkSelect, isSelected, isBulkSelected, sortColumn, sortDirection, onSortColumn }) => (
+    {({ rows, columns, sortColumn, sortDirection, onSortColumn }) => (
       <>
         <Table.Header>
           <Table.Row>
-            {selectable && (
-              <Table.HeaderCell width={5} key="bulk-select">
-                <Checkbox
-                  checked={isBulkSelected()}
-                  name="bulk-select"
-                  label=""
-                  onChange={() => onBulkSelect(!isBulkSelected())}
-                />
-              </Table.HeaderCell>
-            )}
             {columns.map((column: TableDataColumn) => (
               <Table.HeaderCell
                 key={column.key}
-                width={column.width}
+                column={column}
+                sortColumn={sortColumn}
+                sortDirection={sortDirection}
                 onClick={() => onSortColumn(column.key)}
-              >
-                {column.header}
-                {column.sortable && sortColumn === column.key && (
-                  <span>{sortDirection === 'asc' ? ' ↑' : ' ↓'}</span>
-                )}
-              </Table.HeaderCell>
+              />
             ))}
           </Table.Row>
         </Table.Header>
         <Table.Body>
           {rows.map((row: TableDataRow<Data>) => (
             <Table.Row key={row.id}>
-              { selectable && (
-                <Table.BodyCell>
-                  <Checkbox
-                    checked={isSelected(row.id)}
-                    name={row.id}
-                    label=""
-                    onChange={(e) => onRowSelected(row.id)}
-                  />
-                </Table.BodyCell>
-              )}
               <Table.BodyCell>{row.resort}</Table.BodyCell>
               <Table.BodyCell>{row.description}</Table.BodyCell>
               <Table.BodyCell>{row.terrain}</Table.BodyCell>
@@ -99,4 +74,4 @@ const Template: ComponentStory<typeof Table.Table> = (args: TableProps<Data>) =>
   </Table.Table>
 );
 
-export const Main = Template.bind({});
+export const Main = MainTemplate.bind({});

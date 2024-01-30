@@ -1,4 +1,4 @@
-import { TableDataColumn, TableDataRow } from '../Table';
+import { TableDataColumn, TableDataRow } from '../types';
 
 export type Data = {
   id: string

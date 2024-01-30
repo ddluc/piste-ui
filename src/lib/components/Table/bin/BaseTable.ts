@@ -18,7 +18,7 @@ export const BaseTable = styled.table<Props>`
   font-family: ${({ theme }) => theme.fonts.family.display};
   border-collapse: collapse;
   // Responsive Scrolling
-  @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     display: block;
     overflow-x: auto;
     white-space: nowrap;
@@ -40,14 +40,14 @@ export const BaseTable = styled.table<Props>`
   // Header Spacing
   thead { 
     th { 
-      padding: ${({ spacing }) => `${spacing * 2}px ${spacing}px`};
+      padding: ${({ spacing }) => `${spacing * 2}px ${spacing * 2}px`};
     }
   }
   // Body Colors & Spacing 
   tbody { 
     // Spacing
     td { 
-      padding: ${({ spacing }) => `${spacing * 2}px ${spacing * 4}px ${spacing * 2}px ${spacing}px`};
+      padding: ${({ spacing }) => `${spacing * 2}px ${spacing * 4}px ${spacing * 2}px ${spacing * 2}px`};
     }
     // Alternating Rows 
     tr:nth-child(odd) {

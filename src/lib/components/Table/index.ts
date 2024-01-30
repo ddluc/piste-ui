@@ -15,7 +15,7 @@ export default {
   Body,
   Row,
   HeaderCell,
-  BodyCell
+  BodyCell,
 };
 
 // Export prop types

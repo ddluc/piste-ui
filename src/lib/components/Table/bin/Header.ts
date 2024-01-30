@@ -11,7 +11,4 @@ export const Header = styled.thead<Props>`
   border-bottom: solid 1px ${({ theme, border }) => (
     border || theme.palette.neutral[0]
   )};
-  &:hover { 
-    cursor: pointer;
-  }
 `;

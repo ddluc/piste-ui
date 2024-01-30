@@ -3,19 +3,7 @@ import { BaseTable } from './bin';
 import { Props as BaseTableProps } from './bin/BaseTable';
 import { Nullable } from '../../types';
 
-type RowId = number | string;
-
-export type TableDataRow<T = {}> = T & {
-  id: RowId
-  [key: string]: any
-}
-
-export type TableDataColumn = {
-  key: string;
-  header: string;
-  sortable?: boolean;
-  width: number
-}
+import { TableDataColumn, TableDataRow, RowId } from './types';
 
 // Define the component Props interface
 // If additional custom types are needed,
@@ -23,18 +11,10 @@ export type TableDataColumn = {
 export interface Props<T = {}> extends BaseTableProps {
   rows: TableDataRow<T>[]
   columns: TableDataColumn[],
-  selectable: boolean,
   children: (args: {
     // Data Props
     rows?: TableDataRow<T>[];
     columns?: TableDataColumn[]
-    // Select Props
-    selectable: boolean,
-    isSelected?: (id: RowId) => boolean;
-    isBulkSelected?: () => boolean;
-    onRowSelected?: (id: RowId) => void;
-    onBulkSelect?: (isSelected: boolean) => void;
-    selectedRows?: Set<RowId>;
     // Sort Props
     sortDirection: string;
     sortColumn: Nullable<string>
@@ -48,7 +28,6 @@ const Table = (props: Props): JSX.Element => {
     rows,
     columns,
     children,
-    selectable = false,
     spacing = 4,
     alternate = true,
     even,
@@ -58,8 +37,6 @@ const Table = (props: Props): JSX.Element => {
 
   // Table State
   const [preparedRows, setPreparedRows] = React.useState<TableDataRow[]>([]);
-  const [selectedRows, setSelectedRows] = React.useState<Set<RowId>>(new Set());
-  const [bulkSelected, setBulkSelected] = React.useState<boolean>(false);
   const [sortDirection, setSortDirection] = React.useState<string>('asc');
   const [sortColumn, setSortColumn] = React.useState<Nullable<string>>(null);
 
@@ -68,41 +45,18 @@ const Table = (props: Props): JSX.Element => {
     setPreparedRows(rows);
   }, [rows]);
 
-  const isSelected = (id: RowId) => selectedRows.has(id);
-
-  const isBulkSelected = () => bulkSelected;
-
-  // Toggle selection for a single row
-  const onRowSelected = (id: RowId) => {
-    setSelectedRows((prevSelectedRows) => {
-      const newSelectedRows = new Set(prevSelectedRows);
-      if (newSelectedRows.has(id)) {
-        newSelectedRows.delete(id);
-      } else {
-        newSelectedRows.add(id);
-      }
-      return newSelectedRows;
-    });
-  };
-
-  // Toggle selection for all rows
-  const onBulkSelect = (selected: boolean) => {
-    if (selected) {
-      const allRowIds = rows.map((row) => row.id);
-      setSelectedRows(new Set(allRowIds));
-      setBulkSelected(true);
-    } else {
-      setSelectedRows(new Set());
-      setBulkSelected(false);
-    }
+  const reverse = () => {
+    if (sortDirection === 'asc') return 'desc';
+    return 'asc';
   };
 
   // Handle sort state
   const onSortColumn = (column: string) => {
-    setSortColumn(column);
-    if (sortDirection === 'asc') {
-      setSortDirection('desc');
+    if (column === sortColumn) {
+      const direction = reverse();
+      setSortDirection(direction);
     } else {
+      setSortColumn(column);
       setSortDirection('asc');
     }
   };
@@ -110,13 +64,13 @@ const Table = (props: Props): JSX.Element => {
   // Sort rows
   React.useEffect(() => {
     if (!sortColumn) return;
-    const sortedRows = [...preparedRows].sort((a: TableDataRow<{ any: any}>, b: TableDataRow) => {
+    const sortedRows = [...rows].sort((a: TableDataRow<{ any: any}>, b: TableDataRow) => {
       if (a[sortColumn] < b[sortColumn]) return sortDirection === 'asc' ? -1 : 1;
-      if (a[sortColumn] > b[sortColumn]) return sortDirection === 'asc' ? 1 : -1;
+      if (a[sortColumn] > b[sortColumn]) return sortDirection === 'desc' ? -1 : 1;
       return 0;
     });
     setPreparedRows(sortedRows);
-  }, [sortColumn, sortDirection, preparedRows]);
+  }, [sortColumn, sortDirection, rows]);
 
   return (
     <BaseTable
@@ -129,12 +83,6 @@ const Table = (props: Props): JSX.Element => {
       {children({
         rows: preparedRows,
         columns,
-        selectable,
-        selectedRows,
-        isSelected,
-        isBulkSelected,
-        onRowSelected,
-        onBulkSelect,
         sortColumn,
         sortDirection,
         onSortColumn
