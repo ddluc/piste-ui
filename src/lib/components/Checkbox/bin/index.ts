@@ -40,7 +40,7 @@ export const Input = styled.input<Props>`
     position: absolute;
     pointer-events: none;
     left: ${() => '2px'};
-    top: ${() => '4px'};
+    top: ${() => '2px'};
     width: ${({ theme }) => theme.spacing[4]};
     height: ${({ theme }) => theme.spacing[4]};
     fill: ${({ theme, error }) => (
