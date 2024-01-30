@@ -24,8 +24,8 @@ export const Input = styled.input<Props>`
     content: '';
     display: inline-block;
     vertical-align: text-top;
-    width: 23px;
-    height: 23px;
+    width: 18px;
+    height: 18px;
     background-color: ${({ theme, error }) => (
       error ? transparentize(theme.palette.danger, 0.1) : theme.palette.neutral[4]
     )};
@@ -39,8 +39,8 @@ export const Input = styled.input<Props>`
   & + label svg {
     position: absolute;
     pointer-events: none;
-    left: ${({ theme }) => theme.spacing[1]};
-    top: ${({ theme }) => theme.spacing[1]};
+    left: ${() => '2px'};
+    top: ${() => '4px'};
     width: ${({ theme }) => theme.spacing[4]};
     height: ${({ theme }) => theme.spacing[4]};
     fill: ${({ theme, error }) => (
