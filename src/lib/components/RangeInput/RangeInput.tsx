@@ -1,15 +1,13 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable no-underscore-dangle */
+
 import React, { ChangeEvent } from 'react';
 import { Label, Slider } from './bin';
 import { FormMessage } from '../Form';
 import { Flex } from '../Flex';
 import { Indicator } from './bin/Indicator';
+import { Skeleton, isSkeleton, BaseSkeletonProps } from '../Skeleton';
 
-// Define the component Props interface
-// If additional custom types are needed,
-// add those to a types.ts file in the component directory
-export interface Props {
+export interface BaseProps {
   label: string
   id: string
   name: string
@@ -27,8 +25,24 @@ export interface Props {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
+interface SkeletonProps extends BaseSkeletonProps {
+  hideLabel?: boolean
+}
+
+export type Props = BaseProps | SkeletonProps;
+
 // Declare the component
 const RangeInput = (props: Props): JSX.Element => {
+
+  if (isSkeleton(props)) {
+    const { hideLabel } = props;
+    return (
+      <Flex column gap="5px">
+        {!hideLabel && <Skeleton skeleton type="box" width={120} height={20} />}
+        <Skeleton skeleton type="box" fluid height={20} />
+      </Flex>
+    );
+  }
 
   const {
     id,
@@ -50,18 +64,33 @@ const RangeInput = (props: Props): JSX.Element => {
 
   const [tooltipPosition, setTooltipPosition] = React.useState<string>('0px');
 
+  // Calculate indicator position
   React.useEffect(() => {
     const fraction = (value - min) / (max - min);
     const position = `calc(${fraction * 100}% + ${(0.5 - fraction) * thumbSize}px)`;
     setTooltipPosition(position);
   }, [value, min, max]);
 
+  // Handle out of bounds values
+  if (value > max || value < min) {
+    return (
+      <Flex column gap="5px">
+        {!hideLabel && <Skeleton skeleton type="box" width={120} height={20} />}
+        <Skeleton skeleton type="box" fluid height={20} />
+        <FormMessage
+          touched
+          error={`Please provide a value between ${min} and ${max}`}
+        />
+      </Flex>
+    );
+  }
+
   return (
     <Flex column gap="5px">
       <Label htmlFor="range" disabled={disabled} error={!!(touched && error)} show={!hideLabel}>
         <span>{label}</span>
         <Flex column padding={['20px', '0px', '0px', '0px']} position="relative">
-          <Indicator position={tooltipPosition}>
+          <Indicator position={tooltipPosition} error={!!(touched && error)}>
             <span>{value} {units}</span>
           </Indicator>
           <Slider
