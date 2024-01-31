@@ -2,6 +2,7 @@ import styled, { Theme } from 'styled-components';
 import { px, getOutline, transparentize } from '../../../util';
 
 export type Props = {
+  thumbSize: number
   error?: boolean
   disabled?: boolean
 }
@@ -30,9 +31,11 @@ export const Slider = styled.input<Props>`
 
   -webkit-appearance: none; 
   appearance: none;
+  margin: 20px 0px 0px 0px; 
   width: 100%;
   height: 8px;
   background: ${({ theme, error, disabled }) => getRailColor(theme, error, disabled)};
+  border-radius: ${({ theme }) => theme.border.radius};
   outline: none;
   opacity: 0.7; 
   -webkit-transition: .2s;
@@ -41,11 +44,9 @@ export const Slider = styled.input<Props>`
   &:hover {
     opacity: 1; 
     &::-webkit-slider-thumb { 
-      border: ${({ theme }) => theme.palette.accent.shades[3]};
-      box-shadow: ${({ theme, error, disabled }) => !disabled && getOutline(error, theme, 4)}
+      box-shadow: ${({ theme, error, disabled }) => !disabled && getOutline(error, theme, 4)};
     }
     &::-moz-range-thumb {
-      border: ${({ theme }) => theme.palette.accent.shades[3]};
       box-shadow: ${({ theme, error, disabled }) => !disabled && getOutline(error, theme, 4)}
     }
   }
@@ -54,14 +55,15 @@ export const Slider = styled.input<Props>`
     opacity: 1;
     -webkit-appearance: none;
     appearance: none;
-    width: 18px;
-    height: 18px;
+    width: ${({ thumbSize }) => `${thumbSize}px`};
+    height: ${({ thumbSize }) => `${thumbSize}px`};
     border-radius: 50%; 
     background: ${({ theme, error, disabled }) => getThumbColor(theme, error, disabled)};
     cursor: pointer;
   }
 
   &::-moz-range-thumb {
+    border: 0px;
     opacity: 1;
     width: 18px;
     height: 18px;

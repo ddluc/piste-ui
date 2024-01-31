@@ -12,4 +12,5 @@ export type TextProperties = {
     top: string,
     bottom: string,
   }
+  condensed?: boolean
 }

@@ -17,4 +17,5 @@ export const AbstractTextStyles = css<Props>`
   ${({ decoration }) => decoration && `text-decoration: ${decoration}`}; 
   ${({ italic }) => italic && 'font-style: italic'}; 
   ${({ align }) => align && `text-align: ${align}`};
+  ${({ condensed }) => condensed && 'margin: 0px'};
 `;

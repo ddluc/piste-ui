@@ -1,8 +1,10 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable no-underscore-dangle */
 import React, { ChangeEvent } from 'react';
 import { Label, Slider } from './bin';
 import { FormMessage } from '../Form';
 import { Flex } from '../Flex';
+import { Indicator } from './bin/Indicator';
 
 // Define the component Props interface
 // If additional custom types are needed,
@@ -13,7 +15,10 @@ export interface Props {
   name: string
   min: number
   max: number
+  step: number
+  thumbSize: number
   value: number;
+  units: string;
   touched?: boolean;
   error?: string;
   help?: string;
@@ -23,29 +28,47 @@ export interface Props {
 
 // Declare the component
 const RangeInput = (props: Props): JSX.Element => {
+
   const {
     id,
     label,
     name,
-    min,
-    max,
+    min = 0,
+    max = 0,
+    step = 1,
+    thumbSize = 18,
     value,
-    touched,
+    units,
+    touched = false,
     error,
     help,
-    disabled,
+    disabled = false,
     onChange
   } = props;
+
+  const [tooltipPosition, setTooltipPosition] = React.useState<string>('0px');
+
+  React.useEffect(() => {
+    const fraction = (value - min) / (max - min);
+    const position = `calc(${fraction * 100}% + ${(0.5 - fraction) * thumbSize}px)`;
+    setTooltipPosition(position);
+  }, [value, min, max]);
+
   return (
-    <Flex column gap="10px">
+    <Flex column gap="5px">
       <Label htmlFor="range" disabled={disabled} error={!!(touched && error)}>
         <span>{label}</span>
+        <Indicator position={tooltipPosition}>
+          <span>{value} {units}</span>
+        </Indicator>
         <Slider
           type="range"
           name={name}
           id={id}
           min={min}
           max={max}
+          step={step}
+          thumbSize={thumbSize}
           value={value}
           error={!!(touched && error)}
           disabled={!!disabled}

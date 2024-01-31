@@ -10,7 +10,8 @@ type Props = {
 export const Label = styled.label<Props>`
   display: ${({ show = true }) => (show ? 'flex' : 'none')};
   flex-direction: column; 
-  gap: 10px;
+  gap: 22px;
+  position: relative;
   color: ${({ theme, error, disabled }) => {
     if (disabled) {
       return theme.palette.neutral[2];
