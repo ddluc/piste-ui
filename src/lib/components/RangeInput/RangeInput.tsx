@@ -23,6 +23,7 @@ export interface Props {
   error?: string;
   help?: string;
   disabled?: boolean;
+  hideLabel?: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
@@ -43,6 +44,7 @@ const RangeInput = (props: Props): JSX.Element => {
     error,
     help,
     disabled = false,
+    hideLabel = false,
     onChange
   } = props;
 
@@ -56,24 +58,26 @@ const RangeInput = (props: Props): JSX.Element => {
 
   return (
     <Flex column gap="5px">
-      <Label htmlFor="range" disabled={disabled} error={!!(touched && error)}>
+      <Label htmlFor="range" disabled={disabled} error={!!(touched && error)} show={!hideLabel}>
         <span>{label}</span>
-        <Indicator position={tooltipPosition}>
-          <span>{value} {units}</span>
-        </Indicator>
-        <Slider
-          type="range"
-          name={name}
-          id={id}
-          min={min}
-          max={max}
-          step={step}
-          thumbSize={thumbSize}
-          value={value}
-          error={!!(touched && error)}
-          disabled={!!disabled}
-          onChange={onChange}
-        />
+        <Flex column padding={['20px', '0px', '0px', '0px']} position="relative">
+          <Indicator position={tooltipPosition}>
+            <span>{value} {units}</span>
+          </Indicator>
+          <Slider
+            type="range"
+            name={name}
+            id={id}
+            min={min}
+            max={max}
+            step={step}
+            thumbSize={thumbSize}
+            value={value}
+            error={!!(touched && error)}
+            disabled={!!disabled}
+            onChange={onChange}
+          />
+        </Flex>
       </Label>
       <FormMessage error={error} touched={touched} help={help} />
     </Flex>

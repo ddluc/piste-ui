@@ -8,10 +8,6 @@ type Props = {
 };
 
 export const Label = styled.label<Props>`
-  display: ${({ show = true }) => (show ? 'flex' : 'none')};
-  flex-direction: column; 
-  gap: 22px;
-  position: relative;
   color: ${({ theme, error, disabled }) => {
     if (disabled) {
       return theme.palette.neutral[2];
@@ -23,4 +19,10 @@ export const Label = styled.label<Props>`
   }};
   font-size: ${({ theme }) => px(theme.fonts.size.small)};
   cursor: pointer; 
+
+  > span { 
+    display: ${({ show = true }) => (show ? 'block' : 'none')};
+    height: 18px;
+  }
+
 `;

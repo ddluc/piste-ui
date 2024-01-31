@@ -14,7 +14,7 @@ export const Indicator = styled.div<Props>`
   border-radius: ${({ theme }) => theme.border.radius};
   text-align: center;
   position: absolute;
-  top: 24px;
+  top: 4px;
   transform: translateX(-50%);
   left: ${({ position }) => position};
   
