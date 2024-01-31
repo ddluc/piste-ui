@@ -1,0 +1,28 @@
+import styled from 'styled-components';
+import { px, getOutline } from '../../../util';
+
+type Props = {
+  error?: boolean;
+  disabled?: boolean;
+  show?: boolean;
+};
+
+export const Label = styled.label<Props>`
+  color: ${({ theme, error, disabled }) => {
+    if (disabled) {
+      return theme.palette.neutral[2];
+    }
+    if (error) {
+      return theme.palette.danger;
+    }
+    return theme.palette.neutral[1];
+  }};
+  font-size: ${({ theme }) => px(theme.fonts.size.small)};
+  cursor: pointer; 
+
+  > span { 
+    display: ${({ show = true }) => (show ? 'block' : 'none')};
+    height: 18px;
+  }
+
+`;
