@@ -13,7 +13,7 @@ export const FormText = styled.div<Props>`
   font-size: ${({ theme }) => px(theme.fonts.size.small - 2)};
   font-family: ${({ theme }) => theme.fonts.family.body};
   overflow-y: hidden; 
-  color: ${({ error, touched, theme }) => ((error && touched) ? theme.palette.danger : theme.palette.neutral[1])};
+  color: ${({ error, touched, theme }) => ((error && touched) ? theme.palette.danger.main : theme.palette.neutral[1])};
   height: 20px;
   transition: display 100ms ease, color 100ms ease; 
 `;
