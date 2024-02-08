@@ -14,7 +14,9 @@ export interface BaseProps {
   disabled?: boolean;
   direction?: 'horizontal' | 'vertical';
   border?: boolean;
-  onChange?: (e: any) => void;
+  onChange?: (e: React.ChangeEvent<HTMLFieldSetElement>) => void,
+  onBlur?: (e: React.FocusEvent<HTMLFieldSetElement>) => void,
+  onFocus?: (e: React.FocusEvent<HTMLFieldSetElement>) => void,
   children: React.ReactNode
 }
 
@@ -52,7 +54,9 @@ const RadioGroup = (props: Props): JSX.Element => {
     disabled,
     direction = 'vertical',
     border = true,
-    onChange,
+    onChange = () => {},
+    onBlur = () => {},
+    onFocus = () => {},
     children
   } = props;
 
@@ -72,6 +76,8 @@ const RadioGroup = (props: Props): JSX.Element => {
         border={border}
         direction={direction}
         onChange={onChange}
+        onBlur={onBlur}
+        onFocus={onFocus}
         error={!!(touched && error)}
       >
         <Legend error={!!(touched && error)}>{legend}</Legend>

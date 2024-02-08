@@ -8,13 +8,15 @@ import CircleSVG from './bin/assets/circle.svg';
 import { Input, Label } from './bin';
 
 interface BaseProps extends React.HTMLAttributes<HTMLInputElement> {
-  label: string;
+  label: string | React.ReactNode;
   value: string;
   name?: string;
   enabled?: boolean;
   touched?: boolean;
   error?: string;
   disabled?: boolean;
+  display?: 'normal' | 'card';
+  a11yLabel?: string
 }
 
 interface SkeletonProps extends BaseSkeletonProps, BaseProps {
@@ -42,8 +44,14 @@ const Radio = (props: Props): JSX.Element => {
     error,
     value,
     touched,
+    display = 'normal',
+    a11yLabel,
     ...inputProps
   } = props;
+
+  const getAriaLabel = () => (
+    typeof label === 'string' ? label : a11yLabel
+  );
 
   return (
     <Block position="relative">
@@ -53,7 +61,7 @@ const Radio = (props: Props): JSX.Element => {
         name={name}
         checked={enabled}
         disabled={disabled}
-        aria-label={label}
+        aria-label={getAriaLabel()}
         aria-invalid={!!(touched && error)}
         error={!!(touched && error)}
         onChange={() => {}}
@@ -63,6 +71,7 @@ const Radio = (props: Props): JSX.Element => {
         htmlFor={value}
         error={!!(touched && error)}
         disabled={disabled}
+        display={display}
       >
         { enabled && <CircleSVG height="10px" width="10px" /> }
         <span>{label}</span>

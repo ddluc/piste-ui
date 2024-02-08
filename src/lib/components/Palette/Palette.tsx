@@ -26,11 +26,26 @@ const Palette = () => (
       <ColorBox color="accent" shade={3} />
       <ColorBox color="accent" shade={4} />
     </PaletteRow>
-    <Text>Success | Warning | Danger</Text>
+    <Text>Success</Text>
     <PaletteRow>
       <ColorBox color="success" />
+      <ColorBox color="success" shade={0} />
+      <ColorBox color="success" shade={1} />
+      <ColorBox color="success" shade={2} />
+    </PaletteRow>
+    <Text>Warning</Text>
+    <PaletteRow>
       <ColorBox color="warning" />
+      <ColorBox color="warning" shade={0} />
+      <ColorBox color="warning" shade={1} />
+      <ColorBox color="warning" shade={2} />
+    </PaletteRow>
+    <Text>Danger</Text>
+    <PaletteRow>
       <ColorBox color="danger" />
+      <ColorBox color="danger" shade={0} />
+      <ColorBox color="danger" shade={1} />
+      <ColorBox color="danger" shade={2} />
     </PaletteRow>
     <Text>Common</Text>
     <PaletteRow>
