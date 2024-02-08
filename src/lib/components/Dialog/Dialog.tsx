@@ -1,21 +1,19 @@
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import React from 'react';
 import { useTheme } from 'styled-components';
-import {
-  DialogContainer as Container,
-  DialogFooter as Footer
-} from './bin';
+import { Container, DialogFooter as Footer } from './bin';
 import CloseIcon from './bin/assets/close.svg';
 import { Overlay } from '../Overlay';
 import { Button } from '../Button';
 import { Block } from '../Block';
 import { useWindowSize } from '../../hooks/useWindowResize';
-import { OverlayState } from '../../types';
 
 export interface Props {
   children: React.ReactNode
   show?: boolean
   footer?: boolean
   intent?: 'success' | 'danger' | 'warning' | 'none'
+  label?: string
   confirmIcon?: React.ReactNode
   confirmText?: string
   cancelText?: string
@@ -26,29 +24,23 @@ export interface Props {
 
 // Declare the component
 const Dialogue = (props: Props): JSX.Element => {
+
   const {
     children,
     show = true,
     intent = 'none',
     footer = true,
+    label = 'dialog',
     confirmIcon,
     confirmText = 'Confirm',
     cancelText = 'Cancel',
-    onClose,
-    onCancel,
-    onConfirm
+    onClose = () => {},
+    onCancel = () => {},
+    onConfirm = () => {}
   } = props;
 
   const theme = useTheme();
-
   const windowSize = useWindowSize();
-
-  /**
-   * Prevent on click from closing overlay
-   */
-  const onSideSheetClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation();
-  };
 
   /**
    * Close Dialog
@@ -70,14 +62,16 @@ const Dialogue = (props: Props): JSX.Element => {
 
   return (
     <Overlay preventScroll show={show} onClose={onClose}>
-      {({ state, setState }) => (
-        <Container state={state} onClick={onSideSheetClick}>
+      {({ state }) => (
+        <Container label={label} state={state}>
           <Block position="absolute" top="10px" right="10px">
             <Button
               type="button"
               variation="minimal"
+              aria-label="Close Modal"
               onClick={() => onCancelClick()}
-              icon={<CloseIcon width="16px" height="16px" fill={theme.palette.neutral[2]} />}
+              iconSize="lg"
+              icon={<CloseIcon width="32px" height="32px" fill={theme.palette.neutral[2]} />}
             />
           </Block>
           {children}
@@ -87,6 +81,7 @@ const Dialogue = (props: Props): JSX.Element => {
                 type="button"
                 variation="secondary"
                 text={cancelText}
+                aria-label="Cancel Modal"
                 fluid={windowSize.width < 720}
                 onClick={() => onCancelClick()}
               />
@@ -95,6 +90,7 @@ const Dialogue = (props: Props): JSX.Element => {
                 variation="default"
                 text={confirmText}
                 intent={intent}
+                aria-label="Confirm Modal"
                 icon={confirmIcon && confirmIcon}
                 fluid={windowSize.width < 720}
                 onClick={(e) => onConfirmClick()}
