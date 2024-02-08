@@ -28,8 +28,10 @@ const Overlay = (props: Props): JSX.Element => {
     }
   }, []);
 
-  const onOverlayClick = (e: any) => {
-    onClose();
+  const onOverlayClick = (e: React.ChangeEvent<any>) => {
+    if (e.target.classList.contains('overlay')) {
+      onClose();
+    }
   };
 
   /**
@@ -87,7 +89,7 @@ const Overlay = (props: Props): JSX.Element => {
   if (state === 'closed') return <div />;
 
   return (
-    <Container state={state} onClick={onOverlayClick}>
+    <Container className="overlay" state={state} onClick={onOverlayClick}>
       {children && children({ state, setState })}
     </Container>
   );

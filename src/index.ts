@@ -2,6 +2,7 @@
  * Export Theme
  */
 export { default as PisteThemes } from './theme';
+export { default as PisteFonts } from './theme/fonts';
 export type { Theme as PisteTheme } from './theme/types';
 
 /**
