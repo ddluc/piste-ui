@@ -3,6 +3,7 @@ import { Block } from '../Block';
 import { Flex } from '../Flex';
 import { Label } from '../Label';
 import { FormMessage } from '../Form';
+import { Spacer } from '../Spacer';
 import { Skeleton, isSkeleton, BaseSkeletonProps } from '../Skeleton';
 
 import {
@@ -20,7 +21,7 @@ export type BaseProps = {
   name: string
   label: string
   options: SelectOption[]
-  value?: string
+  value?: string | null
   placeholder?: string
   hideLabel?: boolean
   animated?: boolean
@@ -28,8 +29,10 @@ export type BaseProps = {
   touched?: boolean
   error?: string
   help?: string
+  condensed?: string
   onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLSelectElement>) => void;
+  onFocus?: (event: React.FocusEvent<HTMLSelectElement>) => void;
 }
 
 interface SkeletonProps extends BaseSkeletonProps, BaseProps {
@@ -41,11 +44,12 @@ export type Props = BaseProps | SkeletonProps;
 const Select = forwardRef<HTMLSelectElement, Props>((props: Props, ref): JSX.Element => {
 
   if (isSkeleton(props)) {
-    const { animated, hideLabel } = props;
+    const { animated, hideLabel, condensed = false } = props;
     return (
       <Flex column gap="8px 0px">
         { !(animated || hideLabel) && <Skeleton {...props} type="box" height={14} width={140} /> }
         <Skeleton {...props} type="box" height={40} fluid />
+        { !condensed && <Spacer spacing={4} />}
       </Flex>
     );
   }
@@ -62,8 +66,10 @@ const Select = forwardRef<HTMLSelectElement, Props>((props: Props, ref): JSX.Ele
     touched = false,
     error,
     help,
-    onChange,
-    onBlur,
+    condensed,
+    onChange = () => {},
+    onBlur = () => {},
+    onFocus = () => {},
   } = props;
 
   const [isFocused, setIsFocused] = React.useState(false);
@@ -76,8 +82,9 @@ const Select = forwardRef<HTMLSelectElement, Props>((props: Props, ref): JSX.Ele
     onChange(event);
   };
 
-  const onFocusHandler = () => {
+  const onFocusHandler = (event: React.FocusEvent<HTMLSelectElement>) => {
     setIsFocused(true);
+    onFocus(event);
   };
 
   const onBlurHandler = (event: React.FocusEvent<HTMLSelectElement>) => {
@@ -114,7 +121,7 @@ const Select = forwardRef<HTMLSelectElement, Props>((props: Props, ref): JSX.Ele
         animated={animated}
         isFocused={isFocused}
         isActive={(isFocused || hasValue())}
-        position={{ x: 8, y: 10 }}
+        position={{ x: 8, y: 12 }}
         transpose={{ x: -8, y: -20 }}
         scale={0.8}
       >
@@ -138,7 +145,7 @@ const Select = forwardRef<HTMLSelectElement, Props>((props: Props, ref): JSX.Ele
             <ArrowIcon height="16px" width="16px" />
           </Dropdown>
         </Block>
-        <FormMessage error={error} touched={touched} help={help} />
+        { !condensed && <FormMessage error={error} touched={touched} help={help} /> }
       </Label>
     </Block>
   );

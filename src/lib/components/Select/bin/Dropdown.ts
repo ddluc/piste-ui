@@ -20,7 +20,7 @@ export const Dropdown = styled.div<ThemedProps>`
   top: 10px;
   transform: rotate(180deg);
   fill: ${({ theme, error, focused }) => {
-    if (error) return theme.palette.danger;
+    if (error) return theme.palette.danger.main;
     return theme.palette.grey;
   }};
 
