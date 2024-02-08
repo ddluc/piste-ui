@@ -12,7 +12,7 @@ const getThumbColor = (theme: Theme, error: boolean, disabled: boolean) => {
     return theme.palette.neutral[2];
   }
   if (error) {
-    return theme.palette.danger;
+    return theme.palette.danger.main;
   }
   return theme.palette.accent.main;
 };

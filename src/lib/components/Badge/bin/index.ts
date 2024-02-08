@@ -33,7 +33,6 @@ export const DefaultBadge = styled.div<ContainerProps>`
   border-radius: ${({ theme }) => theme.border.radius.lg}; 
   font-family:  ${({ theme }) => theme.fonts.family.display}; 
   font-size:  ${({ theme }) => px(theme.fonts.size.xsmall)}; 
-  font-weight: ${({ theme }) => theme.fonts.weight.bold}; 
   fill: ${({ palette }) => palette.icon}; 
   padding: ${({ hasText }) => (hasText ? '2px 12px' : '2px 4px')};
 
