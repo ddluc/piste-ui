@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-pascal-case */
-
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Sidesheet, SidesheetProps } from '../index';
+import { Sidesheet, SidesheetProps, SidesheetHeader } from '../index';
+import { Flex } from '../../Flex';
 import { Block } from '../../Block';
 import { Button } from '../../Button';
 import { Divider } from '../../Divider';
@@ -60,5 +60,26 @@ const Template: ComponentStory<typeof Sidesheet> = (args: SidesheetProps) => (
   </Sidesheet>
 );
 
+const StickyHeaderTemplate: ComponentStory<typeof Sidesheet> = (args: SidesheetProps): JSX.Element => (
+  <Sidesheet {...args}>
+    <SidesheetHeader>
+      <Block p="0px 10px">
+        <H1>I am a sticky header</H1>
+      </Block>
+    </SidesheetHeader>
+    <SideSheetContent />
+    <Body>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+      Eveniet consectetur in voluptate quam consequatur repudiandae
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+      Reiciendis reprehenderit voluptate eaque fugiat? Eligendi
+    </Body>
+    <Flex column justifyContent="space-between" alignItems="center" gap="10px">
+      Footer!
+    </Flex>
+  </Sidesheet>
+);
+
 export const asDefault = Template.bind({});
 export const asControlled = ControlledTemplate.bind({});
+export const withStickyHeader = StickyHeaderTemplate.bind({});

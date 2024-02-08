@@ -1,17 +1,18 @@
 import React from 'react';
 import { useTheme } from 'styled-components';
-import {
-  SideSheetContainer as Container
-} from './bin';
+import { Container } from './bin';
 import CloseIcon from './bin/assets/close.svg';
 import { Overlay } from '../Overlay';
 import { Button } from '../Button';
 import { Block } from '../Block';
+import { Scroll } from '../Scroll';
 
 export interface Props {
   show?: boolean
   children?: React.ReactNode
   closeIcon?: React.ReactNode
+  trapFocus?: boolean
+  backButton?: React.ReactNode
   onClose?: () => void
 }
 
@@ -19,19 +20,14 @@ const Sidesheet = (props: Props): JSX.Element => {
 
   const {
     children,
-    show = true,
     closeIcon,
+    show = true,
+    trapFocus = true,
+    backButton,
     onClose
   } = props;
 
   const theme = useTheme();
-
-  /**
-   * Prevent on click from closing overlay
-   */
-  const onSideSheetClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation();
-  };
 
   const onCloseButtonClick = () => {
     onClose();
@@ -40,16 +36,24 @@ const Sidesheet = (props: Props): JSX.Element => {
   return (
     <Overlay preventScroll show={show} onClose={onClose}>
       {({ state }) => (
-        <Container state={state} onClick={onSideSheetClick}>
-          <Block position="absolute" top="10px" right="10px">
+        <Container state={state}>
+          <Block position="absolute" top="10px" right="10px" zIndex={100}>
             <Button
               type="button"
               variation="minimal"
               onClick={onCloseButtonClick}
-              icon={closeIcon || <CloseIcon width="16px" height="16px" fill={theme.palette.neutral[2]} />}
+              iconSize="lg"
+              icon={closeIcon || <CloseIcon width="32px" height="32px" fill={theme.palette.neutral[2]} />}
             />
           </Block>
-          {children}
+          { backButton && (
+            <Block position="absolute" top="10px" left="10px" p="10px 0px" zIndex={100}>
+              {backButton}
+            </Block>
+          )}
+          <Scroll height="100%" direction="y">
+            {children}
+          </Scroll>
         </Container>
       )}
     </Overlay>
