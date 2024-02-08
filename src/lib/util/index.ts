@@ -65,3 +65,23 @@ export const getOutline = (error: boolean, theme: Theme, shade = 4, dangerOpacit
   }
   return `${theme.palette.accent.shades[shade]} ${theme.forms.outline}`;
 };
+
+/**
+ * Determines if the app is desktop or mobile
+ * @param wdith
+ * @param theme
+ */
+export const isDesktop = (window: {width: number }, theme: Theme): boolean => {
+  const breakpointSize = parseInt(theme.breakpoints.md.replace(/[^0-9]/g, ''), 10);
+  return (window.width > breakpointSize);
+};
+
+/**
+ * Determines if the app is desktop or mobile
+ * @param width
+ * @param breakpoint
+ */
+export const isMobile = (window: {width: number }, theme: Theme): boolean => {
+  const breakpointSize = parseInt(theme.breakpoints.md.replace(/[^0-9]/g, ''), 10);
+  return (window.width <= breakpointSize);
+};
