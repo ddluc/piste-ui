@@ -11,7 +11,7 @@ export interface Props {
 // Defined a styled component implmementation
 export const SecondaryButton = styled(DefaultButton)<Props>`
 
-  background-color: transparent;
+  background-color: ${({ theme }) => theme.palette.white}; 
   color: ${({ theme }) => theme.palette.neutral[1]}; 
   border-color: ${({ theme }) => theme.palette.neutral[2]}; 
   fill: ${({ theme }) => theme.palette.neutral[1]}; 

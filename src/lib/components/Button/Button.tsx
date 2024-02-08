@@ -12,12 +12,20 @@ export interface BaseProps extends React.ButtonHTMLAttributes<HTMLButtonElement>
   variation?: 'default' | 'secondary' | 'minimal';
   intent?: 'success' | 'danger' | 'warning' | 'none';
   type?: 'button' | 'submit';
+  align?: 'center' | 'left';
   text?: string;
   icon?: React.ReactNode;
   iconPosition?: 'right' | 'left';
+  iconSize?: 'sm' | 'md' | 'lg';
   disabled?: boolean;
   fluid?: boolean;
   color?: string;
+  textColor?: string;
+  border?: string
+  radius?: string
+  height?: number
+  width?: number
+  alignment?: string
 }
 
 interface SkeletonProps extends BaseSkeletonProps {
@@ -36,23 +44,31 @@ const Button = (props: Props): JSX.Element => {
 
   const {
     variation = 'default',
+    type = 'button',
     intent = null,
     icon,
+    iconSize = 'sm',
     text,
     color,
+    textColor,
+    align = 'left',
+    border = null,
+    radius = null,
+    height = null,
+    width = null,
     ...buttonProps
   } = props;
 
   const renderButtonContent = (): JSX.Element => (
     <>
-      {icon && <ButtonIcon>{icon}</ButtonIcon>}
-      {text && <ButtonText>{text}</ButtonText>}
+      {icon && <ButtonIcon size={iconSize}>{icon}</ButtonIcon>}
+      {text && <ButtonText align={align}>{text}</ButtonText>}
     </>
   );
 
   if (intent && intent !== 'none') {
     return (
-      <IntentButton intent={intent} variation={variation} {...buttonProps}>
+      <IntentButton color={color} textColor={textColor} intent={intent} variation={variation} {...buttonProps}>
         {renderButtonContent()}
       </IntentButton>
     );
@@ -60,7 +76,7 @@ const Button = (props: Props): JSX.Element => {
 
   if (variation === 'secondary') {
     return (
-      <SecondaryButton {...buttonProps}>
+      <SecondaryButton color={color} textColor={textColor} {...buttonProps}>
         {renderButtonContent()}
       </SecondaryButton>
     );
@@ -68,14 +84,23 @@ const Button = (props: Props): JSX.Element => {
 
   if (variation === 'minimal') {
     return (
-      <MinimalButton color={color} {...buttonProps}>
+      <MinimalButton color={color} textColor={textColor} {...buttonProps}>
         {renderButtonContent()}
       </MinimalButton>
     );
   }
 
   return (
-    <DefaultButton {...buttonProps}>
+    <DefaultButton
+      color={color}
+      textColor={textColor}
+      border={border}
+      radius={radius}
+      height={height}
+      width={width}
+      type={type}
+      {...buttonProps}
+    >
       {renderButtonContent()}
     </DefaultButton>
   );

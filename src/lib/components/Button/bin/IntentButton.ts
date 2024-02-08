@@ -1,7 +1,7 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable indent */
 
-import styled, { Theme } from 'styled-components';
-import { transparentize } from '../../../util';
+import styled from 'styled-components';
 import { DefaultButton } from './DefaultButton';
 
 export interface Props {
@@ -9,6 +9,8 @@ export interface Props {
   variation: 'default' | 'secondary' | 'minimal';
   fluid?: boolean;
   iconPosition?: 'left' | 'right';
+  color?: string;
+  textColor?: string;
 }
 
 export const IntentButton = styled(DefaultButton)<Props>`
@@ -16,37 +18,41 @@ export const IntentButton = styled(DefaultButton)<Props>`
   ${({ variation }) => (variation === 'minimal' ? 'padding: 2px' : '')};
   ${({ variation }) => (variation === 'minimal' ? 'border: none' : '')};
 
-  color: ${({ theme, variation, intent }) => {
-    if (variation === 'default') return theme.palette.white;
-    return theme.palette[intent];
+  color: ${({ theme, variation, textColor, intent }) => {
+    if (textColor) return textColor;
+    if (variation === 'default') return theme.palette[intent].contrastText;
+    return theme.palette[intent].main;
   }}; 
   
-  background-color: ${({ theme, variation, intent }) => {
-    if (variation === 'default') return theme.palette[intent];
+  background-color: ${({ theme, variation, color, intent }) => {
+    if (color) return color;
+    if (variation === 'default') return theme.palette[intent].main;
     return 'transparent';
   }}; 
 
-  border-color: ${({ theme, variation, intent }) => {
+  border-color: ${({ theme, variation, color, intent }) => {
+    if (color) return color;
     if (variation === 'minimal') return 'transparent';
-    return theme.palette[intent];
+    return theme.palette[intent].main;
   }}; 
   
-  fill: ${({ theme, variation, intent }) => {
-    if (variation === 'default') return theme.palette.white;
-    return theme.palette[intent];
+  fill: ${({ theme, variation, textColor, intent }) => {
+    if (textColor) return textColor;
+    if (variation === 'default') return theme.palette[intent].contrastText;
+    return theme.palette[intent].main;
   }}; 
 
   &:focus {
-    border-color: ${({ theme, intent }) => theme.palette[intent]};
-    box-shadow: ${({ theme, intent }) => (transparentize(theme.palette[intent], 0.4))} 0px 0px 0px 2px;
+    border-color: ${({ theme, intent }) => theme.palette[intent].main};
+    box-shadow: ${({ theme, intent }) => (theme.palette[intent].shades[2])} 0px 0px 0px 2px;
   }
 
   &:hover {
     ${({ variation }) => (variation === 'minimal' ? 'border: none' : '')};
-    border-color: ${({ theme, intent }) => theme.palette[intent]};
+    border-color: ${({ theme, intent }) => theme.palette[intent].main};
     box-shadow: ${({ theme, intent, variation }) => {
       if (variation === 'minimal') return 'none';
-      return `${transparentize(theme.palette[intent], 0.4)} 0px 0px 0px 2px`;
+      return `${theme.palette[intent].shades[2]} 0px 0px 0px 2px`;
     }}; 
     transform: translate(0px, -2px); 
     cursor: pointer;
