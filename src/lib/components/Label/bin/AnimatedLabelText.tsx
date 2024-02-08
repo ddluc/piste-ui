@@ -20,6 +20,8 @@ interface Props {
 
 const AnimatedLabelText = styled.span<Props>`
   position: absolute; 
+  height: 16px; 
+  line-height: 16px;
   display: ${({ hideLabel }) => (hideLabel ? 'none' : 'initial')};
   top: ${({ position }) => px(position.y)};
   left: ${({ position }) => px(position.x)};
@@ -34,15 +36,15 @@ const AnimatedLabelText = styled.span<Props>`
     color .1s cubic-bezier(0, 0, 0.2, 1), 
     transform .1s cubic-bezier(0, 0, 0.2, 1); 
   z-index: ${({ theme }) => theme.zIndex[5]};
-  background: ${({ disabled, theme }) => {
-    if (disabled) return theme.palette.lightgrey;
+  background: ${({ disabled, isActive, theme }) => {
+    if (disabled && !isActive) return theme.palette.lightgrey;
     return theme.palette.white;
   }};
   color: ${({
     theme, error, disabled, isActive, isFocused
   }) => {
-    if (error) return theme.palette.danger;
-    if (disabled) return theme.palette.neutral[0];
+    if (error) return theme.palette.danger.main;
+    if (disabled) return theme.palette.neutral[2];
     if (isFocused) return theme.palette.accent.main;
     if (isActive) return theme.palette.neutral[1];
     return theme.palette.neutral[2];
