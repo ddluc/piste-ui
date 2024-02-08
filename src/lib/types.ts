@@ -11,7 +11,7 @@ export type Nullable<T> = T | null;
 /**
  * Define base CSS property types
  */
- type BackgroundCSSProperty = {
+export type BackgroundCSSProperty = {
   color?: string | 'transparent' | 'initial' | 'inherit';
   position?: string;
   image?: 'url' | 'none' | 'initial' | 'inherit';
@@ -20,7 +20,6 @@ export type Nullable<T> = T | null;
   size?: 'auto' | 'length' | 'cover' | 'contain' | 'initial' | 'inherit';
   origin?: 'padding-box' | 'border-box' | 'content-box' | 'initial' | 'inherit';
   clip?: 'border-box' | 'padding-box' | 'content-box' | 'initial' | 'inherit';
-
 };
 
 export type PaddingCSSProperty = [string, string, string, string];
@@ -29,8 +28,10 @@ export type PositionCSSProperty = 'static' | 'relative' | 'fixed' | 'absolute' |
 export type OverflowCSSProperty = 'visible' | 'hidden' | 'scroll' | 'auto';
 export type TextAlignCSSProperty = 'right' | 'center' | 'left';
 export type CSSFLoatProperty = 'left' | 'right' | 'none';
+export type BoxSizingCSSProperty = 'border-box' | 'content-box' | 'inherit' | 'initial';
 
 export type BaseCSSProperties = {
+  id?: string;
   display?: 'block' | 'inline-block' | 'flex' | 'grid';
   height?: string;
   width?: string;
@@ -40,6 +41,7 @@ export type BaseCSSProperties = {
   m?: string;
   p?: string;
   border?: string;
+  radius?: string;
   opacity?: number;
   background?: BackgroundCSSProperty;
   outline?: string;
@@ -51,6 +53,7 @@ export type BaseCSSProperties = {
   bottom?: string;
   overflow?: OverflowCSSProperty;
   textAlign?: TextAlignCSSProperty;
+  boxSizing?: BoxSizingCSSProperty;
 };
 
 export type AnonymousFunction = (...args: any[]) => any;
@@ -64,6 +67,7 @@ export type PaletteOption =
 | 'neutral'
 | 'black'
 | 'grey'
+| 'purple'
 | 'white'
 | 'vis1'
 | 'vis2'
@@ -84,6 +88,14 @@ export type AlertData = {
   icon?: React.ReactNode
 };
 
-export type OverlayState = 'opening' | 'opened' | 'closing' | 'closed';
+export type OverlayState = 'opened' | 'closing' | 'closed';
 
 export type ElevationLevel = 0 | 1 | 2 | 3 | 4 | 6 | 8 | 12 | 16;
+
+export type CSSTransitionAnimation = {
+  duration: number
+  delay: number
+  easing?: string
+  animation?: string
+  fillMode?: string
+};
