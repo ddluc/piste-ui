@@ -18,7 +18,7 @@ const ShimmerSkeleton = styled.div<Props>`
   )};
   background-repeat: no-repeat;
   background-size: 800px 800px; 
-  border-radius:${({ theme }: ThemedProps) => theme.border.radius}; 
+  border-radius:${({ theme }: ThemedProps) => theme.border.radius.sm}; 
   position: relative;
   padding: 0;
   box-shadow: none;
