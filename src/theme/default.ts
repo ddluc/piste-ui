@@ -36,9 +36,21 @@ export const DEFAULT_THEME: Theme = {
       contrastText: '#FFFFFF',
       shades: ['#052E29', '#275C58', '#3FD4C0', '#80D9D7', '#B7EFFA']
     },
-    success: '#84DB6B',
-    warning: '#d3ba40',
-    danger: '#DB7B71',
+    success: {
+      main: '#388e3c',
+      contrastText: '#FFF',
+      shades: ['#1F4F21', '#BEE8AE', '#C8E8CA'],
+    },
+    warning: {
+      main: '#F5D734',
+      contrastText: '#FFF',
+      shades: ['#8D6320', '#FFE194', '#FFEEC6']
+    },
+    danger: {
+      main: '#d45a5a',
+      contrastText: '#FFF',
+      shades: ['#6F2F2F', '#EB9593', '#FED3D1'],
+    },
     body: '#FFFFFF',
     white: '#FFFFFF',
     black: '#000000',
@@ -48,14 +60,18 @@ export const DEFAULT_THEME: Theme = {
     visualization: ['#F7804A', '#D4CC3F', '#52EBAB', '#473FD4', '#75DA85', '#C0FBC8']
   },
   border: {
-    radius: '3px',
+    radius: {
+      sm: '4px',
+      lg: '18px'
+    },
     width: '1px'
   },
   breakpoints: {
     xs: '400px',
     sm: '720px',
     md: '960px',
-    lg: '1200px'
+    lg: '1200px',
+    xl: '1300px'
   },
   spacing: generateThemeSpacing(4),
   zIndex: generateZIndices(),
