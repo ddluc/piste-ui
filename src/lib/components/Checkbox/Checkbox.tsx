@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Block } from '../Block';
 import { Flex } from '../Flex';
 import { FormMessage } from '../Form';
@@ -8,13 +8,18 @@ import CheckIcon from './bin/assets/check.svg';
 import { Input, Label } from './bin';
 
 export interface BaseProps extends React.HTMLAttributes<HTMLInputElement> {
-  name: string;
-  label: string;
+  name?: string;
+  label: string | ReactNode;
   checked: boolean;
+  value: string;
   touched?: boolean;
   error?: string;
   help?: string;
+  readOnly?: boolean;
   disabled?: boolean;
+  display?: 'normal' | 'card';
+  asGroup?: boolean;
+  a11yLabel?: string
 }
 
 interface SkeletonProps extends BaseSkeletonProps, BaseProps {
@@ -38,35 +43,47 @@ const Checkbox = (props: Props): JSX.Element => {
     name,
     label,
     checked,
+    value,
+    readOnly = false,
     disabled,
     error,
     help,
     touched,
+    display,
+    asGroup,
+    a11yLabel,
     ...inputProps
   } = props;
+
+  const getAriaLabel = () => (
+    typeof label === 'string' ? label : a11yLabel
+  );
 
   return (
     <Block position="relative">
       <Input
         type="checkbox"
         name={name}
+        value={value}
         checked={checked}
-        disabled={disabled}
-        aria-label={label}
+        readOnly={readOnly}
+        disabled={disabled || readOnly}
+        aria-label={getAriaLabel()}
         aria-invalid={!!(touched && error)}
         error={!!(touched && error)}
         {...inputProps}
       />
 
       <Label
+        display={display}
         error={!!(touched && error)}
+        readOnly={readOnly}
         disabled={disabled}
       >
         { checked && <CheckIcon height="10px" width="10px" /> }
         <span>{label}</span>
       </Label>
-
-      <FormMessage error={error} touched={touched} help={help} />
+      { !asGroup && <FormMessage error={error} touched={touched} help={help} />}
     </Block>
   );
 

@@ -1,11 +1,13 @@
 /* eslint-disable indent */
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { getOutline, px, transparentize } from '../../../util';
 import { pulse } from './animations';
 
 type Props = {
   error?: boolean;
   disabled?: boolean;
+  readOnly?: boolean;
+  display?: 'normal' | 'card';
 };
 
 export const Input = styled.input<Props>`
@@ -18,6 +20,10 @@ export const Input = styled.input<Props>`
   margin: 0;
   padding: 0;
   cursor: pointer;
+  &:disabled {
+    cursor: ${({ readOnly }) => (readOnly ? 'default' : 'not-allowed')};
+  }
+  
 
   // The main check "box"
   & + label:before {
@@ -27,10 +33,10 @@ export const Input = styled.input<Props>`
     width: 18px;
     height: 18px;
     background-color: ${({ theme, error }) => (
-      error ? transparentize(theme.palette.danger, 0.1) : theme.palette.neutral[4]
+      error ? theme.palette.danger.shades[2] : theme.palette.neutral[4]
     )};
     border: solid ${({ theme }) => theme.border.width};
-    border-color: ${({ theme, error }) => (error ? theme.palette.danger : theme.palette.accent.main)};
+    border-color: ${({ theme, error }) => (error ? theme.palette.danger.shades[1] : theme.palette.accent.main)};
     border-radius: ${({ theme }) => theme.border.radius}; 
     transition: box-shadow 250ms ease-out; 
   }
@@ -39,12 +45,12 @@ export const Input = styled.input<Props>`
   & + label svg {
     position: absolute;
     pointer-events: none;
-    left: ${() => '2px'};
-    top: ${() => '2px'};
+    left: 2px;
+    top: 2px;
     width: ${({ theme }) => theme.spacing[4]};
     height: ${({ theme }) => theme.spacing[4]};
     fill: ${({ theme, error }) => (
-      error ? transparentize(theme.palette.danger, 0.8) : theme.palette.white
+      error ? theme.palette.danger.main : theme.palette.white
     )};
     display: block;    
     animation: ${pulse} 250ms ease both;
@@ -60,25 +66,27 @@ export const Input = styled.input<Props>`
 
   // The main check "box" on hover
   &:hover + label:before {
-    box-shadow: ${({ theme, error }) => getOutline(error, theme, 4)}
+    box-shadow: ${({ theme, error }) => getOutline(error, theme, 2)}
   }
 
   // The main check "box" on focus
   &:focus + label:before {
-    box-shadow: ${({ theme, error }) => getOutline(error, theme, 4)}
+    box-shadow: ${({ theme, error }) => getOutline(error, theme, 2)}
   }
 
   // The main check "box" as checked
   &:checked + label:before {
     background-color: ${({ theme, error }) => (
-      error ? transparentize(theme.palette.danger, 0.1) : theme.palette.accent.main
+      error ? theme.palette.danger.shades[2] : theme.palette.accent.main
     )};
   }
 
   // The main check "box" as disabled
   &:disabled + label:before {
     box-shadow: none;
-    background: ${({ theme }) => theme.palette.lightgrey};
+    background: ${({ theme, readOnly }) => (
+      readOnly ? transparentize(theme.palette.lightgrey, 0.5) : theme.palette.lightgrey
+    )};
     border-color: ${({ theme }) => theme.palette.grey};
   }
 
@@ -88,17 +96,26 @@ export const Input = styled.input<Props>`
 export const Label = styled.label<Props>`
   display: flex; 
   align-items: center;
+  padding: ${({ display }) => {
+    if (display === 'card') return '18px 8px';
+    return '8px 8px';
+  }};
+  margin: ${({ display }) => {
+    if (display === 'card') return '5px 0px';
+     return '0px';
+  }};
+  background-color: ${({ display, theme }) => display === 'card' && theme.palette.neutral[3]};
+  border-radius: ${({ theme }) => theme.border.radius.sm};
   color: ${({ theme, error, disabled }) => {
     if (disabled) {
       return theme.palette.neutral[2];
     }
     if (error) {
-      return theme.palette.danger;
+      return theme.palette.danger.main;
     }
     return theme.palette.neutral[1];
   }};
   font-size: ${({ theme }) => px(theme.fonts.size.small)};
-  cursor: pointer; 
   span {
     margin-left: ${({ theme }) => theme.spacing[2]};
   }
