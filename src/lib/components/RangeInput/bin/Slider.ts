@@ -1,5 +1,5 @@
 import styled, { Theme } from 'styled-components';
-import { px, getOutline, transparentize } from '../../../util';
+import { px, getOutline } from '../../../util';
 
 export type Props = {
   thumbSize: number
@@ -22,7 +22,7 @@ const getRailColor = (theme: Theme, error: boolean, disabled: boolean) => {
     return theme.palette.lightgrey;
   }
   if (error) {
-    return transparentize(theme.palette.danger, 0.1);
+    return theme.palette.danger.shades[2];
   }
   return theme.palette.neutral[3];
 };
@@ -55,8 +55,8 @@ export const Slider = styled.input<Props>`
     opacity: 1;
     -webkit-appearance: none;
     appearance: none;
-    width: ${({ thumbSize }) => `${thumbSize}px`};
-    height: ${({ thumbSize }) => `${thumbSize}px`};
+    width: ${({ thumbSize }) => px(thumbSize)};
+    height: ${({ thumbSize }) => px(thumbSize)};
     border-radius: 50%; 
     background: ${({ theme, error, disabled }) => getThumbColor(theme, error, disabled)};
     cursor: pointer;
