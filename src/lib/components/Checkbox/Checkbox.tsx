@@ -73,7 +73,6 @@ const Checkbox = (props: Props): JSX.Element => {
         error={!!(touched && error)}
         {...inputProps}
       />
-
       <Label
         display={display}
         error={!!(touched && error)}

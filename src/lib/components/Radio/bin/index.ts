@@ -64,12 +64,12 @@ export const Input = styled.input<Props>`
   
   // The main radio "container" on hover
   &:hover + label:before {
-    box-shadow: ${({ theme, error }) => getOutline(error, theme, 2)}
+    box-shadow: ${({ theme, error }) => getOutline(error, theme, 4)}
   }
 
   // The main radio "container" on focus
   &:focus + label:before {
-    box-shadow: ${({ theme, error }) => getOutline(error, theme, 2)}
+    box-shadow: ${({ theme, error }) => getOutline(error, theme, 4)}
   }
 
   // The main radio "container" as checked

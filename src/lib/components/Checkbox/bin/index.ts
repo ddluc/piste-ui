@@ -30,14 +30,14 @@ export const Input = styled.input<Props>`
     content: '';
     display: inline-block;
     vertical-align: text-top;
-    width: 18px;
-    height: 18px;
+    width: 19px;
+    height: 19px;
     background-color: ${({ theme, error }) => (
       error ? theme.palette.danger.shades[2] : theme.palette.neutral[4]
     )};
     border: solid ${({ theme }) => theme.border.width};
     border-color: ${({ theme, error }) => (error ? theme.palette.danger.shades[1] : theme.palette.accent.main)};
-    border-radius: ${({ theme }) => theme.border.radius}; 
+    border-radius: ${({ theme }) => theme.border.radius.sm}; 
     transition: box-shadow 250ms ease-out; 
   }
 
@@ -45,10 +45,9 @@ export const Input = styled.input<Props>`
   & + label svg {
     position: absolute;
     pointer-events: none;
-    left: 2px;
-    top: 2px;
-    width: ${({ theme }) => theme.spacing[4]};
-    height: ${({ theme }) => theme.spacing[4]};
+    height: 14px;
+    left: 12px;
+    width: 14px;
     fill: ${({ theme, error }) => (
       error ? theme.palette.danger.main : theme.palette.white
     )};
@@ -66,12 +65,12 @@ export const Input = styled.input<Props>`
 
   // The main check "box" on hover
   &:hover + label:before {
-    box-shadow: ${({ theme, error }) => getOutline(error, theme, 2)}
+    box-shadow: ${({ theme, error }) => getOutline(error, theme, 4)}
   }
 
   // The main check "box" on focus
   &:focus + label:before {
-    box-shadow: ${({ theme, error }) => getOutline(error, theme, 2)}
+    box-shadow: ${({ theme, error }) => getOutline(error, theme, 4)}
   }
 
   // The main check "box" as checked
