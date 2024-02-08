@@ -17,6 +17,7 @@ export default createGlobalStyle`
         src: url(${IBMPlexMono__Regular}) format('truetype');
         font-weight: normal;
         font-style: normal;
+        font-display: swap;
     }
 
     @font-face {
@@ -24,6 +25,7 @@ export default createGlobalStyle`
         src: url(${IBMPlexMono__Bold}) format('truetype');
         font-weight: bold;
         font-style: normal;
+        font-display: swap;
     }
 
     @font-face {
@@ -31,6 +33,7 @@ export default createGlobalStyle`
         src: url(${IBMPlexMono__Italic}) format('truetype');
         font-weight: normal;
         font-style: italic;
+        font-display: swap;
     }
 
     @font-face {
@@ -38,6 +41,7 @@ export default createGlobalStyle`
         src: url(${IBMPlexMono__BoldItalic}) format('truetype');
         font-weight: bold;
         font-style: italic;
+        font-display: swap;
     }
 
     @font-face {
@@ -45,6 +49,7 @@ export default createGlobalStyle`
         src: url(${IBMPlexSans__Regular}) format('truetype');
         font-weight: normal;
         font-style: normal;
+        font-display: swap;
     }
 
     @font-face {
@@ -59,6 +64,7 @@ export default createGlobalStyle`
         src: url(${IBMPlexSans__Italic}) format('truetype');
         font-weight: normal;
         font-style: italic;
+        font-display: swap;
     }
 
     body { 

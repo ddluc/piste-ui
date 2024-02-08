@@ -8,15 +8,15 @@ import { Indicator } from './bin/Indicator';
 import { Skeleton, isSkeleton, BaseSkeletonProps } from '../Skeleton';
 
 export interface BaseProps {
-  label: string
-  id: string
   name: string
-  min: number
-  max: number
-  step: number
-  thumbSize: number
-  value: number;
-  units: string;
+  label?: string
+  id?: string
+  min?: number
+  max?: number
+  step?: number
+  thumbSize?: number
+  value?: number;
+  units?: string;
   touched?: boolean;
   error?: string;
   help?: string;
@@ -52,7 +52,7 @@ const RangeInput = (props: Props): JSX.Element => {
     max = 0,
     step = 1,
     thumbSize = 18,
-    value,
+    value = 0,
     units,
     touched = false,
     error,
