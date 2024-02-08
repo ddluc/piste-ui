@@ -7,16 +7,17 @@ export interface Props {
   size?: 'sm' | 'normal' | 'lg';
 }
 
-const Input = styled.input<Props>`
+export const Input = styled.input<Props>`
   display: block;
-  margin-top: 4px;
+  margin-top: 2px;
+  height: 42px;
   ${({ theme, error }) => {
-    if (error) return `border: solid ${theme.border.width} ${theme.palette.danger}`;
+    if (error) return `border: solid ${theme.border.width} ${theme.palette.danger.main}`;
     return `border: solid ${theme.border.width} ${theme.palette.neutral[2]}`;
   }};
-  border-radius: ${({ theme }) => theme.border.radius};
-  color: ${({ theme, error }) => (error ? theme.palette.danger : theme.palette.neutral[0])};
-  padding: 10px 8px 10px 8px;
+  border-radius: ${({ theme }) => theme.border.radius.sm};
+  color: ${({ theme, error }) => (error ? theme.palette.danger.main : theme.palette.neutral[0])};
+  padding: 2px 10px;
   font-size: ${({ theme }) => px(theme.fonts.size.small)};
   font-weight: ${({ theme }) => theme.fonts.weight.normal};
   outline: none;
@@ -25,7 +26,7 @@ const Input = styled.input<Props>`
   transition: box-shadow .15s ease-in-out; 
 
   &:focus {
-    border-color: ${({ theme, error }) => (error ? theme.palette.danger : theme.palette.accent.main)};
+    border-color: ${({ theme, error }) => (error ? theme.palette.danger.main : theme.palette.accent.main)};
     box-shadow: ${({ theme, error }) => getOutline(error, theme, 4)}
   }
 
@@ -37,9 +38,7 @@ const Input = styled.input<Props>`
   &::placeholder {
     font-weight: 400; 
     font-size: ${({ theme }) => px(theme.fonts.size.small)};
-    color: ${({ theme, error }) => (error ? theme.palette.danger : theme.palette.neutral[1])};
+    color: ${({ theme, error }) => (error ? theme.palette.danger.main : theme.palette.neutral[1])};
   }
 
 `;
-
-export default Input;

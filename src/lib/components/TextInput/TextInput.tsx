@@ -4,8 +4,8 @@ import { Flex } from '../Flex';
 import { Label } from '../Label';
 import { FormMessage } from '../Form';
 import { Skeleton, isSkeleton, BaseSkeletonProps } from '../Skeleton';
-
-import Input from './bin/Input';
+import { Input } from './bin';
+import { Spacer } from '../Spacer';
 
 interface BaseProps {
   name: string;
@@ -16,10 +16,12 @@ interface BaseProps {
   animated?: boolean;
   error?: string;
   help?: string;
-  type?: 'text' | 'email' | 'tel' | 'password';
+  type?: 'number' | 'text' | 'email' | 'tel' | 'password';
   touched?: boolean;
   disabled?: boolean;
+  condensed?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
 }
 
@@ -32,11 +34,12 @@ export type Props = BaseProps | SkeletonProps;
 const TextInput = forwardRef<HTMLInputElement, Props>((props: Props, ref): JSX.Element => {
 
   if (isSkeleton(props)) {
-    const { animated, hideLabel } = props;
+    const { animated, hideLabel, condensed } = props;
     return (
       <Flex column gap="8px 0px">
         { !(animated || hideLabel) && <Skeleton {...props} type="box" height={14} width={140} /> }
         <Skeleton {...props} type="box" height={40} fluid />
+        { !condensed && <Spacer spacing={4} />}
       </Flex>
     );
   }
@@ -49,18 +52,21 @@ const TextInput = forwardRef<HTMLInputElement, Props>((props: Props, ref): JSX.E
     animated = false,
     placeholder,
     type,
-    error,
-    help,
-    onChange,
-    onBlur,
-    touched,
-    disabled,
+    error = '',
+    help = '',
+    onChange = () => {},
+    onBlur = () => {},
+    onFocus = () => {},
+    touched = false,
+    disabled = false,
+    condensed = false
   } = props;
 
   const [isFocused, setIsFocused] = React.useState(false);
 
-  const onFocusHandler = () => {
+  const onFocusHandler = (event: React.FocusEvent<HTMLInputElement>) => {
     setIsFocused(true);
+    onFocus(event);
   };
 
   const onBlurHandler = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -70,8 +76,14 @@ const TextInput = forwardRef<HTMLInputElement, Props>((props: Props, ref): JSX.E
 
   const hasError = (): boolean => (touched && !!error);
 
+  const isLabelActive = () => {
+    if (isFocused) return true;
+    if (type === 'number') return value !== '';
+    return value.length > 0;
+  };
+
   return (
-    <Block>
+    <Block position="relative">
       <Label
         value={label}
         htmlFor={name}
@@ -80,8 +92,8 @@ const TextInput = forwardRef<HTMLInputElement, Props>((props: Props, ref): JSX.E
         hideLabel={hideLabel}
         animated={animated}
         isFocused={isFocused}
-        isActive={(isFocused || value.length > 0)}
-        position={{ x: 8, y: 10 }}
+        isActive={isLabelActive()}
+        position={{ x: 12, y: 12 }}
         transpose={{ x: -8, y: -20 }}
         scale={0.8}
       >
@@ -100,7 +112,7 @@ const TextInput = forwardRef<HTMLInputElement, Props>((props: Props, ref): JSX.E
           ref={ref}
         />
       </Label>
-      <FormMessage error={error} touched={touched} help={help} />
+      { !condensed && <FormMessage error={error} touched={touched} help={help} /> }
     </Block>
   );
 
