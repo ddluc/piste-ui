@@ -11,14 +11,14 @@ export interface ThemedProps extends Props {
   theme: Theme;
 }
 
-export const UnorderedList = styled.ol<Props>`
+export const UnorderedList = styled.ul<Props>`
   ${AbstractTextStyles}
   ${({ style }) => style && `list-style: ${style}`}; 
   padding-left: ${({ indent = '40px' }) => indent}; 
   line-height: initial;
 `;
 
-export const OrderedList = styled.ul<Props>`
+export const OrderedList = styled.ol<Props>`
   ${AbstractTextStyles}
   ${({ style }) => style && `list-style: ${style}`}; 
   padding-left: ${({ indent = '40px' }) => indent}; 

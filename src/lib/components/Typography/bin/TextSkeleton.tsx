@@ -22,8 +22,9 @@ export const TextSkeleton = (props: Props): JSX.Element => {
   return (
     <>
       {
-        items.map(() => (
+        items.map((i: number) => (
           <Skeleton
+            key={i}
             type="box"
             fluid={!width}
             width={getWidth()}

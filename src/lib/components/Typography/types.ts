@@ -8,9 +8,13 @@ export type TextProperties = {
   ellipsis?: boolean;
   decoration?: 'overline' | 'underline' | 'line-through';
   align?: 'right' | 'left' | 'center';
+  color?: string;
+  top?: string;
+  bottom?: string;
+  condensed?: boolean;
+  // Deprecated
   spacing?: {
     top: string,
     bottom: string,
   }
-  condensed?: boolean
 }
