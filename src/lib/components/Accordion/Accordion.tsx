@@ -13,7 +13,6 @@ export interface Props {
   open?: boolean
   elevation?: ElevationLevel
   children?: React.ReactNode
-  height?: number
   onClick?: (id: string) => void
 }
 
@@ -25,10 +24,11 @@ const Accordion = (props: Props): JSX.Element => {
     controlled,
     children,
     elevation,
-    height = 400,
     onClick
   } = props;
 
+  const contentRef = React.useRef<HTMLDivElement>(null); // Ref for the content div
+  const [height, setHeight] = React.useState(0);
   const [isOpen, setIsOpen] = React.useState(false);
 
   const handleHeaderClick = () => {
@@ -41,6 +41,13 @@ const Accordion = (props: Props): JSX.Element => {
 
   const shouldRenderContent = () => (controlled ? open : isOpen);
 
+  React.useEffect(() => {
+    if (shouldRenderContent() && contentRef.current) {
+      const contentHeight = contentRef.current.scrollHeight;
+      setHeight(contentHeight);
+    }
+  }, [shouldRenderContent]);
+
   return (
     <Card elevation={elevation} padding={['0px', '0px', '0px', '0px']}>
       <Header onClick={handleHeaderClick}>
@@ -49,7 +56,7 @@ const Accordion = (props: Props): JSX.Element => {
           <ArrowIcon height="16px" width="16px" />
         </Dropdown>
       </Header>
-      <Content open={shouldRenderContent()} maxHeight={height}>
+      <Content ref={contentRef} open={shouldRenderContent()} maxHeight={height}>
         {children}
       </Content>
     </Card>

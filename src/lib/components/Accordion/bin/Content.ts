@@ -22,6 +22,6 @@ export const Content = styled.div<ThemedProps>`
     return '0px';
   }};
   padding: 0px 10px;
-  transition: max-height 500ms cubic-bezier(0.4, 0, 0.2, 1),
-              margin 500ms cubic-bezier(0.4, 0, 0.2, 1)
+  transition: max-height 500ms 0ms ease,
+              margin 500ms 0ms ease
 `;
