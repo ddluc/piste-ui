@@ -17,7 +17,7 @@ export default {
 
 const Template: ComponentStory<typeof Accordion> = (args: AccordionProps) => (
   <Accordion {...args}>
-    <small>
+    <small style={{ fontSize: '12px' }}>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis odio accumsan,
       convallis libero in, efficitur erat. Duis porta neque et faucibus eleifend. Maecenas
       tristique pretium tempus. Phasellus quis sapien ex. Pellentesque nisl augue, accumsan
@@ -45,7 +45,7 @@ const GroupTemplate: ComponentStory<typeof Accordion> = (args: AccordionProps) =
   return (
     <Flex column gap="10px">
       <Accordion id="1" title="Accordion 1" onClick={onClick} controlled open={isOpen('1')} height={140}>
-        <small>
+        <small style={{ fontSize: '12px' }}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis odio accumsan,
           convallis libero in, efficitur erat. Duis porta neque et faucibus eleifend. Maecenas
           tristique pretium tempus. Phasellus quis sapien ex. Pellentesque nisl augue, accumsan
@@ -55,7 +55,7 @@ const GroupTemplate: ComponentStory<typeof Accordion> = (args: AccordionProps) =
         </small>
       </Accordion>
       <Accordion id="2" title="Accordion 2" onClick={onClick} controlled open={isOpen('2')} height={140}>
-        <small>
+        <small style={{ fontSize: '12px' }}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis odio accumsan,
           convallis libero in, efficitur erat. Duis porta neque et faucibus eleifend. Maecenas
           tristique pretium tempus. Phasellus quis sapien ex. Pellentesque nisl augue, accumsan
@@ -65,7 +65,7 @@ const GroupTemplate: ComponentStory<typeof Accordion> = (args: AccordionProps) =
         </small>
       </Accordion>
       <Accordion id="3" title="Accordion 3" onClick={onClick} controlled open={isOpen('3')} height={280}>
-        <small>
+        <small style={{ fontSize: '12px' }}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis odio accumsan,
           convallis libero in, efficitur erat. Duis porta neque et faucibus eleifend. Maecenas
           tristique pretium tempus. Phasellus quis sapien ex. Pellentesque nisl augue, accumsan
