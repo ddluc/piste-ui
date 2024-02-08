@@ -5,16 +5,17 @@ import type { AlertData } from '../../types';
 
 export interface Props {
   alerts: AlertData[]
+  yOffset?: string
   removeAlert: (id: string) => void
 }
 
 // Declare the component
 const AlertController = (props: Props): JSX.Element => {
 
-  const { alerts, removeAlert } = props;
+  const { alerts, removeAlert, yOffset } = props;
 
   return (
-    <AlertBox>
+    <AlertBox yOffset={yOffset}>
       {alerts.map((alert: AlertData): JSX.Element => (
         <Alert key={alert.id} {...alert} removeAlert={removeAlert} />
       ))}

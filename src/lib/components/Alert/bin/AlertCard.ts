@@ -21,7 +21,7 @@ export const AlertCard = styled.div<ThemedProps>`
   background-color: ${({ palette }) => palette.background};
   box-shadow: 8px 9px 10px 2px rgba(0,0,0,0.1);
   border-top: solid 3px; 
-  border-radius:${(props: ThemedProps) => props.theme.border.radius};
+  border-radius:${(props: ThemedProps) => props.theme.border.radius.sm};
   border-color: ${(props: ThemedProps) => props.palette.border}; 
   fill: ${(props: ThemedProps) => props.palette.icon}; 
 
