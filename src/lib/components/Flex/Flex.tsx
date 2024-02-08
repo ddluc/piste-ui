@@ -22,7 +22,7 @@ export interface Props extends BaseCSSProperties {
   flex?: string;
   grow?: number | 'auto' | 'initial' | 'inherit';
   shrink?: number | 'auto' | 'initial' | 'inherit';
-  basis?: number | 'auto' | 'initial' | 'inherit';
+  basis?: string | number | 'auto' | 'initial' | 'inherit';
   order?: number;
   alignSelf?: 'auto' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
  }
@@ -54,10 +54,10 @@ const Flex = styled(Block)<Props>`
   ${({ alignContent }: ThemedProps) => alignContent && `align-content: ${alignContent}`}; 
   ${({ gap }: ThemedProps) => gap && `gap: ${gap}`}; 
   ${({ flex }: ThemedProps) => flex && `flex: ${flex}`}; 
-  ${({ grow }: ThemedProps) => grow && `flex-grow: ${grow}`}; 
-  ${({ shrink }: ThemedProps) => shrink && `flex-shrink: ${shrink}`}; 
-  ${({ basis }: ThemedProps) => basis && `flex-basis: ${basis}`}; 
-  ${({ order }: ThemedProps) => order && `order: ${order}`}; 
+  ${({ grow }: ThemedProps) => grow !== undefined && `flex-grow: ${grow}`}; 
+  ${({ shrink }: ThemedProps) => shrink !== undefined && `flex-shrink: ${shrink}`}; 
+  ${({ basis }: ThemedProps) => basis !== undefined && `flex-basis: ${basis}`}; 
+  ${({ order }: ThemedProps) => order !== undefined && `order: ${order}`}; 
   ${({ alignSelf }: ThemedProps) => alignSelf && `align-self: ${alignSelf}`}; 
 `;
 
