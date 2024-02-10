@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
-type Props = {};
+type Props = {
+  align: 'left' | 'center'
+};
 
 export const ButtonText = styled.span<Props>`
-  flex-grow: 1; 
   overflow: hidden;
-  text-align: left;
+  text-align: ${({ align }) => align};
   text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: nowrap; 
 `;

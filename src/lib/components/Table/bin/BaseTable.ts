@@ -1,5 +1,6 @@
 /* eslint-disable indent */
 import styled, { Theme } from 'styled-components';
+import { px } from '../../../util';
 
 export type Props = {
   spacing: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
@@ -22,6 +23,7 @@ export const BaseTable = styled.table<Props>`
   width: 100%;
   font-family: ${({ theme }) => theme.fonts.family.display};
   border-collapse: ${({ gridlines }) => (gridlines ? 'separate' : 'collapse')};
+  border-spacing: 1px;
   border-radius: ${({ theme }) => `${theme.border.radius}`};
   background-color: ${({ gridlines, gridColor }) => ((gridlines && gridColor) ? gridColor : 'transparent')};
   // Responsive Scrolling
@@ -32,12 +34,12 @@ export const BaseTable = styled.table<Props>`
     -webkit-overflow-scrolling: touch;
     // Custom scrollbar styles
     &::-webkit-scrollbar {
-      height: ${({ scrollbar }) => `${scrollbar.height}px`};
+      height: ${({ scrollbar }) => px(scrollbar.height)};
       background-color: ${({ scrollbar, theme }) => scrollbar.background || theme.palette.neutral[3]};
     }
     &::-webkit-scrollbar-thumb {
       background-color: ${({ scrollbar, theme }) => scrollbar.color || theme.palette.neutral[2]};
-      border-radius: ${({ theme }) => `${theme.border.radius}`};
+      border-radius: ${({ theme }) => theme.border.radius.sm};
     }
     &::-webkit-scrollbar-thumb:hover {
       background-color: ${({ scrollbar, theme }) => scrollbar.hover || theme.palette.neutral[1]};

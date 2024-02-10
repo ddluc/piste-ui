@@ -3,7 +3,7 @@ import { FormMessage, Fieldset, Legend } from '../Form';
 import { Flex } from '../Flex';
 import { Skeleton, isSkeleton, BaseSkeletonProps } from '../Skeleton';
 
-import Radio from './Radio';
+import Checkbox from './Checkbox';
 
 export interface BaseProps {
   legend: string;
@@ -14,9 +14,6 @@ export interface BaseProps {
   disabled?: boolean;
   direction?: 'horizontal' | 'vertical';
   border?: boolean;
-  onChange?: (e: React.ChangeEvent<HTMLFieldSetElement>) => void,
-  onBlur?: (e: React.FocusEvent<HTMLFieldSetElement>) => void,
-  onFocus?: (e: React.FocusEvent<HTMLFieldSetElement>) => void,
   children: React.ReactNode
 }
 
@@ -26,7 +23,7 @@ interface SkeletonProps extends BaseSkeletonProps, BaseProps {
 
 export type Props = SkeletonProps | BaseProps;
 
-const RadioGroup = (props: Props): JSX.Element => {
+const CheckboxGroup = (props: Props): JSX.Element => {
 
   if (isSkeleton(props)) {
     const { children } = props;
@@ -39,7 +36,7 @@ const RadioGroup = (props: Props): JSX.Element => {
       >
         <Skeleton skeleton type="box" height={20} fluid />
         { React.Children.map(children, (child) => (
-          <Radio skeleton label="" value="" />
+          <Checkbox skeleton label="" value="" checked />
         ))}
       </Flex>
     );
@@ -54,16 +51,13 @@ const RadioGroup = (props: Props): JSX.Element => {
     disabled,
     direction = 'vertical',
     border = true,
-    onChange = () => {},
-    onBlur = () => {},
-    onFocus = () => {},
     children
   } = props;
 
-  const RadioButtons = React.Children.map(children, (child: React.ReactElement<BaseProps>) => {
+  const CheckBoxes = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
-      // Pass shared props to child radio elements
-      return React.cloneElement(child, {
+      // Pass shared props to child checkbox elements
+      return React.cloneElement<any>(child, {
         name, error, touched, disabled
       });
     }
@@ -75,13 +69,10 @@ const RadioGroup = (props: Props): JSX.Element => {
       <Fieldset
         border={border}
         direction={direction}
-        onChange={onChange}
-        onBlur={onBlur}
-        onFocus={onFocus}
         error={!!(touched && error)}
       >
         <Legend error={!!(touched && error)}>{legend}</Legend>
-        {RadioButtons}
+        {CheckBoxes}
       </Fieldset>
       <FormMessage error={error} touched={touched} help={help} />
     </>
@@ -89,4 +80,4 @@ const RadioGroup = (props: Props): JSX.Element => {
 };
 
 // Export the component as the default export
-export default RadioGroup;
+export default CheckboxGroup;

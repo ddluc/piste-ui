@@ -14,6 +14,7 @@ export default {
     variation: 'default',
     intent: 'none',
     fluid: false,
+    iconSize: 'sm'
   } as ButtonProps
 } as ComponentMeta<typeof Button>;
 
@@ -21,15 +22,24 @@ const Template: ComponentStory<typeof Button> = (args: ButtonProps) => (
   <Button {...args} />
 );
 
-const IconTemplate: ComponentStory<typeof Button> = (args: ButtonProps & { iconType: string}) => {
+const IconTemplate: ComponentStory<typeof Button> = (args: ButtonProps & { iconSize: string, iconType: string}) => {
   const { iconType, ...baseArgs } = args;
+
+  const getIconSize = () => {
+    const { iconSize } = baseArgs;
+    if (iconSize === 'sm') return '16px';
+    if (iconSize === 'md') return '24px';
+    if (iconSize === 'lg') return '32px';
+    return 'auto';
+  };
+
   if (iconType === 'trash') {
-    return <Button {...baseArgs} icon={<TrashIcon height="16px" width="16px" />} />;
+    return <Button {...baseArgs} icon={<TrashIcon height={getIconSize()} width={getIconSize()} />} />;
   }
   if (iconType === 'restart') {
-    return <Button {...baseArgs} icon={<RestartIcon height="16px" width="16px" />} />;
+    return <Button {...baseArgs} icon={<RestartIcon height={getIconSize()} width={getIconSize()} />} />;
   }
-  return <Button {...baseArgs} icon={<SettingsIcon height="16px" width="16px" />} />;
+  return <Button {...baseArgs} icon={<SettingsIcon height={getIconSize()} width={getIconSize()} />} />;
 };
 
 export const asDefault = Template.bind({});

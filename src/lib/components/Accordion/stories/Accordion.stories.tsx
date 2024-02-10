@@ -3,7 +3,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Accordion, AccordionProps } from '../index';
-import { Block } from '../../Block';
 import { Flex } from '../../Flex';
 
 export default {
@@ -15,9 +14,16 @@ export default {
   } as AccordionProps
 } as ComponentMeta<typeof Accordion>;
 
+const style = {
+  fontSize: '12px',
+  padding: '0px 0px 10px 0px',
+  display: 'block',
+  lineHeight: '14px'
+};
+
 const Template: ComponentStory<typeof Accordion> = (args: AccordionProps) => (
   <Accordion {...args}>
-    <small>
+    <small style={style}>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis odio accumsan,
       convallis libero in, efficitur erat. Duis porta neque et faucibus eleifend. Maecenas
       tristique pretium tempus. Phasellus quis sapien ex. Pellentesque nisl augue, accumsan
@@ -44,8 +50,8 @@ const GroupTemplate: ComponentStory<typeof Accordion> = (args: AccordionProps) =
 
   return (
     <Flex column gap="10px">
-      <Accordion id="1" title="Accordion 1" onClick={onClick} controlled open={isOpen('1')} height={140}>
-        <small>
+      <Accordion id="1" title="Accordion 1" onClick={onClick} controlled open={isOpen('1')}>
+        <small style={style}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis odio accumsan,
           convallis libero in, efficitur erat. Duis porta neque et faucibus eleifend. Maecenas
           tristique pretium tempus. Phasellus quis sapien ex. Pellentesque nisl augue, accumsan
@@ -54,8 +60,8 @@ const GroupTemplate: ComponentStory<typeof Accordion> = (args: AccordionProps) =
           Proin erat lacus, placerat at diam sed, viverra cursus mi.
         </small>
       </Accordion>
-      <Accordion id="2" title="Accordion 2" onClick={onClick} controlled open={isOpen('2')} height={140}>
-        <small>
+      <Accordion id="2" title="Accordion 2" onClick={onClick} controlled open={isOpen('2')}>
+        <small style={style}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis odio accumsan,
           convallis libero in, efficitur erat. Duis porta neque et faucibus eleifend. Maecenas
           tristique pretium tempus. Phasellus quis sapien ex. Pellentesque nisl augue, accumsan
@@ -64,8 +70,8 @@ const GroupTemplate: ComponentStory<typeof Accordion> = (args: AccordionProps) =
           Proin erat lacus, placerat at diam sed, viverra cursus mi.
         </small>
       </Accordion>
-      <Accordion id="3" title="Accordion 3" onClick={onClick} controlled open={isOpen('3')} height={280}>
-        <small>
+      <Accordion id="3" title="Accordion 3" onClick={onClick} controlled open={isOpen('3')}>
+        <small style={style}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis odio accumsan,
           convallis libero in, efficitur erat. Duis porta neque et faucibus eleifend. Maecenas
           tristique pretium tempus. Phasellus quis sapien ex. Pellentesque nisl augue, accumsan

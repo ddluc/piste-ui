@@ -15,7 +15,7 @@ const StaticLabelText = styled.span<Props>`
   color: ${({
     theme, error, disabled, isFocused
   }) => {
-    if (error) return theme.palette.danger;
+    if (error) return theme.palette.danger.main;
     if (disabled) return theme.palette.grey;
     if (isFocused) return theme.palette.accent.main;
     return theme.palette.neutral[0];

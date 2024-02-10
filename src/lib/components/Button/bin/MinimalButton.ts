@@ -10,7 +10,7 @@ export interface Props {
 // Defined a styled component implmementation
 export const MinimalButton = styled(DefaultButton)<Props>`
 
-  padding: 2px; 
+  padding: 2px 4px; 
   background-color: transparent;
   color: ${({ theme, color }) => color || theme.palette.neutral[1]}; 
   fill: ${({ theme, color }) => color || theme.palette.neutral[1]}; 

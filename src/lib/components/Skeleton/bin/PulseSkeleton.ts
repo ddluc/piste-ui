@@ -13,7 +13,7 @@ const PulseSkeleton = styled.div<Props>`
   height: 100%;
   width: 100%; 
   background-color:${({ colors }: ThemedProps) => (colors[0])}; 
-  border-radius:${({ theme, }: ThemedProps) => theme.border.radius}; 
+  border-radius:${({ theme, }: ThemedProps) => theme.border.radius.sm}; 
   position: relative;
   padding: 0;
   box-shadow: none;
@@ -31,7 +31,6 @@ const PulseSkeleton = styled.div<Props>`
     height: 100%;
     animation: 2000ms ease-in ${animations.pulse} forwards infinite; 
     background-color: ${({ colors }: ThemedProps) => (colors[1])}; 
-    border-radius:${({ theme }: ThemedProps) => theme.border.radius}; 
     content: '';
   }
 `;

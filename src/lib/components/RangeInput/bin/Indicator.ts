@@ -13,7 +13,7 @@ export const Indicator = styled.div<Props>`
   width: 36px; 
   padding: 2px 4px;
   font-size: 12px;
-  background-color: ${({ theme, error }) => (error ? transparentize(theme.palette.danger, 0.1) : theme.palette.neutral[3])};
+  background-color: ${({ theme, error }) => (error ? theme.palette.danger.shades[2] : theme.palette.neutral[3])};
   border-radius: ${({ theme }) => theme.border.radius};
   text-align: center;
   position: absolute;
@@ -26,7 +26,7 @@ export const Indicator = styled.div<Props>`
     position: absolute;
     width: 0;
     height: 0;
-    border-top: 6px solid ${({ theme, error }) => (error ? transparentize(theme.palette.danger, 0.1) : theme.palette.neutral[3])};
+    border-top: 6px solid ${({ theme, error }) => (error ? theme.palette.danger.shades[2] : theme.palette.neutral[3])};
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     top: 100%;

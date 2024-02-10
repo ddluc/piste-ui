@@ -21,7 +21,8 @@ export const H2 = styled.h2<Props>`
   font-family: ${({ theme }) => theme.fonts.family.display}; ;
   font-size: ${({ size, theme }) => size || `${theme.fonts.size.subtitle}px`};
   line-height: ${({ lineHeight, theme }) => lineHeight || `${Math.floor(theme.fonts.size.subtitle * 1.25)}px`};
-  font-weight: ${({ weight, theme }) => weight || theme.fonts.weight.normal};
+  font-weight: ${({ weight, theme }) => weight || theme.fonts.weight.bold};
+  color:${({ color, theme }) => color || theme.palette.neutral[0]};
 `;
 
 export const H3 = styled.h3<Props>`

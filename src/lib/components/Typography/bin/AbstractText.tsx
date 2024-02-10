@@ -12,10 +12,31 @@ export const AbstractTextStyles = css<Props>`
   font-weight: ${({ weight }) => weight}; ;
   font-size: ${({ size, theme }) => size || `${theme.fonts.size.normal}px`};
   line-height: ${({ lineHeight, theme }) => lineHeight || `${theme.fonts.size.normal * 1.2}px`};
-  margin-top: ${({ spacing }) => (spacing ? spacing.top : '20px')};
-  margin-bottom: ${({ spacing }) => (spacing ? spacing.bottom : '20px')};
+
+  ${({
+    spacing,
+    condensed,
+    top,
+    bottom,
+    theme,
+  }) => {
+    if (spacing) return `margin: ${spacing.top} 0px ${spacing.bottom} 0px`;
+    if (top && bottom) return `margin: ${top} 0px ${bottom} 0px`;
+    if (condensed) return 'margin: 0px';
+    return `margin: ${theme.spacing[2]} 0px`;
+  }}
+  
   ${({ decoration }) => decoration && `text-decoration: ${decoration}`}; 
   ${({ italic }) => italic && 'font-style: italic'}; 
   ${({ align }) => align && `text-align: ${align}`};
-  ${({ condensed }) => condensed && 'margin: 0px'};
+  ${({ color }) => color && `color: ${color}`};
+  ${({ ellipsis }) => (
+    ellipsis && css`
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      max-width: 100%;
+    `
+  )};
+  
 `;

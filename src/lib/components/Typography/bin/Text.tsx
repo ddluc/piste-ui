@@ -12,5 +12,8 @@ export const Text = styled.span<Props>`
   ${AbstractTextStyles}
   font-size: ${({ size, theme }) => size || `${theme.fonts.size.normal}px`};
   line-height: ${({ lineHeight, theme }) => lineHeight || `${Math.floor(theme.fonts.size.normal * 1.5)}px`}; ;
-  font-weight: ${({ weight, theme }) => weight || theme.fonts.weight.normal}; ;
+  font-weight: ${({ weight, theme }) => weight || theme.fonts.weight.normal};
+  & strong {
+    font-weight: ${({ theme }) => theme.fonts.weight.bold};
+  }
 `;

@@ -14,7 +14,7 @@ export interface ThemedProps extends ColorBoxProps {
 }
 
 export const getThemeColor = ({ color, shade = null, theme }: ThemedProps): string => {
-  if (color === 'primary' || color === 'accent') {
+  if (color === 'primary' || color === 'accent' || color === 'danger' || color === 'warning' || color === 'success') {
     if (shade !== null) return theme.palette[color].shades[shade];
     return theme.palette[color].main;
   }

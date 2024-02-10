@@ -25,25 +25,26 @@ export type Color = string;
 export type ThemeColor = {
   main: string;
   contrastText: string;
-  shades?: Color[]
+  shades: Color[]
 };
 
 export type ThemePalette = {
   primary: ThemeColor;
   accent: ThemeColor;
-  success: Color;
-  warning: Color;
-  danger: Color;
+  success: ThemeColor;
+  warning: ThemeColor;
+  danger: ThemeColor;
   body: Color;
   white: Color;
   black: Color;
   grey: Color;
   lightgrey: Color;
-  neutral?: [Color, Color, Color, Color, Color, Color];
-  visualization?: [Color, Color, Color, Color, Color, Color];
+  neutral: [Color, Color, Color, Color, Color, Color];
+  visualization: [Color, Color, Color, Color, Color, Color];
 };
 
 export type ThemeBreakpoints = {
+  xl: string;
   lg: string;
   md: string;
   sm: string;
@@ -51,7 +52,10 @@ export type ThemeBreakpoints = {
 }
 
 export type ThemeBorder = {
-  radius: string;
+  radius: {
+    sm: string;
+    lg: string;
+  };
   width: string;
 };
 

@@ -2,6 +2,7 @@
  * Export Theme
  */
 export { default as PisteThemes } from './theme';
+export { default as PisteFonts } from './theme/fonts';
 export type { Theme as PisteTheme } from './theme/types';
 
 /**
@@ -41,10 +42,12 @@ export { Image, ImageProps } from './lib/components/Image';
 export { Label, LabelProps } from './lib/components/Label';
 export { Palette } from './lib/components/Palette';
 export { Radio, RadioProps } from './lib/components/Radio';
+export { RangeInput, RangeInputProps } from './lib/components/RangeInput';
 export { Scale, ScaleProps } from './lib/components/Scale';
 export { Scroll, ScrollProps } from './lib/components/Scroll';
 export { Select, SelectProps } from './lib/components/Select';
 export { Sidesheet, SidesheetProps } from './lib/components/Sidesheet';
 export { Skeleton, SkeletonProps } from './lib/components/Skeleton';
+export { default as Table, TableProps } from './lib/components/Table';
 export { TextInput, TextInputProps } from './lib/components/TextInput';
 export { Typography, TextProps } from './lib/components/Typography';

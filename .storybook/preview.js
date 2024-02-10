@@ -5,6 +5,7 @@ import { withThemesProvider } from "storybook-addon-styled-component-theme";
 
 import { DEFAULT_THEME } from '../src/theme/default';
 import GlobalFonts from '../src/theme/fonts'; 
+import ResetCSS from '../src/theme/reset';
 
 export const parameters = {
   actions: { argTypesRegex: '^on.*' },
@@ -24,6 +25,7 @@ addDecorator(withThemesProvider(themes), ThemeProvider);
 // Inject the default fonts into storybook
 addDecorator((Story) => (
   <>
+    <ResetCSS />
     <GlobalFonts />
     <Story />
   </>

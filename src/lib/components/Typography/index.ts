@@ -7,6 +7,7 @@ import {
 import { Link } from './bin/Link';
 import { ListItem, OrderedList, UnorderedList } from './bin/List';
 import { Mono } from './bin/Mono';
+import { TextSkeleton } from './bin/TextSkeleton';
 
 /**
  * Export Text Components
@@ -23,6 +24,7 @@ type TypographyComponents = {
   H6: typeof H6,
   Mono: typeof Mono,
   Text: typeof Text,
+  Skeleton: typeof TextSkeleton,
   List: {
     Ordered: typeof OrderedList,
     Unordered: typeof UnorderedList,
@@ -46,7 +48,8 @@ export const Typography: TypographyComponents = {
     Ordered: OrderedList,
     Unordered: UnorderedList,
     Item: ListItem
-  }
+  },
+  Skeleton: TextSkeleton,
 };
 
 // Export prop types

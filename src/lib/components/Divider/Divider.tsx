@@ -43,7 +43,7 @@ const Divider = styled.hr<Props>`
         border-top: none; 
         border-right: none; 
         height: ${height}; 
-        width: 1px; 
+        width: 0px; 
         margin-left: ${spacing ? spacing.left : '5px'}; 
         margin-right: ${spacing ? spacing.right : '5px'}; 
       `;
@@ -52,7 +52,7 @@ const Divider = styled.hr<Props>`
       border-top: none; 
       border-right: none; 
       border-left: none; 
-      height: 1px; 
+      height: 0px; 
       width: ${width};
       margin-top: ${spacing ? spacing.top : '5px'};
       margin-bottom: ${spacing ? spacing.bottom : '5px'};

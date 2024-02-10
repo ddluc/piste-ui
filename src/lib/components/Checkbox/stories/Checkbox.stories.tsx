@@ -11,7 +11,8 @@ export default {
     checked: true,
     touched: true,
     error: '',
-    disabled: false
+    disabled: false,
+    readOnly: false,
   } as CheckboxProps
 } as ComponentMeta<typeof Checkbox>;
 
@@ -31,7 +32,7 @@ const ControlledTemplate: ComponentStory<typeof Checkbox> = (args: CheckboxProps
   return (<Checkbox {...args} checked={checked} onChange={onChange} />);
 };
 
-export const Main = Template.bind({});
+export const asDefault = Template.bind({});
 
 export const asControlledInput = ControlledTemplate.bind({});
 

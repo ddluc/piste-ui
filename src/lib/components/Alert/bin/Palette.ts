@@ -1,5 +1,4 @@
-import styled, { Theme } from 'styled-components';
-import { transparentize } from '../../../util';
+import { Theme } from 'styled-components';
 
 export type AlertPaletteItem = {
   background: string,
@@ -26,22 +25,22 @@ export const getAlertPalette = (theme: Theme): AlertPalette => ({
     icon: theme.palette.accent.main,
   },
   success: {
-    background: transparentize(theme.palette.success, 0.1),
-    text: theme.palette.success,
-    border: theme.palette.success,
-    icon: theme.palette.success,
+    background: theme.palette.white,
+    text: theme.palette.success.shades[0],
+    border: theme.palette.success.main,
+    icon: theme.palette.success.main,
   },
   warning: {
-    background: transparentize(theme.palette.warning, 0.1),
-    text: theme.palette.warning,
-    border: theme.palette.warning,
-    icon: theme.palette.warning,
+    background: theme.palette.white,
+    text: theme.palette.warning.shades[0],
+    border: theme.palette.warning.main,
+    icon: theme.palette.warning.main,
   },
   danger: {
-    background: transparentize(theme.palette.danger, 0.1),
-    text: theme.palette.danger,
-    border: theme.palette.danger,
-    icon: theme.palette.danger,
+    background: theme.palette.white,
+    text: theme.palette.danger.shades[0],
+    border: theme.palette.danger.main,
+    icon: theme.palette.danger.main,
   },
   grey: {
     background: theme.palette.lightgrey,

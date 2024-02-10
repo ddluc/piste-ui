@@ -17,6 +17,8 @@ export interface ThemedProps extends ContainerProps {
 
 // Defined a styled component implmementation
 export const DefaultBadge = styled.div<ContainerProps>`
+  box-sizing: content-box;
+  height: 20px;
   width: fit-content;
   max-width: 200px;
   display: flex; 
@@ -28,11 +30,11 @@ export const DefaultBadge = styled.div<ContainerProps>`
   color: ${({ palette }) => palette.text}; 
   border: ${({ theme }) => `solid ${theme.border.width}`}; 
   border-color: ${({ palette }) => palette.border}; 
-  border-radius: ${({ theme }) => theme.border.radius}; 
+  border-radius: ${({ theme }) => theme.border.radius.lg}; 
   font-family:  ${({ theme }) => theme.fonts.family.display}; 
   font-size:  ${({ theme }) => px(theme.fonts.size.xsmall)}; 
   fill: ${({ palette }) => palette.icon}; 
-  padding: ${({ hasText }) => (hasText ? '2px 6px' : '2px 4px')};
+  padding: ${({ hasText }) => (hasText ? '2px 12px' : '2px 4px')};
 
   ${({ isClickable }) => isClickable && `
       &:hover {

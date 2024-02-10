@@ -61,7 +61,27 @@ export const transparentize = (color: string, opacity: number) => {
  */
 export const getOutline = (error: boolean, theme: Theme, shade = 4, dangerOpacity = 0.3): string => {
   if (error) {
-    return `${transparentize(theme.palette.danger, dangerOpacity)} ${theme.forms.outline}`;
+    return `${transparentize(theme.palette.danger.main, dangerOpacity)} ${theme.forms.outline}`;
   }
   return `${theme.palette.accent.shades[shade]} ${theme.forms.outline}`;
+};
+
+/**
+ * Determines if the app is desktop or mobile
+ * @param wdith
+ * @param theme
+ */
+export const isDesktop = (window: {width: number }, theme: Theme): boolean => {
+  const breakpointSize = parseInt(theme.breakpoints.md.replace(/[^0-9]/g, ''), 10);
+  return (window.width > breakpointSize);
+};
+
+/**
+ * Determines if the app is desktop or mobile
+ * @param width
+ * @param breakpoint
+ */
+export const isMobile = (window: {width: number }, theme: Theme): boolean => {
+  const breakpointSize = parseInt(theme.breakpoints.md.replace(/[^0-9]/g, ''), 10);
+  return (window.width <= breakpointSize);
 };

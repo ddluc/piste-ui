@@ -19,7 +19,7 @@ const ControlledTemplate: ComponentStory<typeof RadioGroup> = (args: RadioGroupP
 
   const [value, setValue] = React.useState<string>('');
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const onChange = (e: React.ChangeEvent<HTMLFieldSetElement>): void => {
     setValue(e.target.id);
   };
 

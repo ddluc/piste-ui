@@ -45,6 +45,7 @@ const Badge = (props: Props): JSX.Element => {
   return (
     <DefaultBadge
       as={isClickable ? 'button' : 'div'}
+      type={isClickable ? 'button' : undefined}
       onClick={onClick}
       palette={palette[type]}
       iconPosition={iconPosition}
