@@ -10,7 +10,7 @@ export type { Theme as PisteTheme } from './theme/types';
  */
 
 export {
-  px, pcnt, debounce, transparentize,
+  px, pcnt, debounce, transparentize, isDesktop, isMobile
 } from './lib/util';
 
 /**
@@ -51,3 +51,9 @@ export { Skeleton, SkeletonProps } from './lib/components/Skeleton';
 export { default as Table, TableProps } from './lib/components/Table';
 export { TextInput, TextInputProps } from './lib/components/TextInput';
 export { Typography, TextProps } from './lib/components/Typography';
+
+/** Export Types */
+export { CSSTransitionAnimation } from './lib/types';
+
+/** Reset CSS */
+export { default as ResetCSS } from './theme/reset';

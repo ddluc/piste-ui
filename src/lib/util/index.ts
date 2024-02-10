@@ -71,7 +71,7 @@ export const getOutline = (error: boolean, theme: Theme, shade = 4, dangerOpacit
  * @param wdith
  * @param theme
  */
-export const isDesktop = (window: {width: number }, theme: Theme): boolean => {
+export const isDesktop = (window: {width: number | undefined }, theme: Theme): boolean => {
   const breakpointSize = parseInt(theme.breakpoints.md.replace(/[^0-9]/g, ''), 10);
   return (window.width > breakpointSize);
 };
@@ -81,7 +81,7 @@ export const isDesktop = (window: {width: number }, theme: Theme): boolean => {
  * @param width
  * @param breakpoint
  */
-export const isMobile = (window: {width: number }, theme: Theme): boolean => {
+export const isMobile = (window: {width: number | undefined }, theme: Theme): boolean => {
   const breakpointSize = parseInt(theme.breakpoints.md.replace(/[^0-9]/g, ''), 10);
   return (window.width <= breakpointSize);
 };

@@ -86,7 +86,7 @@ const RangeInput = (props: Props): JSX.Element => {
   }
 
   return (
-    <Flex column gap="5px">
+    <Flex column gap="5px" width="100%">
       <Label htmlFor="range" disabled={disabled} error={!!(touched && error)} show={!hideLabel}>
         <span>{label}</span>
         <Flex column padding={['20px', '0px', '0px', '0px']} position="relative">
