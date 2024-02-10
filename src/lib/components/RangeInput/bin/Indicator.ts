@@ -8,13 +8,17 @@ type Props = {
 }
 
 export const Indicator = styled.div<Props>`
+  display: flex;  
+  align-items: center; 
+  justify-content: center;
   position: relative;
   height: 18px; 
   width: 36px; 
   padding: 2px 4px;
   font-size: 12px;
-  background-color: ${({ theme, error }) => (error ? theme.palette.danger.shades[2] : theme.palette.neutral[3])};
-  border-radius: ${({ theme }) => theme.border.radius};
+  background-color: ${({ theme, error }) => (error ? theme.palette.danger.shades[2] : theme.palette.accent.shades[4])};
+  color: ${({ theme }) => (theme.palette.black)};
+  border-radius: ${({ theme }) => theme.border.radius.sm};
   text-align: center;
   position: absolute;
   top: 4px;
@@ -26,7 +30,7 @@ export const Indicator = styled.div<Props>`
     position: absolute;
     width: 0;
     height: 0;
-    border-top: 6px solid ${({ theme, error }) => (error ? theme.palette.danger.shades[2] : theme.palette.neutral[3])};
+    border-top: 6px solid ${({ theme, error }) => (error ? theme.palette.danger.shades[2] : theme.palette.accent.shades[4])};
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     top: 100%;
