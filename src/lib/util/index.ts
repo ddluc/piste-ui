@@ -81,6 +81,7 @@ export const isDesktop = (window: {width: number | undefined }, theme: Theme): b
  * @param width
  * @param breakpoint
  */
+
 export const isMobile = (window: {width: number | undefined }, theme: Theme): boolean => {
   const breakpointSize = parseInt(theme.breakpoints.md.replace(/[^0-9]/g, ''), 10);
   return (window.width <= breakpointSize);
